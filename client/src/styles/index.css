@@ -1,0 +1,25 @@
+html,
+body,
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+    background-color: var(--background);
+}
+:root {
+  --background: #e9e9e9;
+  --text-primary: #121212;
+  --text-secondary: royalblue;
+  --cards: #fdc780;
+  --accent: purple;
+}
+
+[data-theme="dark"] {
+  --background: #121212;
+  --text-primary: #f1f1f1;
+  --text-secondary: royalblue;
+  --accent: darkred;
+  --cards: teal;
+  font-weight: 400;
+}
