@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
 html,
 body,
 * {
@@ -5,21 +6,54 @@ body,
   padding: 0;
 }
 body{
-    background-color: var(--background);
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .2px;
+
 }
-:root {
+ [data-theme="light"]{
   --background: #e9e9e9;
   --text-primary: #121212;
-  --text-secondary: royalblue;
-  --cards: #fdc780;
-  --accent: purple;
+  --dividers : #25252523;
+  --accent : #1DA1F2;
+  --input-bg : #68686827;
 }
 
-[data-theme="dark"] {
+:root{
   --background: #121212;
   --text-primary: #f1f1f1;
-  --text-secondary: royalblue;
-  --accent: darkred;
-  --cards: teal;
-  font-weight: 400;
+  --dividers : #e5e5e523;
+  --accent : #1DA1F2;
+  --input-bg : #c4c4c417;
+}
+
+input{
+  border: none;
+  border-radius: 7px;
+  color: var(--text-primary);
+  transition: all .1s ease-in;
+  color: var(--accent);
+}
+input:focus{
+  outline: none;
+  padding-left: 10px;
+}
+input::placeholder{
+  font-weight: 100;
+  padding-left: 10px;
+  opacity: 1;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--input-bg);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

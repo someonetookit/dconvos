@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import Notifications from "./components/Notifications";
 
 export default function App() {

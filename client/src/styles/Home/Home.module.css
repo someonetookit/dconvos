@@ -1,0 +1,25 @@
+.home {
+  background-color: var(--background);
+  color: var(--text-primary);
+  width: 100%;
+  height: 100vh;
+  transition: all .5s ease-in-out;
+  display: flex;
+  flex-direction: row;
+}
+.switchTheme{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.sideBar{
+  flex: 1;
+  border-right: 1px solid var(--dividers);
+}
+.chats{
+  flex: 6;
+  border-right: 1px solid var(--dividers);
+}
+.individual{
+  flex: 12;
+}
