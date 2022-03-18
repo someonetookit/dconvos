@@ -2,6 +2,7 @@ import styles from "../../styles/Home/Home.module.css";
 import { useLocalStorage } from "../snippets/useLocalStorage";
 
 import Chats from "./Chats"
+import SideBar from "../SideBar";
 
 export default function Home() {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -17,7 +18,9 @@ export default function Home() {
     <div className={styles.home} data-theme={theme}>
       <button className={styles.switchTheme} onClick={switchTheme}>{theme}</button>
 
-      <div className={styles.sideBar}></div>
+      <div className={styles.sideBar}>
+        <SideBar/>
+      </div>
       <div className={styles.chats}>
         <Chats/>
       </div>
