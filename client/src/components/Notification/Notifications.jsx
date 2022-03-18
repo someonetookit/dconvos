@@ -1,7 +1,6 @@
 import styles from "../../styles/Home/Home.module.css";
 import { useLocalStorage } from "../snippets/useLocalStorage";
 
-import Chats from "./Chats"
 import SideBar from "../SideBar";
 
 export default function Home() {
@@ -19,10 +18,9 @@ export default function Home() {
       <button className={styles.switchTheme} onClick={switchTheme}>{theme}</button>
 
       <div className={styles.sideBar}>
-        <SideBar active="home"/>
+        <SideBar active="notifications"/>
       </div>
       <div className={styles.chats}>
-        <Chats/>
       </div>
       <div className={styles.individual}></div>
     </div>
