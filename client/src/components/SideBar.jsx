@@ -17,7 +17,7 @@ export default function SideBar() {
       </div>
       <div className={styles.settings}>
         <SettingsOutlinedIcon sx={{ fontSize: 25 }} />
-        <div className={styles.avatar}></div>
+        <div className={styles.avatar}>hi</div>
       </div>
     </>
   );

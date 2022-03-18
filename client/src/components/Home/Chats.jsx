@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import styles from "../../styles/Home/Chat.module.css";
 
 export default function Chat() {
-  useEffect(() => {
-    if (screen.width < 800) window.location.href = "https://mobile.dconvos.tk";
-  }, []);
+  // useEffect(() => {
+  //   if (screen.width < 800) window.location.href = "https://mobile.dconvos.tk";
+  // }, []);
   return (
     <>
       <div className={styles.head}>

@@ -12,7 +12,6 @@
   margin: 15px 15px 0 15px;
   height: 120px;
 }
-
 .createNew {
   color: var(--text-primary);
   opacity: 0.7;
@@ -25,7 +24,6 @@
 .chatsHead {
   font-size: 48px;
   font-weight: 400;
-  margin: -10px 0 0 0;
 }
 .searchMessages {
   width: 100%;
@@ -34,7 +32,7 @@
 }
 .inbox {
   width: 100%;
-  height: 75%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +44,7 @@
   height: 70px;
   background-color: var(--input-bg);
   border-radius: 7px;
-  margin: 4% 0 4% 0;
+  margin: 4% 0 0% 0;
   cursor: pointer;
 
   display: flex;
