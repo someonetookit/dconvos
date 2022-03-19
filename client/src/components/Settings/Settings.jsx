@@ -1,11 +1,9 @@
 import styles from "../../styles/Home/Home.module.css";
 import { useLocalStorage } from "../snippets/useLocalStorage";
-import { useEffect } from "react";
 
-import Chats from "./Chats";
 import SideBar from "../SideBar";
 
-export default function Home() {
+export default function Settings() {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",
@@ -15,20 +13,14 @@ export default function Home() {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
   };
-  useEffect(() => {
-    const acc = localStorage.getItem("accent");
-    document.querySelector(":root").style.setProperty("--accent", acc);
-  });
   return (
     <div className={styles.home} data-theme={theme}>
-      <button className={styles.switchTheme} onClick={switchTheme}>
-        {theme}
-      </button>
+      <button className={styles.switchTheme} onClick={switchTheme}>{theme}</button>
+
       <div className={styles.sideBar}>
-        <SideBar active="home" />
+        <SideBar active="settings"/>
       </div>
       <div className={styles.chats}>
-        <Chats />
       </div>
       <div className={styles.individual}></div>
     </div>

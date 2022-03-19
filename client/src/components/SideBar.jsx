@@ -14,6 +14,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 export default function SideBar(props) {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function SideBar(props) {
     navigate("/" + rou);
   }
   return (
-    <>
+    <div className={styles.all}>
       <div className={styles.container}>
         <div
           onClick={() => {
@@ -70,11 +71,19 @@ export default function SideBar(props) {
         </div>
       </div>
       <div className={styles.settings}>
-        <div>
-          <SettingsOutlinedIcon sx={{ fontSize: 25 }} />
+      <div
+          onClick={() => {
+            goTo("settings");
+          }}
+        >
+          {props.active == "settings" ? (
+            <SettingsIcon sx={{ fontSize: 25, color: "var(--accent)" }} />
+          ) : (
+            <SettingsOutlinedIcon sx={{ fontSize: 25 }} />
+          )}
         </div>
         <div className={styles.avatar}>hi</div>
       </div>
-    </>
+    </div>
   );
 }
