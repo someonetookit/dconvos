@@ -23,3 +23,34 @@
 .individual{
   flex: 12;
 }
+/*----------------- Settings page ---------------*/
+.settingsContainer{
+  margin-left: 15px;
+	flex: 18;
+}
+.settingsHeadingPart{
+  margin-left: 4%;
+	margin-top: 2%;
+	font-weight: 400;
+	font-size: 48px;
+}
+.menuContainer{
+  margin-top:3%;
+    width: 50%;
+    margin-left: 25%;
+}
+.settingsOptions{
+  margin-top: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--dividers);
+  padding-bottom:10px
+}
+
+.optionStyle{
+  cursor: pointer;
+}
+.optionStyle:hover{
+  color: var(--accent);
+}
