@@ -64,7 +64,6 @@ export default function Settings() {
             </div>
 		</div>
 	);
-=======
 import styles from "../../styles/Home/Home.module.css";
 import { useLocalStorage } from "../snippets/useLocalStorage";
 
