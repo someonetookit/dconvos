@@ -12,10 +12,10 @@
   right: 0;
   top: 0;
 }
-.sideBar{
-  flex: 1;
-  border-right: 1px solid var(--dividers);
+.switchTheme2{
+  position: relative;
 }
+
 .chats{
   flex: 6;
   border-right: 1px solid var(--dividers);

@@ -9,14 +9,12 @@ export default function Notifications() {
     "theme",
     defaultDark ? "dark" : "light"
   );
-  
   return (
     <div className={styles.notiContainer} data-theme={theme}>
       <div className={styles.sideBar}>
         <SideBar active="notifications" />
       </div>
       <div className={styles.test}>
-        
       </div>
     </div>
   );

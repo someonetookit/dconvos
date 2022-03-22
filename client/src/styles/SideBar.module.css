@@ -7,8 +7,16 @@
   justify-content: flex-end;
   align-items: center;
 }
+.all{
+  border-right: 1px solid var(--dividers);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
 .container * {
-  margin: 20px;
+  margin: 10px;
   cursor: pointer;
   opacity: 0.9;
 }
@@ -27,7 +35,7 @@
 }
 
 .settings * {
-  padding: 20px;
+  margin: 10px;
   cursor: pointer;
   opacity: 0.9;
 }
