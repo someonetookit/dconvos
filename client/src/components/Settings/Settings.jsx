@@ -5,11 +5,6 @@ import SideBar from '../SideBar';
 import {General} from './General';
 import {AccountAndPrivacy} from './AccountAndPrivacy';
 
-import styles from "../../styles/Home/Home.module.css";
-import { useLocalStorage } from "../snippets/useLocalStorage";
-
-import SideBar from "../SideBar";
-
 import {Helps} from './Helps';
 import {Notification} from  './Notification';
 export default function Settings() {
