@@ -6,7 +6,7 @@ import Gun from "gun";
 import { useEffect, useState } from "react";
 
 const gun = Gun({
-  peers: ["http:localhost:8000/gun"],
+  peers: ["https://dconvos-relay.glitch.me/gun"],
 });
 
 export default function Calls() {
@@ -43,7 +43,7 @@ export default function Calls() {
   const updateText = (event) => {
     console.log("Updating Text");
     console.log(event.target.value);
-    gun.get("text").put({ text: event.target.value }); // Edit the value in our db
+    gun.get("text").put({ text: event.target.value }); 
     setTxt(event.target.value);
   };
 
