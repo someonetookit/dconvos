@@ -1,281 +1,294 @@
 .SettingContainer {
-	margin-left: 15px;
-	flex: 18;
+  margin-left: 15px;
+  flex: 18;
 }
 .sideBar {
-	flex: 1;
-	border-right: 1px solid var(--dividers);
+  flex: 1;
+  border-right: 1px solid var(--dividers);
 }
 .hedaingPart {
-	margin-left: 4%;
-	margin-top: 2%;
-	font-weight: 400;
-	font-size: 48px;
-   
+  margin-left: 4%;
+  margin-top: 2%;
+  font-weight: 400;
+  font-size: 48px;
 }
-.hide{
-    display: none;
+.hide {
+  display: none;
 }
-.settingsOptions{
-    margin-top: 35px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-bottom: 1px solid var(--dividers);
-    padding-bottom:10px
+.settingsOptions {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--dividers);
+  padding-bottom: 10px;
 }
-.Options{
-cursor: pointer;
-
+.Options {
+  cursor: pointer;
 }
-.OoptionAfter{
-    font-size: 18px;
-    cursor: pointer;
-    color:var(--accent);
+.OoptionAfter {
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--accent);
 }
-.Options:hover{
-    color: var(--accent);
+.Options:hover {
+  color: var(--accent);
 }
 
-.settingsContainer{
-    
-    margin-top:3%;
-    width: 50%;
-    margin-left: 25%;
+.settingsContainer {
+  margin-top: 3%;
+  width: 50%;
+  margin-left: 25%;
 }
 
 /* ----------------- account & privacy------------------------*/
 
-.Profile{
-    font-size:23px;
-    color:var(--accent);
-    font-weight: bold;
+.Profile {
+  font-size: 23px;
+  color: var(--accent);
+  font-weight: bold;
 }
-.warningNote{
-    font-size: 15px;
-    opacity: 0.5;
-    line-height: 18px;
-    margin-top: 20px;
+.warningNote {
+  font-size: 15px;
+  opacity: 0.5;
+  line-height: 18px;
+  margin-top: 20px;
 }
-.profileElements{
-    display: flex;
-    flex-direction: column;
+.profileElements {
+  display: flex;
+  flex-direction: column;
 }
-.nameContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
+.nameContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
 }
-.userNameContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
+.userNameContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
 }
-.AboutContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
+.AboutContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
 }
-.BioContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    
+.BioContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
 }
-.BioLabel,.AboutLabel,.userNameLabel,.nameLabel{
-    margin-top: 15px;
-    font-size: 20px;
+.BioLabel,
+.AboutLabel,
+.userNameLabel,
+.nameLabel {
+  margin-top: 15px;
+  font-size: 20px;
 }
-.inputField{
-    width:90%;
-    height: 30spx;
-    font-size: large;
-    border-radius: 2px;
-    background-color: var(--input-bg);
+.inputField {
+  width: 90%;
+  height: 30spx;
+  font-size: large;
+  border-radius: 2px;
+  background-color: var(--input-bg);
 }
-.inputField::placeholder{
-    color: #fff;
-}
-
-.divider{
-    
-    padding-bottom:16px;
-    padding-top: 12px;
-    border-bottom: 1px solid var(--dividers);
-}
-.nameFiled,.Username,.AboutFiled,.BioFiled{
-    width: 75%;
-}
-.pencil,.doneicons{
-    margin-left: auto;
-    float: right;
-    cursor: pointer;
-}
-.hide{
-    display: none;
+.inputField::placeholder {
+  color: #fff;
 }
 
+.divider {
+  padding-bottom: 16px;
+  padding-top: 12px;
+  border-bottom: 1px solid var(--dividers);
+}
+.nameFiled,
+.Username,
+.AboutFiled,
+.BioFiled {
+  width: 75%;
+}
+.pencil,
+.doneicons {
+  margin-left: auto;
+  float: right;
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
 
 /*-----------------  General settings --------------------*/
-.general{
-    font-size:23px;
-    color:var(--accent);
-    font-weight: bold;
+.general {
+  font-size: 23px;
+  color: var(--accent);
+  font-weight: bold;
 }
-.messageTextSize{
-    margin-top: 15px;
-    font-size: 20px;
+.messageTextSize {
+  margin-top: 15px;
+  font-size: 20px;
 }
-.timeLabel,.colorLabel,.background{
-    margin-top: 25px;
-    font-size: 20px;
-}
-
-.colorSelect{
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    margin: 10px;
-}
-.colorContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.timeLabel,
+.colorLabel,
+.background {
+  margin-top: 25px;
+  font-size: 20px;
 }
 
-.darkModeContainer{
-    background: #17181d;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-radius: 10px;
-    padding-top: 10px;
-    margin-top: 5px;
-    padding-bottom: 10px;
+.colorSelect {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 10px;
 }
-.light{
-    background: #fff;
-    width: 25%;
-    height: 45px;
-    text-align: center;
-    color:#000;
-    border-radius: 7px;
-    justify-content: center;
-    cursor: pointer;
+.colorContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.dark{
-    background: #000;
-    width: 25%;
-    height: 45px;
-   text-align: center;
-   border-radius: 7px;
-   justify-content: center;
-   cursor: pointer;
+.darkModeContainer {
+  background: var(--accent);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  padding-top: 10px;
+  margin-top: 5px;
+  padding-bottom: 10px;
+}
+.light {
+  background: #fff;
+  width: 25%;
+  height: 45px;
+  text-align: center;
+  color: #000;
+  border-radius: 7px;
+  justify-content: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.contentOne,.contentThree,.contentFour,.timeFormat{
-    border-bottom:  1px solid var(--dividers);
-    padding:5px;
+.dark {
+  background: #000;
+  color: white;
+  width: 25%;
+  height: 45px;
+  text-align: center;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.contentOne,
+.contentThree,
+.contentFour,
+.timeFormat {
+  border-bottom: 1px solid var(--dividers);
+  padding: 5px;
 }
 
 /*------slider ------*/
-.rangeSlider ,.sliderFillTrack {
-    width: 100%;
-    left: 0;
-    top: 0.3125rem;
-    height: 0.125rem;
-    background-color: var(--accent);
-    border-radius: 0.125rem;
-    pointer-events: none;
+.rangeSlider,
+.sliderFillTrack {
+  width: 100%;
+  left: 0;
+  top: 0.3125rem;
+  height: 0.125rem;
+  background-color: var(--accent);
+  border-radius: 0.125rem;
+  pointer-events: none;
 }
 
-.sliderMain{
-    position: relative;
-    border-top:25%;
+.sliderMain {
+  position: relative;
+  border-top: 25%;
 }
 /*----------------- help   -------------------------*/
-.helpHeading{
-    font-size:23px;
-    color:var(--accent);
-    font-weight: bold;
+.helpHeading {
+  font-size: 23px;
+  color: var(--accent);
+  font-weight: bold;
 }
-.circleLogo{
-    position: relative;
-    margin-top: 15px;
-    width: 210px;
-    height: 210px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-left: 30%;
-
+.circleLogo {
+  position: relative;
+  margin-top: 15px;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-left: 30%;
 }
-.helpOptions{
-    display: flex;
-    flex-direction: column;
-    margin-top: 6%;
-}
-
-.helpCenter,.contactUs,.privacy{
-    display: flex;
-    flex-direction: row;
-    margin-left: 30%;
-    margin-top: auto;
-    border-bottom: 1px solid var(--dividers);
-    width: 35%;
-    padding-top: 15px;
-    padding-bottom:15px ;
-    cursor: pointer;
-    
-}
-.helpCenter:hover{
-    background: var(--input-bg);
-}
-.contactUs:hover{
-    background: var(--input-bg);
-}
-.privacy:hover{
-    background: var(--input-bg);
+.helpOptions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6%;
 }
 
-.labels{
-
-    margin-left: 12%;
+.helpCenter,
+.contactUs,
+.privacy {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30%;
+  margin-top: auto;
+  border-bottom: 1px solid var(--dividers);
+  width: 35%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  cursor: pointer;
 }
-.version{
-    margin-top: 15px;
-    margin-left: 38%;
+.helpCenter:hover {
+  background: var(--input-bg);
+}
+.contactUs:hover {
+  background: var(--input-bg);
+}
+.privacy:hover {
+  background: var(--input-bg);
+}
+
+.labels {
+  margin-left: 12%;
+}
+.version {
+  margin-top: 15px;
+  margin-left: 38%;
 }
 
 /*-------------- notification  ---------------*/
 
-.notificationHeading{
-    font-size:23px;
-    color:var(--accent);
-    font-weight: bold;  
+.notificationHeading {
+  font-size: 23px;
+  color: var(--accent);
+  font-weight: bold;
 }
-.NotificationOption{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between  ;
+.NotificationOption {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.desktopNotification,.unreadMessageBadge{
-    margin-top: 25px;
-    font-size: 20px;
+.desktopNotification,
+.unreadMessageBadge {
+  margin-top: 25px;
+  font-size: 20px;
 }
-.notificationToggle{
-    margin-top: 20px;
+.notificationToggle {
+  margin-top: 20px;
 }
-.desktopNotificationMessage{
-    font-size:15px;
-    opacity: 0.3;
-    width: 90%;
-    
+.desktopNotificationMessage {
+  font-size: 15px;
+  opacity: 0.3;
+  width: 90%;
 }
-.desktopNotificationModule,.unreadMessageBageModule{
-    border-bottom: 1px solid var(--dividers);
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-bottom: 15px;
+.desktopNotificationModule,
+.unreadMessageBageModule {
+  border-bottom: 1px solid var(--dividers);
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-bottom: 15px;
 }

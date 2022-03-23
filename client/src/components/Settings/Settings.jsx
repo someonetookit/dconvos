@@ -13,10 +13,6 @@ export default function Settings() {
     "theme",
     defaultDark ? "dark" : "light"
   );
-  const switchTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-  };
   function reducer(state, action) {
     switch (action.type) {
       case "addGeneral":
