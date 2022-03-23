@@ -6,7 +6,7 @@ import Gun from "gun";
 import { useEffect, useState } from "react";
 
 const gun = Gun({
-  peers: ["https://dconvos-relay.glitch.me/gun"],
+  peers: ["https://dconvos-relay.herokuapp.com/gun"],
 });
 
 export default function Calls() {
