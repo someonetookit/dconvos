@@ -32,7 +32,6 @@ export default function Calls() {
         setTxt(node.text);
       }
     });
-
     gun.get("text").on((node) => {
       console.log("Receiving Update");
       console.log(node);
@@ -52,7 +51,6 @@ export default function Calls() {
       <button className={styles.switchTheme} onClick={switchTheme}>
         {theme}
       </button>
-
       <div className={styles.sideBar}>
         <SideBar active="calls" />
       </div>
