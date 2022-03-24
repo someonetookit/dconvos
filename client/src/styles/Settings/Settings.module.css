@@ -1,115 +1,131 @@
-.SettingContainer {
-	margin-left: 15px;
-	flex: 18;
+.settings {
+  background-color: var(--background);
+  color: var(--text-primary);
+  width: 100%;
+  height: 100vh;
+  transition: all .5s ease-in-out;
+  display: flex;
+  flex-direction: row;
 }
+.switchTheme{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.switchTheme2{
+  position: relative;
+}
+.settingsContainer{
+    flex: 18; 
+}
+.head{
+  margin: 15px 15px 0 15px;
+}
+.settingsHeadingPart{
+  font-size: 48px;
+  font-weight: 400;
+}
+.settingsOptions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 1px solid var(--dividers);
+  padding-bottom:10px
+}
+
+.optionStyle{
+  font-size: 1.15rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.optionStyle:hover{
+  color: var(--accent);
+}
+
 .sideBar {
 	flex: 1;
 	border-right: 1px solid var(--dividers);
 }
+
+
 .hedaingPart {
-	margin-left: 4%;
-	margin-top: 2%;
-	font-weight: 400;
-	font-size: 48px;
-   
+  margin-left: 4%;
+  margin-top: 2%;
+  font-weight: 400;
+  font-size: 48px;
 }
-.hide{
-    display: none;
+.hide {
+  display: none;
 }
-.settingsOptions{
-    margin-top: 35px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-bottom: 1px solid var(--dividers);
-    padding-bottom:10px
+.settingsOptions {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--dividers);
+  padding-bottom: 10px;
 }
-.Options{
-cursor: pointer;
+.menuContainer {
+
+  margin-top: 3%;
+  width: 50%;
+  align-items: center;
+  
 
 }
-.OoptionAfter{
-    font-size: 18px;
-    cursor: pointer;
-    color:var(--accent);
-}
-.Options:hover{
-    color: var(--accent);
-}
-
-.settingsContainer{
-    
-    margin-top:3%;
-    width: 50%;
-    margin-left: 25%;
+.menuContainerBox{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 /* ----------------- account & privacy------------------------*/
+.profileHeading{
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: bolder;
+}
+.warningNote {
+  font-size: 1rem;
+  opacity: 0.5;
+  line-height: 18px;
+  margin-top: 20px;
+}
+.profileName,.userName,.about,.bio {
+  margin-top: 25px;
+  border-bottom: 1px solid var(--dividers);
+}
+.usernameLabel, .profileNameLabel,.aboutLabel,.bioLabel{
+  font-size: 1rem;
+}
 
-.Profile{
-    font-size:23px;
-    color:var(--accent);
-    font-weight: bold;
-}
-.warningNote{
-    font-size: 15px;
-    opacity: 0.5;
-    line-height: 18px;
-    margin-top: 20px;
-}
-.profileElements{
-    display: flex;
-    flex-direction: column;
-}
-.nameContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-}
-.userNameContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-}
-.AboutContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-}
-.BioContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    
-}
-.BioLabel,.AboutLabel,.userNameLabel,.nameLabel{
-    margin-top: 15px;
-    font-size: 20px;
-}
 .inputField{
-    width:90%;
-    height: 30spx;
-    font-size: large;
-    border-radius: 2px;
-    background-color: var(--input-bg);
+  width: 90%;
 }
-.inputField::placeholder{
-    color: #fff;
+input{
+  background: var(--background);
+  width: 100%;
+  font-size: 1rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.divider{
-    
-    padding-bottom:16px;
-    padding-top: 12px;
-    border-bottom: 1px solid var(--dividers);
+
+.editing,
+.saving {
+  margin-left: auto;
+  float: right;
+  cursor: pointer;
 }
-.nameFiled,.Username,.AboutFiled,.BioFiled{
-    width: 75%;
+.nameContainer,.usernameContainer,.aboutContainer,.bioContainer{
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
 }
-.pencil,.doneicons{
-    margin-left: auto;
-    float: right;
-    cursor: pointer;
+.profileForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .hide{
     display: none;
@@ -117,18 +133,20 @@ cursor: pointer;
 
 
 /*-----------------  General settings --------------------*/
-.general{
-    font-size:23px;
-    color:var(--accent);
-    font-weight: bold;
+.generalHead {
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: bold;
 }
-.messageTextSize{
-    margin-top: 15px;
-    font-size: 20px;
+.messageTextSize {
+  margin-top: 15px;
+  font-size: 1rem;
 }
-.timeLabel,.colorLabel,.background{
-    margin-top: 25px;
-    font-size: 20px;
+.timeLabel,
+.colorLabel,
+.background {
+  margin-top: 25px;
+  font-size: 1rem;
 }
 
 .colorSelect{
@@ -144,25 +162,28 @@ cursor: pointer;
     justify-content: space-evenly;
 }
 
-.darkModeContainer{
-    background: #17181d;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-radius: 10px;
-    padding-top: 10px;
-    margin-top: 5px;
-    padding-bottom: 10px;
+.darkModeContainer {
+  background: var(--accent);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  padding-top: 10px;
+  margin-top: 15px;
+  padding-bottom: 10px;
 }
-.light{
-    background: #fff;
-    width: 25%;
-    height: 45px;
-    text-align: center;
-    color:#000;
-    border-radius: 7px;
-    justify-content: center;
-    cursor: pointer;
+.light {
+  background: #fff;
+  width: 25%;
+  height: 45px;
+  text-align: center;
+  color: #000;
+  border-radius: 7px;
+  justify-content: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dark{
@@ -196,25 +217,24 @@ cursor: pointer;
     border-top:25%;
 }
 /*----------------- help   -------------------------*/
-.helpHeading{
-    font-size:23px;
-    color:var(--accent);
-    font-weight: bold;
+.helpHeading {
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: bolder;
 }
-.circleLogo{
-    position: relative;
-    margin-top: 15px;
-    width: 210px;
-    height: 210px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-left: 30%;
-
+.circleLogo {
+  position: relative;
+  margin-top: 15px;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-left: 30%;
 }
-.helpOptions{
-    display: flex;
-    flex-direction: column;
-    margin-top: 6%;
+.helpOptions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
 }
 
 .helpCenter,.contactUs,.privacy{
@@ -239,43 +259,45 @@ cursor: pointer;
     background: var(--input-bg);
 }
 
-.labels{
-
-    margin-left: 12%;
+.labels {
+  margin-left: 12%;
+  font-size: 1rem;
 }
-.version{
-    margin-top: 15px;
-    margin-left: 38%;
+.version {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  margin-left: 38%;
 }
 
 /*-------------- notification  ---------------*/
 
-.notificationHeading{
-    font-size:23px;
-    color:var(--accent);
-    font-weight: bold;  
+.notificationHeading {
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: bolder;
 }
-.NotificationOption{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between  ;
+.NotificationOption {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.desktopNotification,.unreadMessageBadge{
-    margin-top: 25px;
-    font-size: 20px;
+.desktopNotification,
+.unreadMessageBadge {
+  margin-top: 25px;
+  font-size: 1rem;
 }
-.notificationToggle{
-    margin-top: 20px;
+.notificationToggle {
+  margin-top: 20px;
 }
-.desktopNotificationMessage{
-    font-size:15px;
-    opacity: 0.3;
-    width: 90%;
-    
+.desktopNotificationMessage {
+  font-size: 0.9rem;
+  opacity: 0.3;
+  width: 90%;
 }
-.desktopNotificationModule,.unreadMessageBageModule{
-    border-bottom: 1px solid var(--dividers);
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-bottom: 15px;
+.desktopNotificationModule,
+.unreadMessageBageModule {
+  border-bottom: 1px solid var(--dividers);
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-bottom: 15px;
 }

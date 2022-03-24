@@ -1,10 +1,9 @@
 import React, { useReducer, useState } from 'react';
-import styles from '../../styles/Home/Home.module.css';
+import styles from "../../styles/Settings/Settings.module.css";
 import { useLocalStorage } from '../snippets/useLocalStorage';
 import SideBar from '../SideBar';
 import {General} from './General';
 import {AccountAndPrivacy} from './AccountAndPrivacy';
-
 import {Helps} from './Helps';
 import {Notification} from  './Notification';
 export default function Settings() {
@@ -46,50 +45,33 @@ export default function Settings() {
     }
 
     const[state,dispach] = useReducer(reducer,{menu:General})
-
-	return (
-		<div className={styles.home} data-theme={theme}>
-			<div className={styles.sideBar}>
-				<SideBar active="settings" />
-			</div>
-            <div className={styles.settingsContainer} >
-                <div className={styles.settingsHeadingPart}>Settings</div>
-                <div className={styles.settingsOptions}>
-                    <div className={styles.optionStyle} onClick={addGeneral} >General</div>
-                    <div className={styles.optionStyle} onClick={addProfile} >Account &amp Privacy</div>
-                    <div className={styles.optionStyle} onClick={addNotification} >Notification</div>
-                    <div className={styles.optionStyle} onClick={addHelp} >Help</div>
-                </div>
-                <div className={styles.menuContainer} id ="menuContainer" ><state.menu/></div>
-            </div>
-		</div>
-	);
-=======
-import styles from "../../styles/Home/Home.module.css";
-import { useLocalStorage } from "../snippets/useLocalStorage";
-
-import SideBar from "../SideBar";
-
-export default function Settings() {
-  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
-  );
-  const switchTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-  };
   return (
-    <div className={styles.home} data-theme={theme}>
-      <button className={styles.switchTheme} onClick={switchTheme}>{theme}</button>
-
+    <div className={styles.settings} data-theme={theme}>
       <div className={styles.sideBar}>
         <SideBar active="settings"/>
       </div>
-      <div className={styles.chats}>
+      <div className={styles.settingsContainer}>
+      <div className={styles.head}>
+        <div className={styles.settingsHeadingPart}>Settings</div></div>
+        <div className={styles.settingsOptions}>
+          <div className={styles.optionStyle} onClick={addGeneral}>
+            General
+          </div>
+          <div className={styles.optionStyle} onClick={addProfile}>
+            Account & Privacy
+          </div>
+          <div className={styles.optionStyle} onClick={addNotification}>
+            Notification
+          </div>
+          <div className={styles.optionStyle} onClick={addHelp}>
+            Help
+          </div>
+        </div>
+        <div className={styles.menuContainerBox}>
+        <div className={styles.menuContainer} id="menuContainer">
+          <state.menu />
+        </div></div>
       </div>
       <div className={styles.individual}></div>
     </div>
-  );
-}
+)};
