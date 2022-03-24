@@ -1,4 +1,5 @@
-import React, { useReducer, useState } from "react";
+import { useReducer, useState } from "react";
+
 import styles from "../../styles/Settings/Settings.module.css";
 import { useLocalStorage } from "../snippets/useLocalStorage";
 
