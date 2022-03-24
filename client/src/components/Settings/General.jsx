@@ -57,7 +57,7 @@ export function General() {
   }
   return (
     <div>
-      <div className={styles.general}>General</div>
+      <div className={styles.generalHead}>General</div>
       <div className={styles.contentOne}>
         <div className={styles.messageTextSize}>Message Text Size</div>
         <div className={styles.textSizeManager}>
@@ -72,7 +72,7 @@ export function General() {
               min={12}
               max={20}
               ref={valueRef}
-              sx={{ color: "var(--accent)" }}
+              sx={{ color: "var(--accent)", }}
             />
           </div>
         </div>
@@ -90,6 +90,7 @@ export function General() {
               value="12-hours"
               control={<Radio sx={{ color: "var(--accent)" }} />}
               label="12-hours"
+              sx={{fontSize:"1rem"}}
             />
             <FormControlLabel
               value="24-hours"

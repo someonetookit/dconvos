@@ -16,6 +16,7 @@ export default function App() {
       <Route path="/calls" element={<Calls/>}/>
       <Route path="/favorites" element={<Favorites/>}/>
       <Route path="/settings" element={<Settings/>}/>
+
     </Routes>
   );
 }

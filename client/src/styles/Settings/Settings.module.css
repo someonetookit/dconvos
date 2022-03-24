@@ -1,11 +1,53 @@
-.SettingContainer {
-  margin-left: 15px;
-  flex: 18;
+.settings {
+  background-color: var(--background);
+  color: var(--text-primary);
+  width: 100%;
+  height: 100vh;
+  transition: all .5s ease-in-out;
+  display: flex;
+  flex-direction: row;
 }
+.switchTheme{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.switchTheme2{
+  position: relative;
+}
+.settingsContainer{
+    flex: 18; 
+}
+.head{
+  margin: 15px 15px 0 15px;
+}
+.settingsHeadingPart{
+  font-size: 48px;
+  font-weight: 400;
+}
+.settingsOptions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 1px solid var(--dividers);
+  padding-bottom:10px
+}
+
+.optionStyle{
+  font-size: 1.15rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.optionStyle:hover{
+  color: var(--accent);
+}
+
 .sideBar {
-  flex: 1;
-  border-right: 1px solid var(--dividers);
+	flex: 1;
+	border-right: 1px solid var(--dividers);
 }
+
+
 .hedaingPart {
   margin-left: 4%;
   margin-top: 2%;
@@ -23,115 +65,84 @@
   border-bottom: 1px solid var(--dividers);
   padding-bottom: 10px;
 }
-.Options {
-  cursor: pointer;
-}
-.OoptionAfter {
-  font-size: 18px;
-  cursor: pointer;
-  color: var(--accent);
-}
-.Options:hover {
-  color: var(--accent);
-}
+.menuContainer {
 
-.settingsContainer {
   margin-top: 3%;
   width: 50%;
-  margin-left: 25%;
+  align-items: center;
+  
+
+}
+.menuContainerBox{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 /* ----------------- account & privacy------------------------*/
-
-.Profile {
-  font-size: 23px;
+.profileHeading{
+  font-size: 1.1rem;
   color: var(--accent);
-  font-weight: bold;
+  font-weight: bolder;
 }
 .warningNote {
-  font-size: 15px;
+  font-size: 1rem;
   opacity: 0.5;
   line-height: 18px;
   margin-top: 20px;
 }
-.profileElements {
-  display: flex;
-  flex-direction: column;
-}
-.nameContainer {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: row;
-}
-.userNameContainer {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: row;
-}
-.AboutContainer {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: row;
-}
-.BioContainer {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: row;
-}
-.BioLabel,
-.AboutLabel,
-.userNameLabel,
-.nameLabel {
-  margin-top: 15px;
-  font-size: 20px;
-}
-.inputField {
-  width: 90%;
-  height: 30spx;
-  font-size: large;
-  border-radius: 2px;
-  background-color: var(--input-bg);
-}
-.inputField::placeholder {
-  color: #fff;
-}
-
-.divider {
-  padding-bottom: 16px;
-  padding-top: 12px;
+.profileName,.userName,.about,.bio {
+  margin-top: 25px;
   border-bottom: 1px solid var(--dividers);
 }
-.nameFiled,
-.Username,
-.AboutFiled,
-.BioFiled {
-  width: 75%;
+.usernameLabel, .profileNameLabel,.aboutLabel,.bioLabel{
+  font-size: 1rem;
 }
-.pencil,
-.doneicons {
+
+.inputField{
+  width: 90%;
+}
+input{
+  background: var(--background);
+  width: 100%;
+  font-size: 1rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.editing,
+.saving {
   margin-left: auto;
   float: right;
   cursor: pointer;
 }
-.hide {
-  display: none;
+.nameContainer,.usernameContainer,.aboutContainer,.bioContainer{
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+}
+.profileForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 /*-----------------  General settings --------------------*/
-.general {
-  font-size: 23px;
+.generalHead {
+  font-size: 1.1rem;
   color: var(--accent);
   font-weight: bold;
 }
 .messageTextSize {
   margin-top: 15px;
-  font-size: 20px;
+  font-size: 1rem;
 }
 .timeLabel,
 .colorLabel,
 .background {
   margin-top: 25px;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .colorSelect {
@@ -154,7 +165,7 @@
   justify-content: space-evenly;
   border-radius: 10px;
   padding-top: 10px;
-  margin-top: 5px;
+  margin-top: 15px;
   padding-bottom: 10px;
 }
 .light {
@@ -173,7 +184,7 @@
 
 .dark {
   background: #000;
-  color: white;
+  color: "white";
   width: 25%;
   height: 45px;
   text-align: center;
@@ -210,9 +221,9 @@
 }
 /*----------------- help   -------------------------*/
 .helpHeading {
-  font-size: 23px;
+  font-size: 1.1rem;
   color: var(--accent);
-  font-weight: bold;
+  font-weight: bolder;
 }
 .circleLogo {
   position: relative;
@@ -254,18 +265,20 @@
 
 .labels {
   margin-left: 12%;
+  font-size: 1rem;
 }
 .version {
   margin-top: 15px;
+  font-size: 0.8rem;
   margin-left: 38%;
 }
 
 /*-------------- notification  ---------------*/
 
 .notificationHeading {
-  font-size: 23px;
+  font-size: 1.1rem;
   color: var(--accent);
-  font-weight: bold;
+  font-weight: bolder;
 }
 .NotificationOption {
   display: flex;
@@ -275,13 +288,13 @@
 .desktopNotification,
 .unreadMessageBadge {
   margin-top: 25px;
-  font-size: 20px;
+  font-size: 1rem;
 }
 .notificationToggle {
   margin-top: 20px;
 }
 .desktopNotificationMessage {
-  font-size: 15px;
+  font-size: 0.9rem;
   opacity: 0.3;
   width: 90%;
 }
