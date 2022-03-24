@@ -1,28 +1,39 @@
-import React, { useRef, useState } from 'react';
-import styles from '../../styles/Settings/Settings.module.css';
-import Slider from '@mui/material/Slider';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import { useLocalStorage } from '../snippets/useLocalStorage';
-import FormLabel from '@mui/material/FormLabel';
-import { useMantineColorScheme, SegmentedControl, Group, Center, Box } from '@mantine/core';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import React, { useRef, useState } from "react";
+import styles from "../../styles/Settings/Settings.module.css";
+import Slider from "@mui/material/Slider";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import { useLocalStorage } from "../snippets/useLocalStorage";
+import FormLabel from "@mui/material/FormLabel";
+import {
+  useMantineColorScheme,
+  SegmentedControl,
+  Group,
+  Center,
+  Box,
+} from "@mantine/core";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 export function General() {
-	let previousSize = 13;
-	const valueRef = useRef();
-	const [ value, setValue ] = useState('12-hours');
-	const handleChange = (event) => {
-		console.log(event.target.value);
-		setValue(event.target.value);
-	};
-	const switchAccent = (acc) => {
-		document.querySelector(':root').style.setProperty('--accent', acc);
-		localStorage.setItem('accent', acc);
-	};
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+  let previousSize = 13;
+  const valueRef = useRef();
+  const [value, setValue] = useState("12-hours");
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setValue(event.target.value);
+  };
+  const switchAccent = (acc) => {
+    document.querySelector(":root").style.setProperty("--accent", acc);
+    localStorage.setItem("accent", acc);
+  };
 
   //------------------------ fontSize Changer---------------//
   function valuetext(value) {

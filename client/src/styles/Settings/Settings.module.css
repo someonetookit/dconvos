@@ -127,10 +127,6 @@ input{
   flex-direction: column;
   justify-content: space-evenly;
 }
-.hide{
-    display: none;
-}
-
 
 /*-----------------  General settings --------------------*/
 .generalHead {
@@ -149,17 +145,17 @@ input{
   font-size: 1rem;
 }
 
-.colorSelect{
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    margin: 10px;
+.colorSelect {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 10px;
 }
-.colorContainer{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.colorContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .darkModeContainer {
@@ -186,35 +182,42 @@ input{
   align-items: center;
 }
 
-.dark{
-    background: #000;
-    width: 25%;
-    height: 45px;
-   text-align: center;
-   border-radius: 7px;
-   justify-content: center;
-   cursor: pointer;
+.dark {
+  background: #000;
+  color: "white";
+  width: 25%;
+  height: 45px;
+  text-align: center;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
-.contentOne,.contentThree,.contentFour,.timeFormat{
-    border-bottom:  1px solid var(--dividers);
-    padding:5px;
+.contentOne,
+.contentThree,
+.contentFour,
+.timeFormat {
+  border-bottom: 1px solid var(--dividers);
+  padding: 5px;
 }
 
 /*------slider ------*/
-.rangeSlider ,.sliderFillTrack {
-    width: 100%;
-    left: 0;
-    top: 0.3125rem;
-    height: 0.125rem;
-    background-color: var(--accent);
-    border-radius: 0.125rem;
-    pointer-events: none;
+.rangeSlider,
+.sliderFillTrack {
+  width: 100%;
+  left: 0;
+  top: 0.3125rem;
+  height: 0.125rem;
+  background-color: var(--accent);
+  border-radius: 0.125rem;
+  pointer-events: none;
 }
 
-.sliderMain{
-    position: relative;
-    border-top:25%;
+.sliderMain {
+  position: relative;
+  border-top: 25%;
 }
 /*----------------- help   -------------------------*/
 .helpHeading {
@@ -234,29 +237,30 @@ input{
 .helpOptions {
   display: flex;
   flex-direction: column;
-  margin-top: 2%;
+  margin-top: 6%;
 }
 
-.helpCenter,.contactUs,.privacy{
-    display: flex;
-    flex-direction: row;
-    margin-left: 30%;
-    margin-top: auto;
-    border-bottom: 1px solid var(--dividers);
-    width: 35%;
-    padding-top: 15px;
-    padding-bottom:15px ;
-    cursor: pointer;
-    
+.helpCenter,
+.contactUs,
+.privacy {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30%;
+  margin-top: auto;
+  border-bottom: 1px solid var(--dividers);
+  width: 35%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  cursor: pointer;
 }
-.helpCenter:hover{
-    background: var(--input-bg);
+.helpCenter:hover {
+  background: var(--input-bg);
 }
-.contactUs:hover{
-    background: var(--input-bg);
+.contactUs:hover {
+  background: var(--input-bg);
 }
-.privacy:hover{
-    background: var(--input-bg);
+.privacy:hover {
+  background: var(--input-bg);
 }
 
 .labels {
