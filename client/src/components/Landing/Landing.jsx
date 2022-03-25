@@ -141,6 +141,7 @@ export default function Landing() {
               </Group>
             </div>
             {/* <Image src={image.src} className={classes.image} /> */}
+            <a href="/home">go</a>
           </div>
         </Container>
       </MantineProvider>
