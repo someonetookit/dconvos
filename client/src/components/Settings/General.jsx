@@ -35,14 +35,19 @@ export function General() {
     return value;
   }
   //----------after completing the chat field-------------------//
+  
   function textSizeChanger(value) {
     console.log(value);
   }
-  function lightTheme() {
-    setTheme("light");
-  }
-  function DarkTheme() {
-    setTheme("dark");
+
+  //-------dark mode--------------------
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+  function changeTheme(newTheme){
+    setTheme(newTheme)
   }
   return (
     <div>
@@ -129,19 +134,7 @@ export function General() {
           />
         </div>
       </div>
-      <div className={styles.contentFour}>
-        <div className={styles.background}>Theme</div>
-        <div className={styles.darkModeContainer}>
-          <div className={styles.light} onClick={lightTheme}>
-            {" "}
-            <p> Light</p>
-          </div>
-          <div className={styles.dark} onClick={DarkTheme}>
-            {" "}
-            <p>Dark</p>
-          </div>
-        </div>
-      </div>
+     
     </div>
   );
 }
