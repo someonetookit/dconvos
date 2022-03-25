@@ -18,11 +18,6 @@ import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 export function General() {
-  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
-  );
   let previousSize = 13;
   const valueRef = useRef();
   const [value, setValue] = useState("12-hours");
@@ -46,15 +41,12 @@ export function General() {
     return value;
   }
   //----------after completing the chat field-------------------//
+  
   function textSizeChanger(value) {
     console.log(value);
   }
-  function lightTheme() {
-    setTheme("light");
-  }
-  function DarkTheme() {
-    setTheme("dark");
-  }
+
+  //-------dark mode--------------------
   return (
     <div>
       <div className={styles.generalHead}>General</div>
@@ -140,19 +132,7 @@ export function General() {
           />
         </div>
       </div>
-      <div className={styles.contentFour}>
-        <div className={styles.background}>Theme</div>
-        <div className={styles.darkModeContainer}>
-          <div className={styles.light} onClick={lightTheme}>
-            {" "}
-            <p> Light</p>
-          </div>
-          <div className={styles.dark} onClick={DarkTheme}>
-            {" "}
-            <p>Dark</p>
-          </div>
-        </div>
-      </div>
+     
     </div>
   );
 }

@@ -15,8 +15,6 @@ export default function Favorites() {
   };
   return (
     <div className={styles.home} data-theme={theme}>
-      <button className={styles.switchTheme} onClick={switchTheme}>{theme}</button>
-
       <div className={styles.sideBar}>
         <SideBar active="favorites"/>
       </div>

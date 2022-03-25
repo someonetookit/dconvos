@@ -70,14 +70,67 @@
   margin-top: 3%;
   width: 50%;
   align-items: center;
-  
-
+}
+.backgroundTheme{
+  position: relative;
 }
 .menuContainerBox{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
+
+.colorSelect{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 10px;
+}
+.colorContainer{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.darkModeContainer {
+background: #F7F9F9;
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+border-radius: 10px;
+padding-top: 10px;
+margin-top: 15px;
+padding-bottom: 10px;
+}
+.light {
+background: #fff;
+width: 25%;
+height: 45px;
+text-align: center;
+color: #000;
+border-radius: 7px;
+justify-content: center;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.dark{
+background: #000;
+color: white;
+width: 25%;
+height: 45px;
+text-align: center;
+border-radius: 7px;
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+}
+
 
 /* ----------------- account & privacy------------------------*/
 .profileHeading{
@@ -145,55 +198,6 @@ input{
   font-size: 1rem;
 }
 
-.colorSelect {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  margin: 10px;
-}
-.colorContainer {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.darkModeContainer {
-  background: var(--accent);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  border-radius: 10px;
-  padding-top: 10px;
-  margin-top: 15px;
-  padding-bottom: 10px;
-}
-.light {
-  background: #fff;
-  width: 25%;
-  height: 45px;
-  text-align: center;
-  color: #000;
-  border-radius: 7px;
-  justify-content: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.dark {
-  background: #000;
-  color: "white";
-  width: 25%;
-  height: 45px;
-  text-align: center;
-  border-radius: 7px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
 
 .contentOne,
 .contentThree,
