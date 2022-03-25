@@ -9,9 +9,10 @@ import Calls from "./components/Calls/Calls";
 import Favorites from "./components/Favorites/Favorites";
 import Settings from "./components/Settings/Settings";
 import "./styles/index.css";
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/home" element={<Home />} />
@@ -20,6 +21,6 @@ ReactDOM.render(
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById("root")
 );
