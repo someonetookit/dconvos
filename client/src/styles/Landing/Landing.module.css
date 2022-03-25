@@ -1,5 +1,6 @@
 .land {
   background-color: var(--background);
+  height: 100vh;
 }
 .switchTheme {
   position: absolute;
