@@ -68,11 +68,11 @@ export default function Settings() {
   return (
     <div className={styles.settings} data-theme={theme}>
       <div className={styles.sideBar}>
-        <SideBar active="settings" />
+        <SideBar active="settings"/>
       </div>
       <div className={styles.settingsContainer}>
       <div className={styles.head}>
-        <div className={styles.settingsHeadingPart}>Settings</div>
+        <div className={styles.settingsHeadingPart}>Settings</div></div>
         <div className={styles.settingsOptions}>
           <div className={styles.optionStyle} onClick={addGeneral}>
             General
@@ -103,10 +103,9 @@ export default function Settings() {
          </div>
        </div>
       )
-        
-     }
+        }
         </div></div>
-
       </div>
+      <div className={styles.individual}></div>
     </div>
 )};

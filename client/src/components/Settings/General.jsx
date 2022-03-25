@@ -18,11 +18,6 @@ import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 export function General() {
-  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
-  );
   let previousSize = 13;
   const valueRef = useRef();
   const [value, setValue] = useState("12-hours");
@@ -52,14 +47,6 @@ export function General() {
   }
 
   //-------dark mode--------------------
-  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
-  );
-  function changeTheme(newTheme){
-    setTheme(newTheme)
-  }
   return (
     <div>
       <div className={styles.generalHead}>General</div>
