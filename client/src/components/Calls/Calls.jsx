@@ -1,15 +1,22 @@
+import { useEffect,useState } from "react";
 import styles from "../../styles/Home/Home.module.css";
 import { useLocalStorage } from "../snippets/useLocalStorage";
 
 import SideBar from "../SideBar";
 import Gun from "gun";
-import { useEffect, useState } from "react";
 
 const gun = Gun({
   peers: ["https://dconvos-relay.herokuapp.com/gun"],
 });
 
 export default function Calls() {
+  const [accent, setAccent] = useState("");
+
+  useEffect(() => {
+    const acc = localStorage.getItem("accent");
+    setAccent(acc);
+    document.querySelector(":root").style.setProperty("--accent", acc);
+  }, []);
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",

@@ -27,7 +27,7 @@ export default function SideBar(props) {
       <div className={styles.container}>
         <div
           onClick={() => {
-            goTo("");
+            goTo("home");
           }}
         >
           {props.active == "home" ? (
