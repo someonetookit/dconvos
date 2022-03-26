@@ -42,11 +42,12 @@ input::placeholder{
   padding-left: 10px;
   opacity: 1;
 }
+.accentIt{
+  color: var(--accent);
+}
 ::-webkit-scrollbar {
   width: 4px;
 }
-
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--input-bg);

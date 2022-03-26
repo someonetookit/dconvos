@@ -12,10 +12,22 @@ import {
   ThemeIcon,
   MantineProvider,
 } from "@mantine/core";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 import styles from "../../styles/Landing/Landing.module.css";
-// import { Check } from "tabler-icons-react";
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useLocalStorage } from "../snippets/useLocalStorage";
+
+import Auth from "./Auth";
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  boxShadow: 24,
+};
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -64,6 +76,9 @@ const useStyles = createStyles((theme) => ({
 
 export default function Landing() {
   const [accent, setAccent] = useState("");
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
@@ -90,12 +105,12 @@ export default function Landing() {
           <div className={classes.inner}>
             <div className={classes.content}>
               <Title className={styles.title}>
-                A <span className={styles.highlight}>modern</span> <br />{" "}
-                decentralized messenger
+                A <span className={styles.highlight}>decentralized</span> <br />{" "}
+                modern messenger
               </Title>
               <Text color="dimmed" mt="md">
-                Secure and decentralized messaging along with voice and video
-                calls, accompanied by beautiful user experience and customizable
+                Secure and decentralized messaging with voice and video
+                calls, beautiful user experience and highly customizable
                 ui. Try it out now for free!
               </Text>
 
@@ -124,12 +139,24 @@ export default function Landing() {
               </List>
 
               <Group mt={30}>
-                <Button radius="xl" size="md" className={classes.control}>
+                <Button
+                  onClick={handleOpen}
+                  radius="xl"
+                  size="md"
+                  className={classes.control}
+                >
                   Log In
                 </Button>
-                <Button radius="xl" size="md" className={classes.control}>
-                  Sign Up
-                </Button>
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                  <Auth/>
+                  </Box>
+                </Modal>
                 <Button
                   variant="default"
                   radius="xl"
