@@ -47,7 +47,7 @@ export default function Auth() {
             }
           />
 
-          {type === "register" && (
+          {/* {type === "register" && (
             <>
               <TextInput
                 required
@@ -69,7 +69,7 @@ export default function Auth() {
                 why email?
               </Anchor>
             </>
-          )}
+          )} */}
 
           <PasswordInput
             required

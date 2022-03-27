@@ -8,22 +8,23 @@ body,
 body{
     font-family: 'Lato', sans-serif;
     letter-spacing: .2px;
-    font-size: 17px;
-
+    font-size: var(--font-size);
 }
  [data-theme="light"]{
   --background: #ffffff;
   --text-primary: #121212;
   --dividers : #25252523;
-  --input-bg : #f7f9f9;
+  --input-bg : #dfdfdf;
 }
 
 :root{
   --background: #121212;
   --text-primary: #f1f1f1;
   --dividers : #e5e5e523;
-  --accent : #1DA1F2;
   --input-bg : #c4c4c417;
+
+  --accent : #1DA1F2;
+  --font-size:17px;
 }
 
 input{

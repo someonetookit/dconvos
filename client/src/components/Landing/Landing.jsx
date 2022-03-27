@@ -119,8 +119,8 @@ export default function Landing() {
                 spacing="sm"
                 size="sm"
                 icon={
-                  <ThemeIcon size={20} radius="xl">
-                    <CheckCircleOutlineIcon size={12} />
+                  <ThemeIcon size={20} radius="xl" color={"green"}>
+                    <CheckCircleOutlineIcon size={12}/>
                   </ThemeIcon>
                 }
               >
@@ -143,7 +143,7 @@ export default function Landing() {
                   onClick={handleOpen}
                   radius="xl"
                   size="md"
-                  className={classes.control}
+                  className={styles.control}
                 >
                   Log In
                 </Button>

@@ -19,6 +19,9 @@
   border-radius: 5px;
   padding: 4px 12px;
 }
+.control{
+  background-color: var(--accent);
+}
 ::-webkit-scrollbar{
     display: none;
 }

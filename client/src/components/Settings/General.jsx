@@ -32,18 +32,10 @@ export function General() {
 
   //------------------------ fontSize Changer---------------//
   function valuetext(value) {
-    let fontSize = value;
-    if (fontSize != previousSize) {
-      textSizeChanger(fontSize);
-      previousSize = fontSize;
-    }
-    //return `${value}°C`;
+    document.querySelector(":root").style.setProperty("--font-size", value + "px");
+
+    localStorage.setItem("fontSize", value);
     return value;
-  }
-  //----------after completing the chat field-------------------//
-  
-  function textSizeChanger(value) {
-    console.log(value);
   }
 
   //-------dark mode--------------------
@@ -55,16 +47,16 @@ export function General() {
         <div className={styles.textSizeManager}>
           <div className={styles.sliderMain}>
             <Slider
-              aria-label="Temperature"
-              defaultValue={13}
-              getAriaValueText={valuetext}
+              aria-label="FontSize"
+              defaultValue={localStorage.getItem("fontSize") || 13}
+              getAriaValueText = {valuetext}
               valueLabelDisplay="auto"
               step={1}
               marks={false}
               min={12}
               max={20}
               ref={valueRef}
-              sx={{ color: "var(--accent)", }}
+              sx={{ color: "var(--accent)" }}
             />
           </div>
         </div>
@@ -82,7 +74,7 @@ export function General() {
               value="12-hours"
               control={<Radio sx={{ color: "var(--accent)" }} />}
               label="12-hours"
-              sx={{fontSize:"1rem"}}
+              sx={{ fontSize: "1rem" }}
             />
             <FormControlLabel
               value="24-hours"
@@ -132,7 +124,6 @@ export function General() {
           />
         </div>
       </div>
-     
     </div>
   );
 }

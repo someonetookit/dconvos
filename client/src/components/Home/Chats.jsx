@@ -12,7 +12,7 @@ export default function Chat() {
           <div className={styles.chatsHead}>
             Chats <span className={styles.unreadMessages}>(2)</span>{" "}
           </div>
-          <div className={styles.createNew}>+ Create new chat</div>
+          <div className={styles.createNew}>+ New chat</div>
         </div>
         <input
           type="text"

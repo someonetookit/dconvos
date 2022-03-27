@@ -5,6 +5,7 @@
   transition: all 0.5s ease-in-out;
   display: flex;
   flex-direction: row;
+  font-size: var(--font-size);
 }
 .switchTheme {
   position: absolute;
@@ -24,7 +25,7 @@
   margin: 15px 15px 0 15px;
 }
 .settingsHeadingPart {
-  font-size: 48px;
+  font-size: 2.5em;
   font-weight: 400;
 }
 .settingsOptions {
@@ -37,7 +38,7 @@
 }
 
 .optionStyle {
-  font-size: 1.15rem;
+  font-size: 1.15em;
   cursor: pointer;
   font-weight: bold;
 }
@@ -53,7 +54,7 @@
   margin-left: 4%;
   margin-top: 2%;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 2.5em;
 }
 .hide {
   display: none;
@@ -72,7 +73,7 @@
   align-items: center;
 }
 .backgroundTheme {
-  position: relative;
+  padding-bottom: 30px;
 }
 .menuContainerBox {
   display: flex;
@@ -94,7 +95,7 @@
 }
 
 .darkModeContainer {
-  background: #f7f9f9;
+  background: var(--input-bg);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -110,11 +111,9 @@
   text-align: center;
   color: #000;
   border-radius: 7px;
-  justify-content: center;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
 }
 
 .dark {
@@ -124,20 +123,19 @@
   height: 45px;
   text-align: center;
   border-radius: 7px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
+  display: grid;
+  place-items: center;
 }
 
 /* ----------------- account & privacy------------------------*/
 .profileHeading {
-  font-size: 1.1rem;
+  font-size: 1.1em;
   color: var(--accent);
   font-weight: bolder;
 }
 .warningNote {
-  font-size: 1rem;
+  font-size: 1em;
   opacity: 0.5;
   line-height: 18px;
   margin-top: 20px;
@@ -153,7 +151,7 @@
 .profileNameLabel,
 .aboutLabel,
 .bioLabel {
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .inputField {
@@ -162,7 +160,7 @@
 input {
   background: var(--background);
   width: 100%;
-  font-size: 1rem;
+  font-size: 1em;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -189,19 +187,18 @@ input {
 
 /*-----------------  General settings --------------------*/
 .generalHead {
-  font-size: 1.1rem;
+  font-size: 1.1em;
   color: var(--accent);
   font-weight: bold;
 }
 .messageTextSize {
   margin-top: 15px;
-  font-size: 1rem;
 }
 .timeLabel,
 .colorLabel,
 .background {
   margin-top: 25px;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .contentOne,
@@ -217,10 +214,10 @@ input {
 .sliderFillTrack {
   width: 100%;
   left: 0;
-  top: 0.3125rem;
-  height: 0.125rem;
+  top: 0.3125em;
+  height: 0.125em;
   background-color: var(--accent);
-  border-radius: 0.125rem;
+  border-radius: 0.125em;
   pointer-events: none;
 }
 
@@ -230,7 +227,7 @@ input {
 }
 /*----------------- help   -------------------------*/
 .helpHeading {
-  font-size: 1.1rem;
+  font-size: 1.1em;
   color: var(--accent);
   font-weight: bolder;
 }
@@ -274,18 +271,18 @@ input {
 
 .labels {
   margin-left: 12%;
-  font-size: 1rem;
+  font-size: 1em;
 }
 .version {
   margin-top: 15px;
-  font-size: 0.8rem;
+  font-size: 0.8em;
   margin-left: 38%;
 }
 
 /*-------------- notification  ---------------*/
 
 .notificationHeading {
-  font-size: 1.1rem;
+  font-size: 1.1em;
   color: var(--accent);
   font-weight: bolder;
 }
@@ -297,13 +294,13 @@ input {
 .desktopNotification,
 .unreadMessageBadge {
   margin-top: 25px;
-  font-size: 1rem;
+  font-size: 1em;
 }
 .notificationToggle {
   margin-top: 20px;
 }
 .desktopNotificationMessage {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   opacity: 0.3;
   width: 90%;
 }

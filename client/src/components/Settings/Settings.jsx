@@ -17,17 +17,6 @@ export default function Settings() {
     defaultDark ? "dark" : "light"
   );
   useEffect(() => {
-    if (state.menu == General) {
-      if (theme == "dark") {
-        document.getElementById("darkModeContainer").style.background =
-          "#16181c";
-      } else {
-        document.getElementById("darkModeContainer").style.background =
-          "#F7F9F9";
-      }
-    }
-  });
-  useEffect(() => {
     const acc = localStorage.getItem("accent");
     setAccent(acc);
     document.querySelector(":root").style.setProperty("--accent", acc);

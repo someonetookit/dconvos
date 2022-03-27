@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Landing from "./components/Landing/Landing";
@@ -8,6 +9,10 @@ import Favorites from "./components/Favorites/Favorites";
 import Settings from "./components/Settings/Settings";
 
 export default function App() {
+  useEffect(() => {
+    const acc = localStorage.getItem("fontSize");
+    document.querySelector(":root").style.setProperty("--font-size", acc + "px");
+  });
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
