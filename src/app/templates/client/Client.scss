@@ -1,0 +1,44 @@
+.client-container {
+  display: flex;
+  height: 100%;
+}
+
+.navigation__wrapper {
+  width: var(--navigation-width);
+}
+.room__wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+
+.loading-display {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loading__message {
+  margin-top: var(--sp-normal);
+  max-width: 350px;
+  text-align: center;
+}
+.loading__appname {
+  position: absolute;
+  bottom: var(--sp-normal);
+}
+.loading__logout {
+  position: absolute;
+  bottom: var(--sp-extra-tight);
+  right: var(--sp-extra-tight);
+  cursor: pointer;
+  .text {
+    color: var(--tc-link);
+  }
+}
