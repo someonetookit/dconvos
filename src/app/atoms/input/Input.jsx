@@ -12,7 +12,7 @@ function Input({
 }) {
   return (
     <div className="input-container">
-      { label !== '' && <label className="input__label text-b2" htmlFor={id}>{label}</label> }
+      { label !== '' && <label className="input__label" htmlFor={id}>{label}</label> }
       { resizable
         ? (
           <TextareaAutosize
