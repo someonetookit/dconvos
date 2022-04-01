@@ -142,7 +142,7 @@ function Homeserver({ onChange }) {
     <>
       <div className={styles.main}>
         <p className={styles.homeservers}>
-          Homeserver (or choose your own) <a>what?</a>
+          Homeserver (or choose your own) <a href="https://matrix.org/faq/#what-is-a-homeserver%3F" rel="norefferer" target="_blank">what?</a>
         </p>
         <Input
           name="homeserver"

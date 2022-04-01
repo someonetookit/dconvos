@@ -19,13 +19,13 @@
 }
 @keyframes showSlowly {
   100%{
-    opacity: 1;
+    opacity: .9;
   }
 }
 .brandTitle {
   font-weight: 300;
   padding-left: 10px;
-  color: white;
+  color: var(--text-primary);
   opacity: 0;
   animation: showSlowly 3s ease;
   animation-fill-mode: forwards;
@@ -33,12 +33,12 @@
 .p {
   margin: 0;
   padding-left: 10px;
-  color: white;
+  color: var(--text-primary);
 }
 .powered {
   font-weight: 300;
   padding: 10px;
-  color: white;
+  color: var(--text-primary);
   position: absolute;
   bottom: 0;
 
@@ -47,19 +47,19 @@
   animation-fill-mode: forwards;
 }
 .powered a {
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
 }
 .title {
   padding: 10px 10px 0 0;
-  color: white;
+  color: var(--text-primary);
 }
 .authWrapper {
   flex: 0.8;
 }
 .authCard {
   width: 100%;
-  background-color: #121212;
+  background-color: var(--bg-main);
   height: 100vh;
   overflow-y: scroll;
 }
@@ -72,7 +72,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(3, 150, 158);
+  background: var(--accent);
   border-radius: 20px;
 }
 
@@ -96,15 +96,17 @@
   opacity: 0.1;
 }
 .heading {
-  color: white;
+  color: var(--text-primary);
 }
 .homeservers {
+  font-weight: 200;
   padding-left: 5px;
   font-size: 12px;
-  color: white;
+  opacity: .9;
+  color: var(--text-primary);
 }
 .loadingServer {
-  color: white;
+  color: var(--text-primary);
   font-size: 0.9rem;
   margin-left: 5px;
 }
@@ -115,7 +117,7 @@
 .ssoDivider {
   opacity: 0.6;
   font-size: 0.8rem;
-  color: white;
+  color: var(--text-primary);
   text-align: center;
 }
 .switchAuth {
@@ -123,7 +125,7 @@
   opacity: 0.8;
   font-size: 0.8rem;
   text-align: center;
-  color: white;
+  color: var(--text-primary);
 }
 .authButton {
   padding: 30px 0 20px 0;
