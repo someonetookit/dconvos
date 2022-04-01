@@ -130,3 +130,13 @@
   display: flex;
   justify-content: center;
 }
+
+@media (max-width:481px){
+  .bgWrap{
+    display: none;
+  }
+  .authWrapper{
+    flex: 1;
+  }
+
+}
