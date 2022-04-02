@@ -1,0 +1,136 @@
+.settingsAppearanceCard {
+	margin: 16px 0;
+	background-color: var(--bg-surface);
+	border-radius: var(--bo-radius);
+	box-shadow: var(--bs-surface-border);
+	overflow: hidden;
+}
+.helpOptions {
+	display: flex;
+	flex-direction: row;
+	column-gap: 12px;
+	padding: 15px;
+}
+.circleGif {
+	width: 100%;
+	height: 200px;
+	border-radius: 10px;
+	background-color: aqua;
+}
+.helpContainer {
+	margin-top: 20px;
+}
+.helpCenter,
+.helpContact,
+.HelpTerms {
+	cursor: pointer;
+}
+.sliderMain {
+	width: 100%;
+	display: grid;
+	grid-row: auto;
+	padding: 0px 80px 0px 80px;
+	align-items: center;
+}
+
+.helpsIcons {
+	margin-top: 2px;
+}
+.colorContainer {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+.colorSelect {
+	width: 70px;
+	height: 50px;
+	border-radius: 6px;
+	margin: 10px;
+	cursor: pointer;
+}
+.menuHeader {
+	height: 34px;
+	padding: 24px 16px 24px 16px;
+	margin-bottom: 4px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--bg-surface-border);
+}
+.toggleSettings {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 4px;
+}
+.darkThemeSelect {
+	padding: 16px;
+}
+.toggleButton {
+	padding: 16px 16px 0 0;
+}
+.titleAndContent {
+	display: flex;
+	flex-direction: column;
+	padding: 16px;
+}
+.logoutbutton {
+	background: rgba(237, 6, 6, 0.597);
+    width: 150px;
+	padding: 8px;
+	cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.settingsOptins{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+.tabContent{
+    padding: 16px;
+}
+.tabOption{
+    padding: 10px;
+    /* border-radius: 5px; */
+    
+}
+.tabOption:hover{
+	color: var(--accent);
+}
+.tabOption:focus{
+    border-bottom: 3px solid var(--accent);
+}
+
+
+.settingsAppearanceCard,
+.settingsNotifications,
+.settingsSecurityCard,
+.settingsSecurity,
+.settingsHelp{
+	margin: var(--sp-normal) 0;
+	background-color: var(--bg-surface);
+	border-radius: var(--bo-radius);
+	box-shadow: var(--bs-surface-border);
+	overflow: hidden;
+}
+.versionInfo{
+	padding-top: 16px;
+	padding-left: 45%;
+}
+.settingsWindow{
+	background-color: var(--bg-surface-low);
+}
+.settingsWindowContent{
+
+	background-color: var(--bg-surface-low);
+}
+
+.profileEditor{
+	padding: var(--sp-loose) var(--sp-extra-loose);
+}

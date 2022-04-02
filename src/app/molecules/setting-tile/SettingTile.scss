@@ -9,7 +9,7 @@
   &__title {
     margin-bottom: var(--sp-ultra-tight);
   }
-  &__options {
-    @include dir.side(margin, var(--sp-tight), 0);
-  }
+  //&__options {
+  //  @include dir.side(margin, var(--sp-tight), 0);
+  //}
 }
