@@ -1,7 +1,9 @@
 .sso-buttons {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;  
+  flex-wrap: wrap;
+  background-color: white;  
+  border-radius: 10px;
 }
 
 .sso-btn {
