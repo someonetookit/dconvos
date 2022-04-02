@@ -42,15 +42,15 @@ import ImportE2ERoomKeys from '../../molecules/import-export-e2e-room-keys/Impor
 import ExportE2ERoomKeys from '../../molecules/import-export-e2e-room-keys/ExportE2ERoomKeys';
 
 import ProfileEditor from '../profile-editor/ProfileEditor';
-/*
-  --------  important --------------
-import DeviceManage from './DeviceManage';*/
+
+ // --------  important --------------
+import DeviceManage from './DeviceManage';
 
 //import SunIC from '../../../../public/res/ic/outlined/sun.svg';
 //import LockIC from '../../../../public/res/ic/outlined/lock.svg';
 //import BellIC from '../../../../public/res/ic/outlined/bell.svg';
 //import InfoIC from '../../../../public/res/ic/outlined/info.svg';
-//import PowerIC from '../../../../public/res/ic/outlined/power.svg';
+import PowerIC from '../../../../public/res/ic/outlined/power.svg';
 import CrossIC from '../../../../public/res/ic/outlined/cross.svg';
 
 import { PrivacyTip } from '@mui/icons-material';
@@ -266,6 +266,7 @@ function NotificationsSection() {
         </div>
         <div className={styles.toggleButton}>
         <Switch
+          sx={{ color: "var(--accent)" }}
           checked={settings.isNotificationSounds}
           onChange={() => { toggleNotificationSounds(); updateState({}); }}
           />
@@ -288,8 +289,6 @@ function SecuritySection() {
         </div>
         </div>
       </div>
-
-
       <div className={styles.optionContainer}>
         <div className={styles.toggleSettings}>
         <div className={styles.titleAndContent}><div><Text variant="b1">{`Session key: ${initMatrix.matrixClient.getDeviceEd25519Key().match(/.{1,4}/g).join(' ')}`}</Text></div>
@@ -298,9 +297,9 @@ function SecuritySection() {
         </div>
       </div>
       </div>
+      <DeviceManage/>
       <div className={styles.settingsSecurityCard}>
       <div className={styles.menuHeader}><Text variant="b3">Encryption</Text></div>
-
       <div className={styles.optionContainer}>
         <div className={styles.toggleSettings}>
         <div className={styles.titleAndContent}><div><Text variant="b1">Export E2E room keys</Text></div>
@@ -369,7 +368,7 @@ function useWindowToggle() {
 function Settings() {
 
   const [settingsTab,setSettingsTab]=useState(<AppearanceSection/>)
-
+  const [activeTab,setActiveTab]=useState("settingsGeneralTab");
   //const [selectedTab, setSelectedTab] = useState(tabItems[0]);
   const [isOpen, requestClose] = useWindowToggle(/*setSelectedTab*/);
 
@@ -407,7 +406,9 @@ function Settings() {
       title={<Text variant="s1" weight="medium" primary>Settings</Text>}
       contentOptions={(
         <>
-         
+         <Button variant="danger" iconSrc={PowerIC} onClick={handleLogout}>
+            Logout
+          </Button>
           <IconButton src={CrossIC} onClick={requestClose} tooltip="Close" />
         </>
       )}
@@ -415,12 +416,14 @@ function Settings() {
     >
       {isOpen && (
         <div className={styles.settingsWindowContent}>
-          <div className={styles.profileEditor}><ProfileEditor  userId={initMatrix.matrixClient.getUserId()} /></div>
+          <div className={styles.profileEditor}><ProfileEditor  userId={initMatrix.matrixClient.getUserId()} />
+          
+          </div>
           <div className={styles.settingsOptins}>
-            <div onClick={()=>changeTab('general')} tabIndex='-1' className={styles.tabOption}><Text>General</Text></div>
-            <div onClick={()=>changeTab('notification')} tabIndex='-1' className={styles.tabOption}><Text>Notifications</Text></div>
-            <div onClick={()=>changeTab('security')} tabIndex='-1' className={styles.tabOption}><Text>Security &amp; Privacy</Text></div>
-            <div onClick={()=>changeTab('help')} tabIndex='-1' className={styles.tabOption}><Text>Help</Text></div>
+            <div onClick={()=>changeTab('general')} tabIndex='0' className={styles.settingsGeneralTab}  ><Text>General</Text></div>
+            <div onClick={()=>changeTab('notification')} tabIndex='-1' className={styles.settingsNotificationTab}><Text>Notifications</Text></div>
+            <div onClick={()=>changeTab('security')} tabIndex='-1' className={styles.settingsSecurityTab}><Text>Security &amp; Privacy</Text></div>
+            <div onClick={()=>changeTab('help')} tabIndex='-1' className={styles.settingsHelpTab}><Text>Help</Text></div>
           </div>
           <div className={styles.tabContent}>
                   {settingsTab}
