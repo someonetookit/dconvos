@@ -12,10 +12,12 @@
 	padding: 15px;
 }
 .circleGif {
+	background-image: url('../../../../public/res/png/graffity.png');
+	object-fit: cover;
 	width: 100%;
 	height: 200px;
 	border-radius: 10px;
-	background-color: aqua;
+	background-color: var(--accent);
 }
 .helpContainer {
 	margin-top: 20px;
