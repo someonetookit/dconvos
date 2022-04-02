@@ -297,7 +297,7 @@ function SecuritySection() {
         </div>
       </div>
       </div>
-      <DeviceManage/>
+     <div className={styles.settingsSecurityCard}><DeviceManage/></div> 
       <div className={styles.settingsSecurityCard}>
       <div className={styles.menuHeader}><Text variant="b3">Encryption</Text></div>
       <div className={styles.optionContainer}>
@@ -367,7 +367,7 @@ function useWindowToggle() {
 
 function Settings() {
 
-  const [settingsTab,setSettingsTab]=useState(<AppearanceSection/>)
+  const [settingsTab,setSettingsTab]=useState(<AppearanceSection/>)                           
   const [activeTab,setActiveTab]=useState("settingsGeneralTab");
   //const [selectedTab, setSelectedTab] = useState(tabItems[0]);
   const [isOpen, requestClose] = useWindowToggle(/*setSelectedTab*/);

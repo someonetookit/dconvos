@@ -1,0 +1,34 @@
+.toggleSettings{
+    display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 4px;
+}
+.titleAndContent{
+    display: flex;
+	flex-direction: column;
+	padding: 16px;
+}
+.toggleButton{
+    padding: 16px 16px 0 0;
+}
+.editAndDelete{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.menuHeader {
+	height: 34px;
+	padding: 24px 16px 24px 16px;
+	margin-bottom: 4px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--bg-surface-border);
+}
+.noVerifiedSession{
+    padding-left: 16px;
+}
+.noVerifiedSessionMessage{
+    padding: 0px 0px 16px 16px;
+}
