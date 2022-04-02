@@ -39,7 +39,7 @@ const commands = [{
 }, {
   name: 'join',
   isOptions: true,
-  description: 'Join room with alias. Example: /join/#cinny:matrix.org',
+  description: 'Join room with alias. Example: /join/#john:matrix.org',
   exe: (roomId, searchTerm) => openPublicRooms(searchTerm),
 }, {
   name: 'leave',
