@@ -21,6 +21,7 @@ function SSOButtons({ type, identityProviders, baseUrl }) {
         .map((idp) => (
           idp.icon
             ? (
+              
               <button key={idp.id} type="button" className="sso-btn" onClick={() => handleClick(idp.id)}>
                 <img className="sso-btn__img" src={tempClient.mxcUrlToHttp(idp.icon)} alt={idp.name} />
               </button>

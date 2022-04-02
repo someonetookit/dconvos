@@ -22,8 +22,11 @@
 
   &__label {
     display: inline-block;
-    margin-bottom: var(--sp-ultra-tight);
-    color: var(--tc-surface-low);
+    margin-bottom: 10px;
+    font-size: .8rem;
+    opacity: .8;
+    font-weight: 100;
+    color: white;
   }
 
   &--resizable {

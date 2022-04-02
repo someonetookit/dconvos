@@ -1,8 +1,12 @@
 {
   "name": "dconvos",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Secure and decentralized messaging with voice and video calls, beautiful user experience and highly customizable ui.",
   "main": "index.js",
+  "engines": {
+    "npm": ">=6.14.11",
+    "node": ">=14.6.0"
+  },
   "scripts": {
     "start": "webpack serve --config ./webpack.dev.js --open",
     "build": "webpack --config ./webpack.prod.js"

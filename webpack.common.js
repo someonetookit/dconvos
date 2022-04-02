@@ -55,7 +55,7 @@ module.exports = {
       mode: 'webapp',
       devMode: 'light',
       favicons: {
-        appName: 'Cinny',
+        appName: 'dConvos',
         appDescription: 'Secure and decentralized messaging with voice and video calls,powered by matrix, alongside beautiful user experience and highly customizable ui. Try it out now for free!',
         developerName: '1Prathyush and ruralad',
         developerURL: '',

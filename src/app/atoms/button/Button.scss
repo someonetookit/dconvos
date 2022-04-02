@@ -35,7 +35,7 @@
 
 @mixin color($textColor, $iconColor) {
   .text {
-    color: $textColor;
+    color: var(--bg-main);
   }
   .ic-raw {
     background-color: $iconColor;
@@ -52,9 +52,9 @@
 }
 
 .btn-primary {
-  background-color: var(--bg-primary);
+  background-color: var(--accent);
   @include color(var(--tc-primary-high), var(--ic-primary-normal));
-  @include state.hover(var(--bg-primary-hover));
+  @include state.hover(var(--accent-light));
   @include state.focus(var(--bs-primary-outline));
   @include state.active(var(--bg-primary-active));
 }

@@ -76,7 +76,7 @@ function ProfileAvatarMenu() {
       avatar={(
         <Avatar
           text={profile.displayName}
-          bgColor={colorMXID(mx.getUserId())}
+          bgColor={"var(--accent)"}
           size="normal"
           imageSrc={profile.avatarUrl !== null ? mx.mxcUrlToHttp(profile.avatarUrl, 42, 42, 'crop') : null}
         />

@@ -1,6 +1,4 @@
 :root {
-
-/* ----------- dconvos initial--------------*/
 --background: #121212;
 --text-primary: #f1f1f1;
 --dividers : #e5e5e523;
@@ -9,7 +7,6 @@
 --accent : #1DA1F2;
 --font-size:17px;
 
-  /* background color | --bg-[background type]: value */
   --bg-surface: #FFFFFF;
   --bg-surface-transparent: #FFFFFF00;
   --bg-surface-low: #F6F6F6;
@@ -212,7 +209,7 @@
 
 @mixin dark-mode() {
   /* background color | --bg-[background type]: value */
-  --bg-surface: hsl(208, 8%, 20%);
+  --bg-surface: #121212;
   --bg-surface-transparent: hsla(208, 8%, 20%, 0);
   --bg-surface-low: hsl(208, 8%, 16%);
   --bg-surface-low-transparent: hsla(208, 8%, 16%, 0);
@@ -260,7 +257,7 @@
     --mx-uc-2: hsl(301, 80%, 70%);
     --mx-uc-3: hsl(163, 93%, 41%);
     --mx-uc-4: hsl(343, 91%, 66%);
-    --mx-uc-5: hsl(24, 90%, 67%);
+    --mx-uc-5: #f79c5f;
     --mx-uc-6: hsl(181, 90%, 50%);
     --mx-uc-7: hsl(243, 100%, 74%);
     --mx-uc-8: hsl(94, 66%, 50%);

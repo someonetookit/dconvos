@@ -13,6 +13,7 @@
   flex-direction: column;
 }
 .auth__wrapper {
+  background-color: black;
   flex: 1;
   padding: var(--sp-loose);
   padding-bottom: 0;
@@ -36,7 +37,7 @@
 }
 .auth-card {
   width: 462px;
-  background-color: var(--bg-surface);
+  background-color: #121212;
   border-radius: var(--bo-radius);
   box-shadow: var(--bs-popup);
   overflow: hidden;
@@ -148,7 +149,7 @@
 
   min-height: 100%;
   width: 100%;
-  background-color: var(--bg-surface-low);
+  background-color: black;
   opacity: .96;
 
   position: fixed;
