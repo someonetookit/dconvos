@@ -6,7 +6,6 @@ import { initHotkeys } from "../../../client/event/hotkeys";
 import { initRoomListListener } from "../../../client/event/roomList";
 
 import Text from "../../atoms/text/Text";
-import Spinner from "../../atoms/spinner/Spinner";
 import Navigation from "../../organisms/navigation/Navigation";
 import ReusableContextMenu from "../../atoms/context-menu/ReusableContextMenu";
 import Room from "../../organisms/room/Room";
@@ -52,9 +51,6 @@ function Client() {
   if (isLoading) {
     return (
       <div className={styles.container}>
-        <button className="loading__logout" onClick={logout} type="button">
-          <Text variant="b3">Logout</Text>
-        </button>
         <svg
           className={styles.tea}
           width="37"
@@ -102,7 +98,7 @@ function Client() {
         </Text>
 
         <div className={styles.version}>
-          <p>dConvos 0.0.1 (alpha) : unstable</p>
+          <p>dConvos 0.0.1 (alpha) : unstable <span className={styles.logout} onClick={logout}>logout</span></p>
         </div>
       </div>
     );

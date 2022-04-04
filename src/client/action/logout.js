@@ -5,7 +5,7 @@ function logout() {
   mx.stopClient();
   mx.logout().then(() => {
     mx.clearStores();
-    window.localStorage.clear();
+    // window.localStorage.clear();
     window.location.reload();
   });
 }
