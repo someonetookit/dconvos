@@ -6,7 +6,7 @@ const cons = {
     USER_ID: 'dconvos_user_id',
     BASE_URL: 'dconvos_hs_base_url',
   },
-  DEVICE_DISPLAY_NAME: 'dconvos Web',
+  DEVICE_DISPLAY_NAME: 'dConvos Web',
   IN_DCONVOS_SPACES: 'in.dconvos.spaces',
   tabs: {
     HOME: 'home',
