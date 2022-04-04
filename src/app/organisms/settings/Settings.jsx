@@ -43,6 +43,10 @@ import ExportE2ERoomKeys from '../../molecules/import-export-e2e-room-keys/Expor
 
 import ProfileEditor from '../profile-editor/ProfileEditor';
 
+//-----------switch styling--------------------------//
+import { styled } from '@mui/system';
+import SwitchUnstyled, { switchUnstyledClasses } from '@mui/base/SwitchUnstyled';
+
  // --------  important --------------
 import DeviceManage from './DeviceManage';
 
@@ -54,6 +58,80 @@ import PowerIC from '../../../../public/res/ic/outlined/power.svg';
 import CrossIC from '../../../../public/res/ic/outlined/cross.svg';
 
 import { PrivacyTip } from '@mui/icons-material';
+
+//-------------switch styles--------------
+const blue = {
+  500: '#007FFF',
+};
+
+const grey = {
+  400: '#BFC7CF',
+  500: '#AAB4BE',
+  600: '#6F7E8C',
+};
+
+const Root = styled('span')(
+  ({ theme }) => `
+  font-size: 0;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin: 10px;
+  cursor: pointer;
+
+
+  & .${switchUnstyledClasses.track} {
+    background: ${theme.palette.mode === 'dark' ? grey[600] : grey[400]};
+    border-radius: 10px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  & .${switchUnstyledClasses.thumb} {
+    display: block;
+    width: 14px;
+    height: 14px;
+    top: 3px;
+    left: 3px;
+    border-radius: 16px;
+    background-color: #fff;
+    position: relative;
+    transition: all 200ms ease;
+  }
+
+  &.${switchUnstyledClasses.focusVisible} .${switchUnstyledClasses.thumb} {
+    background-color: ${grey[500]};
+    box-shadow: 0 0 1px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  &.${switchUnstyledClasses.checked} {
+    .${switchUnstyledClasses.thumb} {
+      left: 22px;
+      top: 3px;
+      background-color: #fff;
+    }
+
+    .${switchUnstyledClasses.track} {
+      background:var(--accent);
+    }
+  }
+
+  & .${switchUnstyledClasses.input} {
+    cursor: inherit;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    margin: 0;
+  }
+  `,
+);
 
 function AppearanceSection() {
   let previousSize = 13;
@@ -86,7 +164,7 @@ function AppearanceSection() {
               <div><Text variant="b3">Use light or dark mode based on the system settings.</Text></div>
         </div>
         <div className={styles.toggleButton}>
-        <Switch
+        <SwitchUnstyled component={Root}
                 checked={settings.useSystemTheme}
                 onChange={()=>{toggleSystemTheme(); updateState({}); }}
               />
@@ -175,7 +253,7 @@ function AppearanceSection() {
               <div><Text variant="b3">Format messages with markdown syntax before sending.</Text></div>
         </div>
         <div className={styles.toggleButton}>
-        <Switch 
+        <SwitchUnstyled component={Root}
               checked={settings.isMarkdown}
               onChange={()=>{toggleMarkdown(); updateState({}); }}
               />
@@ -189,7 +267,7 @@ function AppearanceSection() {
               <div><Text variant="b3">Hide membership change messages from room timeline. (Join, Leave, Invite, Kick and Ban)</Text></div>
         </div>
         <div className={styles.toggleButton}>
-        <Switch
+        <SwitchUnstyled component={Root}
               checked={settings.hideMembershipEvents}
               onChange={()=>{toggleMembershipEvents(); updateState({}); }}
             />
@@ -203,7 +281,7 @@ function AppearanceSection() {
               <div><Text variant="b3">Hide nick and avatar change messages from chat timeline.</Text></div>
         </div>
         <div className={styles.toggleButton}>
-        <Switch
+        <SwitchUnstyled component={Root}
               checked={settings.hideNickAvatarEvents}
               onChange={()=>{toggleNickAvatarEvents(); updateState({});}}
             />
@@ -227,7 +305,7 @@ function NotificationsSection() {
 
     if (permission === 'granted') {
       return (
-        <Switch
+        <SwitchUnstyled component={Root}
           checked={settings._showNotifications}
           onChange={()=>{toggleNotifications();setPermission(window.Notification?.permission);
                updateState({}); }}
@@ -265,8 +343,7 @@ function NotificationsSection() {
               <div><Text variant="b3">Play sound when new messages arrive.</Text></div>
         </div>
         <div className={styles.toggleButton}>
-        <Switch
-          sx={{ color: "var(--accent)" }}
+        <SwitchUnstyled component={Root}
           checked={settings.isNotificationSounds}
           onChange={() => { toggleNotificationSounds(); updateState({}); }}
           />
