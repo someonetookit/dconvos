@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './SideBar.scss';
+import styles from './Sidebar.module.css'
 
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -28,6 +29,60 @@ import SearchIC from '../../../../public/res/ic/outlined/search.svg';
 import InviteIC from '../../../../public/res/ic/outlined/invite.svg';
 
 import { useSelectedTab } from '../../hooks/useSelectedTab';
+
+//---------------------changes------------------------
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import EmailIcon from '@mui/icons-material/Email';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+
+import { styled } from '@mui/system';
+import BadgeUnstyled from '@mui/base/BadgeUnstyled';
+
+const StyledBadge = styled(BadgeUnstyled)`
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 12px;
+  list-style: none;
+  font-family: IBM Plex Sans, sans-serif;
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+
+  & .MuiBadge-badge {
+    z-index: auto;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    color: var(--accent);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    white-space: nowrap;
+    text-align: center;
+    background: var(--text-primary);
+    border-radius: 9px;
+    box-shadow: 0 0 0 1px #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    transform-origin: 100% 0;
+  }
+
+  & .MuiBadge-invisible {
+    display: none;
+  }
+`;
+
 
 function useNotificationUpdate() {
   const { notifications } = initMatrix;
@@ -122,33 +177,45 @@ function FeaturedTab() {
 
   const dmsNoti = getDMsNoti();
   const homeNoti = getHomeNoti();
+  let dmNumber=dmsNoti?abbreviateNumber(dmsNoti.total):0
+  let homeNumber = homeNoti?abbreviateNumber(homeNoti.total):0
 
   return (
     <>
-      <SidebarAvatar
-        tooltip="Home"
-        active={selectedTab === cons.tabs.HOME}
-        onClick={() => selectTab(cons.tabs.HOME)}
-        avatar={<Avatar iconSrc={HomeIC} size="normal" />}
-        notificationBadge={homeNoti ? (
-          <NotificationBadge
-            alert={homeNoti?.highlight > 0}
-            content={abbreviateNumber(homeNoti.total) || null}
-          />
-        ) : null}
-      />
-      <SidebarAvatar
-        tooltip="People"
-        active={selectedTab === cons.tabs.DIRECTS}
-        onClick={() => selectTab(cons.tabs.DIRECTS)}
-        avatar={<Avatar iconSrc={UserIC} size="normal" />}
-        notificationBadge={dmsNoti ? (
-          <NotificationBadge
-            alert={dmsNoti?.highlight > 0}
-            content={abbreviateNumber(dmsNoti.total) || null}
-          />
-        ) : null}
-      />
+         <div className={styles.peopleButton}>
+      <Tooltip title='Direct messages' placement='right'>
+        <IconButton size='large' onClick={() => selectTab(cons.tabs.DIRECTS)}>
+        <StyledBadge badgeContent={dmNumber}>
+          {((selectedTab === cons.tabs.DIRECTS) ? (<EmailIcon sx={{color:'var(--accent)'}}/>):(<EmailOutlinedIcon sx={{color:"var(--text-primary)"}}/>))}  
+          </StyledBadge>
+        </IconButton>
+      </Tooltip>
+    </div>
+
+    <div className={styles.homeButton}>
+      <Tooltip title='Room' placement='right'>
+        <IconButton size='large' onClick={() => selectTab(cons.tabs.HOME)}>
+         <StyledBadge badgeContent={homeNumber}>
+          {(selectedTab === cons.tabs.HOME) ? (<AddBoxIcon sx={{color:'var(--accent)'}}/>):(<AddBoxOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
+          </StyledBadge>
+        </IconButton>
+      </Tooltip>
+    </div>
+    <div className={styles.callButton}>
+      <Tooltip title='Calls' placement='right'>
+        <IconButton size='large' onClick={() => selectTab(cons.tabs.CALLS)}>
+          {selectedTab===cons.tabs.CALLS ? (<LocalPhoneIcon sx={{color:'var(--accent)'}}/>):(<LocalPhoneOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
+        </IconButton>
+      </Tooltip>
+    </div>
+    <div className={styles.favButton}>
+      <Tooltip title='Favorities' placement='right'>
+        <IconButton size='large' onClick={() => selectTab(cons.tabs.FAVORITES)}>
+          {selectedTab===cons.tabs.FAVORITES ? (<FavoriteIcon sx={{color:'var(--accent)'}}/>):(<FavoriteBorderOutlinedIcon sx={{color:"var(--text-primary)"}} />)}  
+        </IconButton>
+      </Tooltip>
+    </div>
+
     </>
   );
 }
@@ -366,3 +433,36 @@ function SideBar() {
 }
 
 export default SideBar;
+
+
+//---------------FeaturedTab----------------
+
+
+/*
+
+<SidebarAvatar
+        tooltip="Home"
+        active={selectedTab === cons.tabs.HOME}
+        onClick={() => selectTab(cons.tabs.HOME)}
+        avatar={<Avatar iconSrc={HomeIC} size="normal" />}
+        notificationBadge={homeNoti ? (
+          <NotificationBadge
+            alert={homeNoti?.highlight > 0}
+            content={abbreviateNumber(homeNoti.total) || null}
+          />
+        ) : null}
+      />
+      <SidebarAvatar
+        tooltip="People"
+        active={selectedTab === cons.tabs.DIRECTS}
+        onClick={() => selectTab(cons.tabs.DIRECTS)}
+        avatar={<Avatar iconSrc={UserIC} size="normal" />}
+        notificationBadge={dmsNoti ? (
+          <NotificationBadge
+            alert={dmsNoti?.highlight > 0}
+            content={abbreviateNumber(dmsNoti.total) || null}
+          />
+        ) : null}
+      />
+
+*/
