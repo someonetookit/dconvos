@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Client.scss";
 import styles from "./Client.module.css";
 
 import { initHotkeys } from "../../../client/event/hotkeys";
@@ -162,16 +161,16 @@ function Client() {
 
   return (
     <div
-      className="client-container"
+      className={styles.mainContainer}
       onDragOver={handleDragOver}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      <div className="navigation__wrapper">
+      <div className={styles.navigationWrapper}>
         <Navigation />
       </div>
-      <div className="room__wrapper">
+      <div className={styles.roomWrapper}>
         <Room />
       </div>
       <Windows />
