@@ -41,6 +41,8 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import SearchIcon from '@mui/icons-material/Search';
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 
 import { styled } from '@mui/system';
 import BadgeUnstyled from '@mui/base/BadgeUnstyled';
@@ -400,11 +402,11 @@ function SideBar() {
             <div className="sidebar-divider" />
             <div className="space-container">
               <SpaceShortcut />
-              <SidebarAvatar
-                tooltip="Pin spaces"
-                onClick={() => openShortcutSpaces()}
-                avatar={<Avatar iconSrc={AddPinIC} size="normal" />}
-              />
+              <Tooltip title="Pin spaces" placement='right'>
+                <IconButton onClick={()=>openShortcutSpaces()}>
+                  <PushPinOutlinedIcon sx={{color:'var(--text-primary)'}}/>
+                </IconButton>
+              </Tooltip>
             </div>
           </div>
         </ScrollView>
@@ -412,11 +414,12 @@ function SideBar() {
       <div className="sidebar__sticky">
         <div className="sidebar-divider" />
         <div className="sticky-container">
-          <SidebarAvatar
-            tooltip="Search"
-            onClick={() => openSearch()}
-            avatar={<Avatar iconSrc={SearchIC} size="normal" />}
-          />
+          <Tooltip title='Search' placement='right'>
+            <IconButton onClick={()=>openSearch()}>
+                <SearchIcon sx={{color:'var(--text-primary)'}}/>
+            </IconButton>
+          </Tooltip>
+
           { totalInvites !== 0 && (
             <SidebarAvatar
               tooltip="Invites"
@@ -464,5 +467,23 @@ export default SideBar;
           />
         ) : null}
       />
+
+*/
+/* 
+          sidebar search
+
+          <SidebarAvatar
+            tooltip="Search"
+            onClick={() => openSearch()}
+            avatar={<Avatar iconSrc={SearchIC} size="normal" />}
+          />
+
+
+          //----------------pin spaces-----------
+           <SidebarAvatar
+                tooltip="Pin spaces"
+                onClick={() => openShortcutSpaces()}
+                avatar={<Avatar iconSrc={AddPinIC} size="normal" />}
+              />
 
 */
