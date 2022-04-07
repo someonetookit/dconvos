@@ -144,10 +144,7 @@ function AppearanceSection() {
   const sizeRef = useRef();
 
   function valuetext(value) {
-    document
-      .querySelector(":root")
-      .style.setProperty("--font-size", value + "px");
-
+    document.body.style.fontSize = value + "px";
     localStorage.setItem("fontSize", value);
     return value;
   }
@@ -157,9 +154,9 @@ function AppearanceSection() {
   };
   const themeSegments = [
     { text: "Light" },
-    { text: "Silver" },
+    // { text: "Silver" },
     { text: "Dark" },
-    { text: "Butter" },
+    // { text: "Butter" },
   ];
 
   return (
@@ -198,9 +195,9 @@ function AppearanceSection() {
                 selected={settings.getThemeIndex()}
                 segments={[
                   { text: "Light" },
-                  { text: "Silver" },
+                  // { text: "Silver" },
                   { text: "Dark" },
-                  { text: "Butter" },
+                  // { text: "Butter"},
                 ]}
                 onSelect={(index) => settings.setTheme(index)}
               />
@@ -624,63 +621,63 @@ function Settings() {
   }
 
   return (
-      <PopupWindow
-        isOpen={isOpen}
-        className={styles.settingsWindow}
-        title={
-          <Text variant="s1" weight="medium" primary>
-            Settings
-          </Text>
-        }
-        contentOptions={
-          <>
-            <Button variant="danger" iconSrc={PowerIC} onClick={handleLogout}>
-              Logout
-            </Button>
-            <IconButton src={CrossIC} onClick={requestClose} tooltip="Close" />
-          </>
-        }
-        onRequestClose={requestClose}
-      >
-        {isOpen && (
-          <div className={styles.settingsWindowContent}>
-            <div className={styles.profileEditor}>
-              <ProfileEditor userId={initMatrix.matrixClient.getUserId()} />
-            </div>
-            <div className={styles.settingsOptions}>
-              <div
-                onClick={() => changeTab("general")}
-                tabIndex="0"
-                className={styles.settingsGeneralTab}
-              >
-                <Text>General</Text>
-              </div>
-              <div
-                onClick={() => changeTab("notification")}
-                tabIndex="-1"
-                className={styles.settingsNotificationTab}
-              >
-                <Text>Notifications</Text>
-              </div>
-              <div
-                onClick={() => changeTab("security")}
-                tabIndex="-1"
-                className={styles.settingsSecurityTab}
-              >
-                <Text>Security &amp; Privacy</Text>
-              </div>
-              <div
-                onClick={() => changeTab("help")}
-                tabIndex="-1"
-                className={styles.settingsHelpTab}
-              >
-                <Text>Help</Text>
-              </div>
-            </div>
-            <div className={styles.tabContent}>{settingsTab}</div>
+    <PopupWindow
+      isOpen={isOpen}
+      className={styles.settingsWindow}
+      title={
+        <Text variant="s1" weight="medium" primary>
+          Settings
+        </Text>
+      }
+      contentOptions={
+        <>
+          <Button variant="danger" iconSrc={PowerIC} onClick={handleLogout}>
+            Logout
+          </Button>
+          <IconButton src={CrossIC} onClick={requestClose} tooltip="Close" />
+        </>
+      }
+      onRequestClose={requestClose}
+    >
+      {isOpen && (
+        <div className={styles.settingsWindowContent}>
+          <div className={styles.profileEditor}>
+            <ProfileEditor userId={initMatrix.matrixClient.getUserId()} />
           </div>
-        )}
-      </PopupWindow>
+          <div className={styles.settingsOptions}>
+            <div
+              onClick={() => changeTab("general")}
+              tabIndex="0"
+              className={styles.settingsGeneralTab}
+            >
+              <Text>General</Text>
+            </div>
+            <div
+              onClick={() => changeTab("notification")}
+              tabIndex="-1"
+              className={styles.settingsNotificationTab}
+            >
+              <Text>Notifications</Text>
+            </div>
+            <div
+              onClick={() => changeTab("security")}
+              tabIndex="-1"
+              className={styles.settingsSecurityTab}
+            >
+              <Text>Security &amp; Privacy</Text>
+            </div>
+            <div
+              onClick={() => changeTab("help")}
+              tabIndex="-1"
+              className={styles.settingsHelpTab}
+            >
+              <Text>Help</Text>
+            </div>
+          </div>
+          <div className={styles.tabContent}>{settingsTab}</div>
+        </div>
+      )}
+    </PopupWindow>
   );
 }
 

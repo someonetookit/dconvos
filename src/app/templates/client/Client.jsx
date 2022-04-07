@@ -97,7 +97,7 @@ function Client() {
         </Text>
 
         <div className={styles.version}>
-          <p>dConvos 0.0.1 (alpha) : unstable <span className={styles.logout} onClick={logout}>logout</span></p>
+          <p>dConvos 0.1.0 (alpha) <span className={styles.logout} onClick={logout}>logout</span></p>
         </div>
       </div>
     );
