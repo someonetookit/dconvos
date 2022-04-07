@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './DrawerHeader.scss';
 import styles from './DrawerHeader.module.css'
@@ -17,7 +17,7 @@ import { blurOnBubbling } from '../../atoms/button/script';
 import Text from '../../atoms/text/Text';
 import RawIcon from '../../atoms/system-icons/RawIcon';
 import Header, { TitleWrapper } from '../../atoms/header/Header';
-import IconButton from '../../atoms/button/IconButton';
+//import IconButton from '../../atoms/button/IconButton';
 import { MenuItem, MenuHeader } from '../../atoms/context-menu/ContextMenu';
 import SpaceOptions from '../../molecules/space-options/SpaceOptions';
 
@@ -31,7 +31,13 @@ import ChevronBottomIC from '../../../../public/res/ic/outlined/chevron-bottom.s
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import WorkspacesOutlinedIcon from '@mui/icons-material/WorkspacesOutlined';
-
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import PublicIcon from '@mui/icons-material/Public';
+import AddIcon from '@mui/icons-material/Add';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import { Toolbar } from '@mui/material';
 export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
   const mx = initMatrix.matrixClient;
   const room = mx.getRoom(spaceId);
@@ -43,18 +49,36 @@ export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
     <>
       {/* <MenuHeader>Add rooms or spaces</MenuHeader> */}
       <div className={styles.addOptions} onClick={()=> {afterOptionSelect();openInviteUser();}} disabled={!canManage}>
-        <div className={styles.optionIcons}><PersonAddAlt1OutlinedIcon sx={{color:'var(--text-primary)'}}/></div><div>Start new chat</div>
+        <div className={styles.optionIcons}><PersonAddAlt1OutlinedIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Start new chat</div>
       </div>
 
       <div className={styles.addOptions} onClick={() => { afterOptionSelect(); openCreateRoom(true, spaceId); }}
         disabled={!canManage}>
-        <div className={styles.optionIcons}><PeopleAltOutlinedIcon sx={{color:'var(--text-primary)'}}/></div><div>Create new space</div>
+        <div className={styles.optionIcons}><PeopleAltOutlinedIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Create new space</div>
       </div>
 
       <div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openCreateRoom(false, spaceId); }}
         disabled={!canManage}>
-        <div className={styles.optionIcons}> <WorkspacesOutlinedIcon sx={{color:'var(--text-primary)'}}/></div><div>Create new Group</div>
+        <div className={styles.optionIcons}> <WorkspacesOutlinedIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Create new Group</div>
       </div>
+
+      {
+        !spaceId &&(<div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openPublicRooms(); }}>
+        <div className={styles.optionIcons}> <PublicIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div> Join public room</div>
+      </div>)
+      }
+      {spaceId && (<div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openSpaceAddExisting(spaceId); }}
+        disabled={!canManage}>
+        <div className={styles.optionIcons}> <AddCircleOutlineIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Add existing</div>
+      </div>)
+
+      }
+      {
+        spaceId &&(<div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openSpaceManage(spaceId); }}>
+        <div className={styles.optionIcons}> <ManageSearchIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Manage rooms</div>
+      </div>)
+      }
+
       {/* <MenuItem onClick={()=>openInviteUser()}>
         Start new chat
       </MenuItem>
@@ -113,7 +137,6 @@ function DrawerHeader({ selectedTab, spaceId }) {
   const tabName = selectedTab === cons.tabs.HOME
                   ? 'Inbox'
                   : selectedTab === cons.tabs.DIRECTS?'Direct messages':selectedTab===cons.tabs.FAVORITES?'Favorite messages':'Call details'
-  //const tabName = selectedTab !== cons.tabs.DIRECTS ? 'Home' : 'Direct messages';
 
   const isDMTab = selectedTab === cons.tabs.DIRECTS;
   const room = mx.getRoom(spaceId);
@@ -156,9 +179,13 @@ function DrawerHeader({ selectedTab, spaceId }) {
           <Text variant="s1" weight="medium" primary>{tabName}</Text>
         </TitleWrapper>
       )}
-
-      { isDMTab && <IconButton onClick={() => openInviteUser()} tooltip="Starthbchbch DM" src={PlusIC} size="small" /> }
-      { !isDMTab && <IconButton onClick={openHomeSpaceOptions} tooltip="Add rooms/spaces" src={PlusIC} size="small" /> }
+      {selectedTab==='home'&&<Tooltip title='Add rooms/spaces/contact' placement='right'>
+          <IconButton onClick={openHomeSpaceOptions} size='large'>
+            <AddIcon sx={{color:'var(--text-primary)'}}/>
+          </IconButton>
+        </Tooltip>}
+      {/* { isDMTab && <IconButton onClick={() => openInviteUser()} tooltip="Starthbchbch DM" src={PlusIC} size="small" /> }
+      { selectedTab==='home' && <IconButton onClick={openHomeSpaceOptions} tooltip="Add rooms/spaces" src={PlusIC} size="small" /> } */}
     </Header>
   );
 }
