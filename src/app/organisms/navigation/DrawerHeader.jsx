@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './DrawerHeader.scss';
-
+import styles from './DrawerHeader.module.css'
 import { twemojify } from '../../../util/twemojify';
 
 import initMatrix from '../../../client/initMatrix';
@@ -27,6 +27,10 @@ import HashGlobeIC from '../../../../public/res/ic/outlined/hash-globe.svg';
 import HashSearchIC from '../../../../public/res/ic/outlined/hash-search.svg';
 import SpacePlusIC from '../../../../public/res/ic/outlined/space-plus.svg';
 import ChevronBottomIC from '../../../../public/res/ic/outlined/chevron-bottom.svg';
+//-------changes------------------------------
+import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import WorkspacesOutlinedIcon from '@mui/icons-material/WorkspacesOutlined';
 
 export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
   const mx = initMatrix.matrixClient;
@@ -37,7 +41,23 @@ export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
 
   return (
     <>
-      <MenuHeader>Add rooms or spaces</MenuHeader>
+      {/* <MenuHeader>Add rooms or spaces</MenuHeader> */}
+      <div className={styles.addOptions} onClick={()=>openInviteUser()} disabled={!canManage}>
+        <div className={styles.optionIcons}><PersonAddAlt1OutlinedIcon sx={{color:'var(--text-primary)'}}/></div><div>Start new chat</div>
+      </div>
+
+      <div className={styles.addOptions} onClick={() => { afterOptionSelect(); openCreateRoom(true, spaceId); }}
+        disabled={!canManage}>
+        <div className={styles.optionIcons}><PeopleAltOutlinedIcon sx={{color:'var(--text-primary)'}}/></div><div>Create new space</div>
+      </div>
+
+      <div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openCreateRoom(false, spaceId); }}
+        disabled={!canManage}>
+        <div className={styles.optionIcons}> <WorkspacesOutlinedIcon sx={{color:'var(--text-primary)'}}/></div><div>Create new Group</div>
+      </div>
+      {/* <MenuItem onClick={()=>openInviteUser()}>
+        Start new chat
+      </MenuItem>
       <MenuItem
         iconSrc={SpacePlusIC}
         onClick={() => { afterOptionSelect(); openCreateRoom(true, spaceId); }}
@@ -76,7 +96,7 @@ export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
         >
           Manage rooms
         </MenuItem>
-      )}
+      )} */}
     </>
   );
 }
@@ -137,7 +157,7 @@ function DrawerHeader({ selectedTab, spaceId }) {
         </TitleWrapper>
       )}
 
-      { isDMTab && <IconButton onClick={() => openInviteUser()} tooltip="Start DM" src={PlusIC} size="small" /> }
+      { isDMTab && <IconButton onClick={() => openInviteUser()} tooltip="Starthbchbch DM" src={PlusIC} size="small" /> }
       { !isDMTab && <IconButton onClick={openHomeSpaceOptions} tooltip="Add rooms/spaces" src={PlusIC} size="small" /> }
     </Header>
   );

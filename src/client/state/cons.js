@@ -10,7 +10,7 @@ const cons = {
   IN_DCONVOS_SPACES: 'in.dconvos.spaces',
   tabs: {
     HOME: 'home',
-    //DIRECTS: 'dm',
+  //  DIRECTS: 'dm',
     FAVORITES:'fav',
     CALLS:'calls'
   },
