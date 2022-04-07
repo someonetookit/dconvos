@@ -42,7 +42,7 @@ export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
   return (
     <>
       {/* <MenuHeader>Add rooms or spaces</MenuHeader> */}
-      <div className={styles.addOptions} onClick={()=>openInviteUser()} disabled={!canManage}>
+      <div className={styles.addOptions} onClick={()=> {afterOptionSelect();openInviteUser();}} disabled={!canManage}>
         <div className={styles.optionIcons}><PersonAddAlt1OutlinedIcon sx={{color:'var(--text-primary)'}}/></div><div>Start new chat</div>
       </div>
 
