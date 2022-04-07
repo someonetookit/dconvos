@@ -6,7 +6,7 @@ class Navigation extends EventEmitter {
   constructor() {
     super();
 
-    this.selectedTab = cons.tabs.DIRECTS;
+    this.selectedTab = cons.tabs.HOME;
     this.selectedSpaceId = null;
     this.selectedSpacePath = [cons.tabs.HOME];
 
