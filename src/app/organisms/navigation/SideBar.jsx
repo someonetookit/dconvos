@@ -184,7 +184,7 @@ function FeaturedTab() {
 
   return (
     <>
-         <div className={styles.peopleButton}>
+         {/* <div className={styles.peopleButton}>
       <Tooltip title='Direct messages' placement='right'>
         <IconButton size='large' onClick={() => selectTab(cons.tabs.DIRECTS)}>
         <StyledBadge badgeContent={dmNumber}>
@@ -192,13 +192,13 @@ function FeaturedTab() {
           </StyledBadge>
         </IconButton>
       </Tooltip>
-    </div>
+    </div> */}
 
     <div className={styles.homeButton}>
       <Tooltip title='Room' placement='right'>
         <IconButton size='large' onClick={() => selectTab(cons.tabs.HOME)}>
          <StyledBadge badgeContent={homeNumber}>
-          {(selectedTab === cons.tabs.HOME) ? (<AddBoxIcon sx={{color:'var(--accent)'}}/>):(<AddBoxOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
+          {(selectedTab === cons.tabs.HOME) ? (<EmailIcon sx={{color:'var(--accent)'}}/>):(<EmailOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
           </StyledBadge>
         </IconButton>
       </Tooltip>
