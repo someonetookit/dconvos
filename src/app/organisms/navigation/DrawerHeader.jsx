@@ -90,7 +90,10 @@ HomeSpaceOptions.propTypes = {
 
 function DrawerHeader({ selectedTab, spaceId }) {
   const mx = initMatrix.matrixClient;
-  const tabName = selectedTab !== cons.tabs.DIRECTS ? 'Home' : 'Direct messages';
+  const tabName = selectedTab === cons.tabs.HOME
+                  ? 'Inbox'
+                  : selectedTab === cons.tabs.DIRECTS?'Direct messages':selectedTab===cons.tabs.FAVORITES?'Favorite messages':'Call details'
+  //const tabName = selectedTab !== cons.tabs.DIRECTS ? 'Home' : 'Direct messages';
 
   const isDMTab = selectedTab === cons.tabs.DIRECTS;
   const room = mx.getRoom(spaceId);

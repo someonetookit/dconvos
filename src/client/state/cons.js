@@ -10,7 +10,9 @@ const cons = {
   IN_DCONVOS_SPACES: 'in.dconvos.spaces',
   tabs: {
     HOME: 'home',
-    DIRECTS: 'dm',
+    //DIRECTS: 'dm',
+    FAVORITES:'fav',
+    CALLS:'calls'
   },
   supportEventTypes: ['m.room.create', 'm.room.message', 'm.room.encrypted', 'm.room.member', 'm.sticker'],
   notifs: {

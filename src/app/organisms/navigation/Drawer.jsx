@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Drawer.scss';
-
+import styles from './Drawer.module.css';
 import initMatrix from '../../../client/initMatrix';
 import cons from '../../../client/state/cons';
 import navigation from '../../../client/state/navigation';
@@ -16,6 +16,8 @@ import Directs from './Directs';
 import { useForceUpdate } from '../../hooks/useForceUpdate';
 import { useSelectedTab } from '../../hooks/useSelectedTab';
 import { useSelectedSpace } from '../../hooks/useSelectedSpace';
+import Favorites from './Favorites';
+import Callslog from './Callslog';
 
 function useSystemState() {
   const [systemState, setSystemState] = useState(null);
@@ -66,9 +68,9 @@ function Drawer() {
           <ScrollView ref={scrollRef} autoHide>
             <div className="rooms-container">
               {
-                selectedTab !== cons.tabs.DIRECTS
+                selectedTab === cons.tabs.HOME
                   ? <Home spaceId={spaceId} />
-                  : <Directs />
+                  : selectedTab === cons.tabs.DIRECTS?<Directs/>:selectedTab===cons.tabs.FAVORITES?<Favorites/>:<Callslog/>
               }
             </div>
           </ScrollView>
