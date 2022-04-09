@@ -52,7 +52,7 @@ class Settings extends EventEmitter {
   }
 
   setTheme(themeIndex) {
-    if (themeIndex == 1 || themeIndex == 3) themeIndex = 2;
+    if (themeIndex == 0 || themeIndex == 1 || themeIndex == 3) themeIndex = 2;
     const appBody = document.getElementById("appBody");
 
     appBody.classList.remove("system-theme");

@@ -90,7 +90,7 @@ useEffect(() => {
   return (
     <>
     { directIds.length !== 0 && (
-         <RoomsCategory name="Messages" hideHeader={true} roomIds={directIds} drawerPostie={drawerPostie} />
+         <RoomsCategory name="Direct Messages" hideHeader={false} roomIds={directIds} drawerPostie={drawerPostie} />
        // <RoomsCategory name="People" roomIds={directIds.sort(roomIdByActivity)} drawerPostie={drawerPostie} />
       )}
 

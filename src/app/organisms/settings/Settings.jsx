@@ -153,7 +153,7 @@ function AppearanceSection() {
     localStorage.setItem("accent", acc);
   };
   const themeSegments = [
-    { text: "Light" },
+    // { text: "Light" },
     // { text: "Silver" },
     { text: "Dark" },
     // { text: "Butter" },
@@ -165,7 +165,7 @@ function AppearanceSection() {
         <div className={styles.menuHeader}>
           <Text variant="b3">Theme</Text>
         </div>
-        <div className={styles.toggleSettings}>
+        {/* <div className={styles.toggleSettings}>
           <div className={styles.titleAndContent}>
             <div>
               <Text variant="b1">Follow system Theme</Text>
@@ -186,7 +186,7 @@ function AppearanceSection() {
               }}
             />
           </div>
-        </div>
+        </div> */}
 
         {!settings.useSystemTheme && (
           <div>
@@ -194,13 +194,14 @@ function AppearanceSection() {
               <SegmentedControls
                 selected={settings.getThemeIndex()}
                 segments={[
-                  { text: "Light" },
+                  // { text: "Light" },
                   // { text: "Silver" },
                   { text: "Dark" },
                   // { text: "Butter"},
                 ]}
                 onSelect={(index) => settings.setTheme(index)}
               />
+              <p className={styles.comingSoon}>more themes coming soon</p>
             </div>
           </div>
         )}

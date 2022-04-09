@@ -12,7 +12,7 @@ function Welcome() {
       <div>
         <img className={styles.logo} src={dSvg} alt="dConvos logo" />
         <p>
-          all of your chats are e2e encrypted, even groups! <br />
+          all of your chats are e2e encrypted by default, even groups! <br />
         </p>
       </div>
     </div>

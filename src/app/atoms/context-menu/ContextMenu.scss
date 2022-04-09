@@ -34,7 +34,8 @@
 
   .text {
     @extend .cp-txt__ellipsis;
-    color: var(--tc-surface-low);
+    color: var(--text-primary);
+    opacity: .4;
   }
 
   &:not(:first-child) {
