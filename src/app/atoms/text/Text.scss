@@ -12,7 +12,7 @@
 .text {
   margin: 0;
   padding: 0;
-  color: var(--tc-surface-high);
+  color: var(--text-primary);
 
   & img.emoji,
   & img[data-mx-emoticon] {
@@ -49,13 +49,16 @@
 }
 .text-b1 {
   @include font(b1);
-  color: var(--tc-surface-normal);
+  color: var(--text-primary);
+
 }
 .text-b2 {
   @include font(b2);
-  color: var(--tc-surface-normal);
+  color: var(--text-primary);
+
 }
 .text-b3 {
   @include font(b3);
-  color: var(--tc-surface-low);
+  color: var(--text-primary);
+
 }

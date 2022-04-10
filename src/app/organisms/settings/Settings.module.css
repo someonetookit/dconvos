@@ -135,3 +135,8 @@
 .profileEditor{
 	padding: var(--sp-loose) var(--sp-extra-loose);
 }
+.comingSoon{
+	color: var(--accent-light);
+	font-style: italic;
+	font-size: 10px;
+}

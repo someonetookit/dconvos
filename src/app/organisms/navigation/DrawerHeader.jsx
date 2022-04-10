@@ -49,33 +49,33 @@ export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
     <>
       {/* <MenuHeader>Add rooms or spaces</MenuHeader> */}
       <div className={styles.addOptions} onClick={()=> {afterOptionSelect();openInviteUser();}} disabled={!canManage}>
-        <div className={styles.optionIcons}><PersonAddAlt1OutlinedIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Start new chat</div>
+        <div className={styles.optionIcons}><PersonAddAlt1OutlinedIcon sx={{color:'var(--accent)',fontSize:18}}/></div><span className={styles.optionTexts}>New Chat</span>
       </div>
 
       <div className={styles.addOptions} onClick={() => { afterOptionSelect(); openCreateRoom(true, spaceId); }}
         disabled={!canManage}>
-        <div className={styles.optionIcons}><PeopleAltOutlinedIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Create new space</div>
+        <div className={styles.optionIcons}><PeopleAltOutlinedIcon sx={{color:'var(--accent)',fontSize:18}}/></div><span className={styles.optionTexts}>Create New Space</span>
       </div>
 
       <div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openCreateRoom(false, spaceId); }}
         disabled={!canManage}>
-        <div className={styles.optionIcons}> <WorkspacesOutlinedIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Create new Group</div>
+        <div className={styles.optionIcons}> <WorkspacesOutlinedIcon sx={{color:'var(--accent)',fontSize:18}}/></div><span className={styles.optionTexts}>Create New Room</span>
       </div>
 
       {
         !spaceId &&(<div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openPublicRooms(); }}>
-        <div className={styles.optionIcons}> <PublicIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div> Join public room</div>
+        <div className={styles.optionIcons}> <PublicIcon sx={{color:'var(--accent)',fontSize:18}}/></div><span className={styles.optionTexts}> Join Public Room</span>
       </div>)
       }
       {spaceId && (<div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openSpaceAddExisting(spaceId); }}
         disabled={!canManage}>
-        <div className={styles.optionIcons}> <AddCircleOutlineIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Add existing</div>
+        <div className={styles.optionIcons}> <AddCircleOutlineIcon sx={{color:'var(--accent)',fontSize:18}}/></div><span>Add existing</span>
       </div>)
 
       }
       {
         spaceId &&(<div className={styles.addOptions}  onClick={() => { afterOptionSelect(); openSpaceManage(spaceId); }}>
-        <div className={styles.optionIcons}> <ManageSearchIcon sx={{color:'var(--text-primary)',fontSize:18}}/></div><div>Manage rooms</div>
+        <div className={styles.optionIcons}> <ManageSearchIcon sx={{color:'var(--accent)',fontSize:18}}/></div><span>Manage rooms</span>
       </div>)
       }
 

@@ -42,7 +42,7 @@
       font-size: var(--fs-s1);
       letter-spacing: var(--ls-s1);
       line-height: var(--lh-s1);
-      color: var(--tc-surface-high);
+      color: var(--accent);
     }
   }
   &__content-wrapper {
@@ -73,8 +73,9 @@
   }
 
   &__footer {
-    padding: var(--sp-tight) var(--sp-normal);
     text-align: center;
+    padding: 10px;
+    color: var(--text-primary);
+    font-size: var(--font-size);
   }
-
 }

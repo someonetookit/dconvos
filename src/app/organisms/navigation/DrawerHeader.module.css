@@ -1,7 +1,12 @@
 .addOptions{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 16px;
     cursor: pointer;
+    color: var(--text-primary);
+}
+.optionTexts{
+    font-size: var(--font-size);
+    padding-left: 5px;
 }
