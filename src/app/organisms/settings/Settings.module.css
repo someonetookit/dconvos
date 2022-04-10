@@ -135,3 +135,6 @@
 .profileEditor{
 	padding: var(--sp-loose) var(--sp-extra-loose);
 }
+.comingSoon{
+	color: var(--accent);
+}
