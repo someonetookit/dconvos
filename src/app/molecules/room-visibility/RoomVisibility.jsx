@@ -141,7 +141,7 @@ function RoomVisibility({ roomId }) {
             disabled={(!canChange || item.unsupported)}
           >
             <Text varient="b1">
-              <span>{item.text}</span>
+              <span style={{color:"var(--text-primary)"}}>{item.text}</span>
               <RadioButton isActive={activeType === item.type} />
             </Text>
           </MenuItem>

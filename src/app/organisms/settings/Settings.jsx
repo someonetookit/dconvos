@@ -635,6 +635,7 @@ function Settings() {
           {/* <Button variant="danger" iconSrc={PowerIC} onClick={handleLogout}>
             Logout
           </Button> */}
+
           <IconButton src={CrossIC} onClick={requestClose} tooltip="Close" />
         </>
       }

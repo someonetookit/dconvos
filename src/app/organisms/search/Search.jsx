@@ -212,7 +212,7 @@ function Search() {
           <Input
             onChange={handleOnChange}
             forwardRef={searchRef}
-            placeholder="Search"
+            placeholder="Global Search"
           />
           <IconButton size="small" src={CrossIC} type="reset" onClick={handleCross} tabIndex={-1} />
         </form>
@@ -224,7 +224,7 @@ function Search() {
           </ScrollView>
         </div>
         <div className="search-dialog__footer">
-          <Text variant="b3">Type # for rooms, @ for DMs and * for spaces. Hotkey: Ctrl + k</Text>
+          <p>Type # for rooms, @ for DMs and * for spaces. Hotkey: Ctrl + k</p>
         </div>
       </div>
     </RawModal>
