@@ -7,7 +7,9 @@ import initMatrix from '../../../client/initMatrix';
 import Text from '../../atoms/text/Text';
 import RadioButton from '../../atoms/button/RadioButton';
 import { MenuItem } from '../../atoms/context-menu/ContextMenu';
-
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import styles from './RoomHistoryVisibility.module.css'
 const visibility = {
   WORLD_READABLE: 'world_readable',
   SHARED: 'shared',
@@ -71,7 +73,35 @@ function RoomHistoryVisibility({ roomId }) {
 
   return (
     <div className="room-history-visibility">
-      {
+      
+<RadioGroup>
+  <button onClick={() => setVisibility(items[0])} disabled={(!canChange)}>
+      <div className={styles.option} >
+        <div className={styles.iconAndLabel}>
+        <div className={styles.label}>World readable (anyone can read)</div></div>
+        <div><Radio checked={activeType===items[0].type}></Radio></div>
+      </div></button>
+      <button onClick={() => setVisibility(items[1])} disabled={(!canChange)}>
+      <div className={styles.option} >
+        <div className={styles.iconAndLabel}>
+        <div className={styles.label}>Member shared (since the point in time of selecting this option)</div></div>
+        <div><Radio checked={activeType===items[1].type}></Radio></div>
+      </div></button>
+      <button onClick={() => setVisibility(items[2])} disabled={(!canChange)}>
+      <div className={styles.option} >
+        <div className={styles.iconAndLabel}>
+        <div className={styles.label}>Member joined (since they joined)</div></div>
+        <div><Radio checked={activeType===items[2].type}></Radio></div>
+      </div></button>
+      <button onClick={() => setVisibility(items[3])} disabled={(!canChange)}>
+      <div className={styles.option} >
+        <div className={styles.iconAndLabel}>
+        <div className={styles.label}>Member joined (since they joined)</div></div>
+        <div><Radio checked={activeType===items[3].type}></Radio></div>
+      </div></button>
+
+      </RadioGroup>
+      {/* {
         items.map((item) => (
           <MenuItem
             variant={activeType === item.type ? 'positive' : 'surface'}
@@ -86,7 +116,7 @@ function RoomHistoryVisibility({ roomId }) {
             </Text>
           </MenuItem>
         ))
-      }
+      } */}
       <Text variant="b3">Changes to who can read history will only apply to future messages in this room. The visibility of existing history will be unchanged.</Text>
     </div>
   );

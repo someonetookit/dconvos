@@ -28,7 +28,7 @@ import {
   toggleNotifications,
   toggleNotificationSounds,
 } from "../../../client/action/settings";
-import logout from "../../../client/action/logout";
+
 import { usePermission } from "../../hooks/usePermission";
 
 import Text from "../../atoms/text/Text";
@@ -597,9 +597,9 @@ function Settings() {
   const [isOpen, requestClose] = useWindowToggle(/*setSelectedTab*/);
 
   // const handleTabChange = (tabItem) => setSelectedTab(tabItem);
-  const handleLogout = () => {
-    if (confirm("Confirm logout")) logout();
-  };
+ // const handleLogout = () => {
+ //   if (confirm("Confirm logout")) logout();
+ // };
 
   function changeTab(string) {
     switch (string) {
@@ -632,9 +632,10 @@ function Settings() {
       }
       contentOptions={
         <>
-          <Button variant="danger" iconSrc={PowerIC} onClick={handleLogout}>
+          {/* <Button variant="danger" iconSrc={PowerIC} onClick={handleLogout}>
             Logout
-          </Button>
+          </Button> */}
+
           <IconButton src={CrossIC} onClick={requestClose} tooltip="Close" />
         </>
       }

@@ -21,7 +21,7 @@ import NotificationBadge from '../../atoms/badge/NotificationBadge';
 import ScrollView from '../../atoms/scroll/ScrollView';
 import SidebarAvatar from '../../molecules/sidebar-avatar/SidebarAvatar';
 import SpaceOptions from '../../molecules/space-options/SpaceOptions';
-
+import logout from "../../../client/action/logout";
 import HomeIC from '../../../../public/res/ic/outlined/home.svg';
 import UserIC from '../../../../public/res/ic/outlined/user.svg';
 import AddPinIC from '../../../../public/res/ic/outlined/add-pin.svg';
@@ -44,9 +44,21 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 
+
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+
+
 import { styled } from '@mui/system';
 import BadgeUnstyled from '@mui/base/BadgeUnstyled';
-
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import SettingsIcon from '@mui/icons-material/Settings';
 const StyledBadge = styled(BadgeUnstyled)`
   box-sizing: border-box;
   margin: 0;
@@ -126,9 +138,26 @@ function ProfileAvatarMenu() {
     };
   }, []);
 
-  return (
+
+  const [open, setOpen] = useState(false)
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  return (<>
     <SidebarAvatar
-      onClick={openSettings}
+      onClick={handleClickOpen}
       tooltip="Settings"
       avatar={(
         <Avatar
@@ -139,6 +168,31 @@ function ProfileAvatarMenu() {
         />
       )}
     />
+    <Dialog
+    fullScreen={fullScreen}
+    open={open}
+    onClose={handleClose}
+    aria-labelledby="responsive-dialog-title"
+  >
+    <DialogTitle  sx={{background:'var(--bg-sub)'}} color='var(--accent)' id="responsive-dialog-title">
+      {"Logout session !"}
+    </DialogTitle>
+    <DialogContent  sx={{background:'var(--bg-sub)'}}>
+      <DialogContentText>
+        Make sure you save the session key before logout ,to avoid future data lose :)
+      </DialogContentText>
+    </DialogContent>
+    <DialogActions  sx={{background:'var(--bg-sub)'}}>
+      <Button sx={{color:'var(--accent)'}} autoFocus onClick={handleClose}>
+        Cancel
+      </Button>
+      <Button sx={{color:'red'}} onClick={handleLogout} autoFocus>
+        Logout
+      </Button>
+    </DialogActions>
+  </Dialog>
+  </>
+
   );
 }
 
@@ -390,6 +444,7 @@ function useTotalInvites() {
 
 function SideBar() {
   const [totalInvites] = useTotalInvites();
+  const [selectedTab] = useSelectedTab();
 
   return (
     <div className="sidebar">
@@ -419,7 +474,6 @@ function SideBar() {
                 <SearchIcon sx={{color:'var(--text-primary)'}}/>
             </IconButton>
           </Tooltip>
-
           { totalInvites !== 0 && (
             <SidebarAvatar
               tooltip="Invites"
@@ -428,6 +482,13 @@ function SideBar() {
               notificationBadge={<NotificationBadge alert content={totalInvites} />}
             />
           )}
+  <div className={styles.settingsButton}>
+      <Tooltip title='Settings' placement='right'>
+        <IconButton size='large' onClick={openSettings}>
+          {(selectedTab === cons.tabs.SETTINGS) ? (<SettingsIcon sx={{color:'var(--accent)'}}/>):(<SettingsOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
+        </IconButton>
+      </Tooltip>
+    </div>
           <ProfileAvatarMenu />
         </div>
       </div>

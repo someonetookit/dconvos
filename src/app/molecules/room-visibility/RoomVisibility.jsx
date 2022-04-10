@@ -15,6 +15,16 @@ import SpaceIC from '../../../../public/res/ic/outlined/space.svg';
 import SpaceLockIC from '../../../../public/res/ic/outlined/space-lock.svg';
 import SpaceGlobeIC from '../../../../public/res/ic/outlined/space-globe.svg';
 
+//------------------------changes------------------------------------//
+import TagIcon from '@mui/icons-material/Tag';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LockIcon from '@mui/icons-material/Lock';
+import PublicIcon from '@mui/icons-material/Public';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+
+import styles from './RoomVisibility.module.css'
+
 const visibility = {
   INVITE: 'invite',
   RESTRICTED: 'restricted',
@@ -24,7 +34,7 @@ const visibility = {
 function setJoinRule(roomId, type) {
   const mx = initMatrix.matrixClient;
   let allow;
-  if (type === visibility.RESTRICTED) {
+  if (type === 'restricted') {
     const { currentState } = mx.getRoom(roomId);
     const mEvent = currentState.getStateEvents('m.space.parent')[0];
     if (!mEvent) return Promise.resolve(undefined);
@@ -62,10 +72,13 @@ function useVisibility(roomId) {
 }
 
 function RoomVisibility({ roomId }) {
+
+
   const [activeType, setVisibility] = useVisibility(roomId);
   const mx = initMatrix.matrixClient;
   const room = mx.getRoom(roomId);
   const isSpace = room.isSpaceRoom();
+  //const [activeType, setVisibility] =useState(room.getJoinRule());
   const { currentState } = room;
 
   const noSpaceParent = currentState.getStateEvents('m.space.parent').length === 0;
@@ -76,17 +89,17 @@ function RoomVisibility({ roomId }) {
   const canChange = room.currentState.hasSufficientPowerLevelFor('state_default', myPowerlevel);
 
   const items = [{
-    iconSrc: isSpace ? SpaceLockIC : HashLockIC,
+   // iconSrc: isSpace ? SpaceLockIC : HashLockIC,
     text: 'Private (invite only)',
     type: visibility.INVITE,
     unsupported: false,
   }, {
-    iconSrc: isSpace ? SpaceIC : HashIC,
+   // iconSrc: isSpace ? SpaceIC : HashIC,
     text: roomVersion < 8 ? 'Restricted (unsupported: required room upgrade)' : 'Restricted (space member can join)',
     type: visibility.RESTRICTED,
     unsupported: roomVersion < 8 || noSpaceParent,
   }, {
-    iconSrc: isSpace ? SpaceGlobeIC : HashGlobeIC,
+   // iconSrc: isSpace ? SpaceGlobeIC : HashGlobeIC,
     text: 'Public (anyone can join)',
     type: visibility.PUBLIC,
     unsupported: false,
@@ -94,7 +107,31 @@ function RoomVisibility({ roomId }) {
 
   return (
     <div className="room-visibility">
-      {
+
+<RadioGroup>
+  <button onClick={() => setVisibility(items[0])} disabled={(!canChange||items[0].unsupported)}>
+      <div className={styles.option} >
+        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType==='invite'?<LockIcon sx={{color:'var(--accent)'}} />:<LockOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <div className={styles.label}>Private (invite only)</div></div>
+        <div><Radio checked={activeType==='invite'}></Radio></div>
+      </div></button>
+      <button onClick={() => setVisibility(items[1])} disabled={(!canChange||items[1].unsupported)}>
+      <div className={styles.option} >
+        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType==='restricted'?<TagIcon sx={{color:'var(--accent)'}} />:<TagIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <div className={styles.label}>{`Restricted (unsupported: required room upgrade) : Restricted (space member can join)`}</div></div>
+        <div><Radio checked={activeType==='restricted'}></Radio></div>
+      </div></button>
+      <button onClick={() => setVisibility(items[2])} disabled={(!canChange||items[2].unsupported)}>
+      <div className={styles.option} >
+        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType==='public'?<PublicIcon sx={{color:'var(--accent)'}} />:<PublicIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <div className={styles.label}>Public (anyone can join)</div></div>
+        <div><Radio checked={activeType==='public'}></Radio></div>
+      </div></button>
+
+      </RadioGroup>
+
+
+      {/* {
         items.map((item) => (
           <MenuItem
             variant={activeType === item.type ? 'positive' : 'surface'}
@@ -109,7 +146,7 @@ function RoomVisibility({ roomId }) {
             </Text>
           </MenuItem>
         ))
-      }
+      } */}
     </div>
   );
 }

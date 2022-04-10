@@ -1,0 +1,32 @@
+.roomSettingsOptions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 16px 0px 16px 0px;
+}
+.settingsOptions{
+    color: var(--text-primary);
+    cursor: pointer;
+}
+.settingsOptions:hover{
+    color: var(--accent);
+}
+.settingsOptions:focus{
+    border-bottom: 3.5px solid var(--accent);
+}
+.addUser{
+    padding-left:16px ;
+    display: flex;
+    flex-direction: row;
+}
+.leave{
+    padding-left: 16px;
+    display: flex;
+    flex-direction: row;
+}
+.leave:hover{
+    background-color: rgba(200, 7, 7, 0.319);
+}
+span{
+    padding: 2px 0px 0px 10px;
+}
