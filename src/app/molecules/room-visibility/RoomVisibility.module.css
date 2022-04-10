@@ -1,0 +1,20 @@
+.option{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 16px 0px 16px;
+}
+.option:hover{
+    background-color: aqua;
+}
+.iconAndLabel{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+
+}
+.label{
+    padding-top: 2px;
+    padding-left: 10px;
+}

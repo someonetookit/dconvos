@@ -13,7 +13,21 @@ import BellIC from '../../../../public/res/ic/outlined/bell.svg';
 import BellRingIC from '../../../../public/res/ic/outlined/bell-ring.svg';
 import BellPingIC from '../../../../public/res/ic/outlined/bell-ping.svg';
 import BellOffIC from '../../../../public/res/ic/outlined/bell-off.svg';
-
+//--------------------- changes-----------------------------------
+import styles from './RoomNotification.module.css'
+import { styled } from '@mui/material/styles';
+import Radio from '@mui/material/Radio';
+import NotificationsOffOutlinedIcon from '@mui/icons-material/NotificationsOffOutlined';
+import NotificationsOffIcon from '@mui/icons-material/NotificationsOff';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
+import NotificationImportantOutlinedIcon from '@mui/icons-material/NotificationImportantOutlined';
+import IconButton from '@mui/material/IconButton';
+//import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 const items = [{
   iconSrc: BellIC,
   text: 'Global',
@@ -106,19 +120,41 @@ function useNotifications(roomId) {
   useEffect(() => setActiveType(notifications.getNotiType(roomId)), [roomId]);
 
   const setNotification = useCallback((item) => {
-    if (item.type === activeType.type) return;
-    setActiveType(item.type);
-    setRoomNotifType(roomId, item.type);
+    if (item === activeType.type) return;
+    setActiveType(item);
+    setRoomNotifType(roomId, item);
   }, [activeType, roomId]);
   return [activeType, setNotification];
 }
 
 function RoomNotification({ roomId }) {
   const [activeType, setNotification] = useNotifications(roomId);
-
+  const [selected,setSelected] =useState(true);
   return (
     <div className="room-notification">
-      {
+      <RadioGroup>
+      <div className={styles.option} onClick={() => setNotification(cons.notifs.DEFAULT)}>
+        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.DEFAULT?<NotificationsOffIcon sx={{color:'var(--accent)'}} />:<NotificationsOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <div className={styles.label}>Global</div></div>
+        <div><Radio checked={activeType===cons.notifs.DEFAULT}></Radio></div>
+      </div>
+      <div className={styles.option} onClick={() => setNotification(cons.notifs.ALL_MESSAGES)}>
+        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.ALL_MESSAGES?<NotificationsActiveIcon sx={{color:'var(--accent)'}} />:<NotificationsActiveOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <div className={styles.label}>All messages</div></div>
+        <div><Radio checked={activeType===cons.notifs.ALL_MESSAGES}></Radio></div>
+      </div>
+      <div className={styles.option} onClick={() => setNotification(cons.notifs.MENTIONS_AND_KEYWORDS)}>
+        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.MENTIONS_AND_KEYWORDS?<NotificationImportantIcon sx={{color:'var(--accent)'}} />:<NotificationImportantOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <div className={styles.label}>Mentions &amp; Keywords</div></div>
+        <div><Radio checked={activeType===cons.notifs.MENTIONS_AND_KEYWORDS}></Radio></div>
+      </div>
+      <div className={styles.option} onClick={() => setNotification(cons.notifs.MUTE)}>
+        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.MUTE?<NotificationsOffIcon sx={{color:'var(--accent)'}} />:<NotificationsOffOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <div className={styles.label}>Mute</div></div>
+        <div><Radio checked={activeType===cons.notifs.MUTE}></Radio></div>
+      </div>
+      </RadioGroup>
+      {/* {
         items.map((item) => (
           <MenuItem
             variant={activeType === item.type ? 'positive' : 'surface'}
@@ -132,7 +168,7 @@ function RoomNotification({ roomId }) {
             </Text>
           </MenuItem>
         ))
-      }
+      } */}
     </div>
   );
 }

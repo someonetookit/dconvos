@@ -28,7 +28,7 @@ import {
   toggleNotifications,
   toggleNotificationSounds,
 } from "../../../client/action/settings";
-import logout from "../../../client/action/logout";
+
 import { usePermission } from "../../hooks/usePermission";
 
 import Text from "../../atoms/text/Text";
@@ -599,9 +599,9 @@ function Settings() {
   const [isOpen, requestClose] = useWindowToggle(/*setSelectedTab*/);
 
   // const handleTabChange = (tabItem) => setSelectedTab(tabItem);
-  const handleLogout = () => {
-    if (confirm("Confirm logout")) logout();
-  };
+ // const handleLogout = () => {
+ //   if (confirm("Confirm logout")) logout();
+ // };
 
   function changeTab(string) {
     switch (string) {
@@ -624,6 +624,7 @@ function Settings() {
   }
 
   return (
+<<<<<<< Updated upstream
       <PopupWindow
         isOpen={isOpen}
         className={styles.settingsWindow}
@@ -646,6 +647,52 @@ function Settings() {
           <div className={styles.settingsWindowContent}>
             <div className={styles.profileEditor}>
               <ProfileEditor userId={initMatrix.matrixClient.getUserId()} />
+=======
+    <PopupWindow
+      isOpen={isOpen}
+      className={styles.settingsWindow}
+      title={
+        <Text variant="s1" weight="medium" primary>
+          Settings
+        </Text>
+      }
+      contentOptions={
+        <>
+          {/* <Button variant="danger" iconSrc={PowerIC} onClick={handleLogout}>
+            Logout
+          </Button> */}
+          <IconButton src={CrossIC} onClick={requestClose} tooltip="Close" />
+        </>
+      }
+      onRequestClose={requestClose}
+    >
+      {isOpen && (
+        <div className={styles.settingsWindowContent}>
+          <div className={styles.profileEditor}>
+            <ProfileEditor userId={initMatrix.matrixClient.getUserId()} />
+          </div>
+          <div className={styles.settingsOptions}>
+            <div
+              onClick={() => changeTab("general")}
+              tabIndex="0"
+              className={styles.settingsGeneralTab}
+            >
+              <Text>General</Text>
+            </div>
+            <div
+              onClick={() => changeTab("notification")}
+              tabIndex="-1"
+              className={styles.settingsNotificationTab}
+            >
+              <Text>Notifications</Text>
+            </div>
+            <div
+              onClick={() => changeTab("security")}
+              tabIndex="-1"
+              className={styles.settingsSecurityTab}
+            >
+              <Text>Security &amp; Privacy</Text>
+>>>>>>> Stashed changes
             </div>
             <div className={styles.settingsOptions}>
               <div

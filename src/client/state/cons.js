@@ -12,7 +12,8 @@ const cons = {
     HOME: 'home',
   //  DIRECTS: 'dm',
     FAVORITES:'fav',
-    CALLS:'calls'
+    CALLS:'calls',
+    SETTINGS:'settings'
   },
   supportEventTypes: ['m.room.create', 'm.room.message', 'm.room.encrypted', 'm.room.member', 'm.sticker'],
   notifs: {
