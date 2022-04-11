@@ -58,7 +58,9 @@ import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import BadgeUnstyled from '@mui/base/BadgeUnstyled';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import SettingsIcon from '@mui/icons-material/Settings';
+//import SettingsIcon from '@mui/icons-material/Settings';
+//import AttachEmailOutlinedIcon from '@mui/icons-material/AttachEmailOutlined';
+import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 const StyledBadge = styled(BadgeUnstyled)`
   box-sizing: border-box;
   margin: 0;
@@ -251,7 +253,7 @@ function FeaturedTab() {
     <div className={styles.homeButton}>
       <Tooltip title='Room' placement='right'>
         <IconButton size='large' onClick={() => selectTab(cons.tabs.HOME)}>
-         <StyledBadge badgeContent={homeNumber}>
+         <StyledBadge badgeContent={dmNumber}>
           {(selectedTab === cons.tabs.HOME) ? (<EmailIcon sx={{color:'var(--accent)'}}/>):(<EmailOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
           </StyledBadge>
         </IconButton>
@@ -475,17 +477,26 @@ function SideBar() {
             </IconButton>
           </Tooltip>
           { totalInvites !== 0 && (
-            <SidebarAvatar
-              tooltip="Invites"
-              onClick={() => openInviteList()}
-              avatar={<Avatar iconSrc={InviteIC} size="normal" />}
-              notificationBadge={<NotificationBadge alert content={totalInvites} />}
-            />
+
+            <Tooltip title='Invites' placement='right'>
+              <IconButton size='large' onClick={() => openInviteList()}>
+                <StyledBadge badgeContent={totalInvites}>
+                    <ConnectWithoutContactOutlinedIcon sx={{color:"var(--text-primary)"}}/>
+                </StyledBadge>
+              </IconButton>
+            </Tooltip>
+
+            // <SidebarAvatar
+            //   tooltip="Invites"
+            //   onClick={() => openInviteList()}
+            //   avatar={<Avatar iconSrc={InviteIC} size="normal" />}
+            //   notificationBadge={<NotificationBadge alert content={totalInvites} />}
+            // />
           )}
   <div className={styles.settingsButton}>
       <Tooltip title='Settings' placement='right'>
         <IconButton size='large' onClick={openSettings}>
-          {(selectedTab === cons.tabs.SETTINGS) ? (<SettingsIcon sx={{color:'var(--accent)'}}/>):(<SettingsOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
+          <SettingsOutlinedIcon sx={{color:"var(--text-primary)"}}/>
         </IconButton>
       </Tooltip>
     </div>

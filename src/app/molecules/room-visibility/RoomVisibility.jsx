@@ -4,16 +4,16 @@ import './RoomVisibility.scss';
 
 import initMatrix from '../../../client/initMatrix';
 
-import Text from '../../atoms/text/Text';
-import RadioButton from '../../atoms/button/RadioButton';
-import { MenuItem } from '../../atoms/context-menu/ContextMenu';
+// import Text from '../../atoms/text/Text';
+// import RadioButton from '../../atoms/button/RadioButton';
+// import { MenuItem } from '../../atoms/context-menu/ContextMenu';
 
-import HashIC from '../../../../public/res/ic/outlined/hash.svg';
-import HashLockIC from '../../../../public/res/ic/outlined/hash-lock.svg';
-import HashGlobeIC from '../../../../public/res/ic/outlined/hash-globe.svg';
-import SpaceIC from '../../../../public/res/ic/outlined/space.svg';
-import SpaceLockIC from '../../../../public/res/ic/outlined/space-lock.svg';
-import SpaceGlobeIC from '../../../../public/res/ic/outlined/space-globe.svg';
+// import HashIC from '../../../../public/res/ic/outlined/hash.svg';
+// import HashLockIC from '../../../../public/res/ic/outlined/hash-lock.svg';
+// import HashGlobeIC from '../../../../public/res/ic/outlined/hash-globe.svg';
+// import SpaceIC from '../../../../public/res/ic/outlined/space.svg';
+// import SpaceLockIC from '../../../../public/res/ic/outlined/space-lock.svg';
+// import SpaceGlobeIC from '../../../../public/res/ic/outlined/space-globe.svg';
 
 //------------------------changes------------------------------------//
 import TagIcon from '@mui/icons-material/Tag';
@@ -127,7 +127,6 @@ function RoomVisibility({ roomId }) {
         <div className={styles.label}>Public (anyone can join)</div></div>
         <div><Radio checked={activeType==='public'}></Radio></div>
       </div></button>
-
       </RadioGroup>
 
 

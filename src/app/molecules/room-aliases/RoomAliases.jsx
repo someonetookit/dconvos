@@ -401,7 +401,7 @@ function RoomAliases({ roomId }) {
         )}
       /> */}
 
-      <div className="room-aliases__content">
+      {/* <div className="room-aliases__content">
         <MenuHeader>Published addresses</MenuHeader>
         {(aliases.published.length === 0) && <Text className="room-aliases__message">No published addresses</Text>}
         {(aliases.published.length > 0 && !aliases.main) && <Text className="room-aliases__message">No Main address (select one from below)</Text>}
@@ -409,8 +409,8 @@ function RoomAliases({ roomId }) {
         <Text className="room-aliases__message" variant="b3">
           {`Published addresses can be used by anyone on any server to join your ${room.isSpaceRoom() ? 'space' : 'room'}. To publish an address, it needs to be set as a local address first.`}
         </Text>
-      </div>
-      { isLocalVisible && (
+      </div> */}
+      {/* { isLocalVisible && (
         <div className="room-aliases__content">
           <MenuHeader>Local addresses</MenuHeader>
           {(aliases.local.length === 0) && <Text className="room-aliases__message">No local addresses</Text>}
@@ -437,12 +437,12 @@ function RoomAliases({ roomId }) {
             {validate.status === cons.status.ERROR && <Text className="room-aliases__invalid" variant="b2">{validate.msg}</Text>}
           </div>
         </div>
-      )}
-      <div className="room-aliases__content">
+      )} */}
+      {/* <div className="room-aliases__content">
         <Button onClick={() => setIsLocalVisible(!isLocalVisible)}>
           {`${isLocalVisible ? 'Hide' : 'Add / View'} local address`}
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }

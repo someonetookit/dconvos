@@ -18,3 +18,6 @@
     padding-top: 2px;
     padding-left: 10px;
 }
+button{
+    color: var(--text-primary);
+}

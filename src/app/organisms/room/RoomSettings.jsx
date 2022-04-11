@@ -75,12 +75,10 @@ function GeneralSettings({ roomId }) {
   const canInvite = room.canInvite(mx.getUserId()); 
   
   return (
-    <div className={styles.general}>
-    <ScrollView>
-
-
+    <>
       <div className="room-settings__card">
-        <MenuHeader>Options</MenuHeader>
+        <div className={styles.menuHeader}><Text variant='b3'>Options </Text></div>
+        {/* <MenuHeader>Options</MenuHeader> */}
         <div className={styles.addUser} disabled={!canInvite}
           onClick={() => openInviteUser(roomId)}>
           <div className={styles.icons}><PersonAddAltIcon sx={{color:'var(--text-primary)'}}/></div>
@@ -115,19 +113,22 @@ function GeneralSettings({ roomId }) {
         </MenuItem> */}
       </div>
       <div className="room-settings__card">
-        <MenuHeader>Notification (Changing this will only affect you)</MenuHeader>
+      <div className={styles.menuHeader}><Text variant='b3'>Notification (Changing this will only affect you)</Text></div>
+        {/* <MenuHeader>Notification (Changing this will only affect you)</MenuHeader> */}
         <RoomNotification roomId={roomId} />
-      </div>
-      <div className="room-settings__card">
-        <MenuHeader>Room visibility (who can join)</MenuHeader>
+      </div> 
+      <div className={styles.roomSettingsCard}>
+      <div className={styles.menuHeader}><Text variant='b3'>Room visibility (who can join)</Text></div>
+        {/* <MenuHeader>Room visibility (who can join)</MenuHeader> */}
         <RoomVisibility roomId={roomId} />
       </div>
       <div className="room-settings__card">
-        <MenuHeader>Room addresses</MenuHeader>
+      <div className={styles.menuHeader}><Text variant='b3'>Room addresses</Text></div>
+        {/* <MenuHeader>Room addresses</MenuHeader> */}
         <RoomAliases roomId={roomId} />
       </div>
-    </ScrollView>  
-    </div>
+    </>
+
   );
 }
 
