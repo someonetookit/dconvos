@@ -16,7 +16,7 @@ import { getEventCords } from '../../../util/common';
 import { tabText } from './RoomSettings';
 import Text from '../../atoms/text/Text';
 import RawIcon from '../../atoms/system-icons/RawIcon';
-import IconButton from '../../atoms/button/IconButton';
+//import IconButton from '../../atoms/button/IconButton';
 import Header, { TitleWrapper } from '../../atoms/header/Header';
 import Avatar from '../../atoms/avatar/Avatar';
 import RoomOptions from '../../molecules/room-options/RoomOptions';
@@ -27,7 +27,14 @@ import UserIC from '../../../../public/res/ic/outlined/user.svg';
 import VerticalMenuIC from '../../../../public/res/ic/outlined/vertical-menu.svg';
 
 import { useForceUpdate } from '../../hooks/useForceUpdate';
-
+//--------------------------changes-------------------------
+import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
+import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 function RoomViewHeader({ roomId }) {
   const [, forceUpdate] = useForceUpdate();
   const mx = initMatrix.matrixClient;
@@ -35,7 +42,7 @@ function RoomViewHeader({ roomId }) {
   let avatarSrc = mx.getRoom(roomId).getAvatarUrl(mx.baseUrl, 36, 36, 'crop');
   avatarSrc = isDM ? mx.getRoom(roomId).getAvatarFallbackMember()?.getAvatarUrl(mx.baseUrl, 36, 36, 'crop') : avatarSrc;
   const roomName = mx.getRoom(roomId).name;
-
+  console.log(isDM)
   const roomHeaderBtnRef = useRef(null);
   useEffect(() => {
     const settingsToggle = (isVisibile) => {
@@ -86,13 +93,18 @@ function RoomViewHeader({ roomId }) {
         </TitleWrapper>
         <RawIcon src={ChevronBottomIC} />
       </button>
-      <IconButton onClick={() => toggleRoomSettings(tabText.SEARCH)} tooltip="Search" src={SearchIC} />
+      <Tooltip title="Search" placement='bottom'><IconButton size='large' onClick={() => toggleRoomSettings(tabText.SEARCH)}><SearchOutlinedIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>
+      <Tooltip title="Video call" placement='bottom'><IconButton size='large'><VideocamOutlinedIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>
+      <Tooltip title="Voice call" placement='bottom'><IconButton size='large'><CallOutlinedIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>
+      <Tooltip title="People" placement='bottom'><IconButton size='large' onClick={togglePeopleDrawer} > <PersonOutlineOutlinedIcon sx={{color:'var(--text-primary)'}}/> </IconButton></Tooltip>
+      <Tooltip title="Options" placement='bottom'><IconButton size='large' onClick={openRoomOptions}><MoreVertOutlinedIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>
+      {/* <IconButton onClick={() => toggleRoomSettings(tabText.SEARCH)} tooltip="Search" src={SearchIC} />
       <IconButton onClick={togglePeopleDrawer} tooltip="People" src={UserIC} />
       <IconButton
         onClick={openRoomOptions}
         tooltip="Options"
         src={VerticalMenuIC}
-      />
+      /> */}
     </Header>
   );
 }

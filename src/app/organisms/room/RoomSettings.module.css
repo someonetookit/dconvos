@@ -30,3 +30,22 @@
 span{
     padding: 2px 0px 0px 10px;
 }
+.menuHeader {
+	height: 34px;
+    /* font-size:0.8rem; */
+    padding: 24px 16px 24px 16px;
+	margin-bottom: 4px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--bg-surface-border);
+}
+.roomSettingsContent{
+    padding: 16px;
+}
+.roomSettingsCard{
+  margin: var(--sp-normal) 0;
+  background-color: var(--bg-surface);
+  border-radius: var(--bo-radius);
+  box-shadow: var(--bs-surface-border);
+  overflow: hidden;
+}
