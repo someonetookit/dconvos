@@ -112,7 +112,7 @@ function GeneralSettings({ roomId }) {
           Leave
         </MenuItem> */}
       </div>
-      <div className="room-settings__card">
+      <div className={styles.roomSettingsCard}>
       <div className={styles.menuHeader}><Text variant='b3'>Notification (Changing this will only affect you)</Text></div>
         {/* <MenuHeader>Notification (Changing this will only affect you)</MenuHeader> */}
         <RoomNotification roomId={roomId} />
@@ -122,7 +122,7 @@ function GeneralSettings({ roomId }) {
         {/* <MenuHeader>Room visibility (who can join)</MenuHeader> */}
         <RoomVisibility roomId={roomId} />
       </div>
-      <div className="room-settings__card">
+      <div className={styles.roomSettingsCard}>
       <div className={styles.menuHeader}><Text variant='b3'>Room addresses</Text></div>
         {/* <MenuHeader>Room addresses</MenuHeader> */}
         <RoomAliases roomId={roomId} />
@@ -208,10 +208,11 @@ function RoomSettings({ roomId }) {
     <div className="room-settings">
       <ScrollView autoHide>
       <div className={styles.roomSettingsContent}>
-        <header className={styles.settingsHeader}> <button onClick={() => toggleRoomSettings()}>
+        {/* <header className={styles.settingsHeader}> <button onClick={() => toggleRoomSettings()}>
           <div>{`${room.name}`}<span>— room settings</span></div>
-          </button> </header>
+          </button> </header> */}
         <RoomProfile roomId={roomId} />
+      </div>
       <div className={styles.roomSettingsOptions}>
         <div className={styles.settingsOptions} tabIndex='-1' onClick={()=>changeTab('General')}>General</div>
         <div className={styles.settingsOptions} tabIndex='-1' onClick={()=>changeTab('Search')}>Search</div>
@@ -225,7 +226,6 @@ function RoomSettings({ roomId }) {
         {roomTab}
       </div>
 
-      </div>
 
       </ScrollView>
 

@@ -16,7 +16,7 @@ import BellOffIC from '../../../../public/res/ic/outlined/bell-off.svg';
 //--------------------- changes-----------------------------------
 import styles from './RoomNotification.module.css'
 import { styled } from '@mui/material/styles';
-import Radio from '@mui/material/Radio';
+//import Radio from '@mui/material/Radio';
 import NotificationsOffOutlinedIcon from '@mui/icons-material/NotificationsOffOutlined';
 import NotificationsOffIcon from '@mui/icons-material/NotificationsOff';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -27,7 +27,23 @@ import NotificationImportantIcon from '@mui/icons-material/NotificationImportant
 import NotificationImportantOutlinedIcon from '@mui/icons-material/NotificationImportantOutlined';
 import IconButton from '@mui/material/IconButton';
 //import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
+//import RadioGroup from '@mui/material/RadioGroup';
+
+//--------------changes---------------------------------
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import { withStyles } from '@material-ui/core/styles';
+const AccentRadio = withStyles({
+  root: {
+    color: 'var(--accent)',
+    '&$checked': {
+      color: 'var(--accent)',
+    },
+  },
+  checked: {},
+})((props) => <Radio color="primary" {...props} />);
+
 const items = [{
   iconSrc: BellIC,
   text: 'Global',
@@ -136,22 +152,22 @@ function RoomNotification({ roomId }) {
       <div className={styles.option} onClick={() => setNotification(cons.notifs.DEFAULT)}>
         <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.DEFAULT?<NotificationsOffIcon sx={{color:'var(--accent)'}} />:<NotificationsOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
         <div className={styles.label}>Global</div></div>
-        <div><Radio checked={activeType===cons.notifs.DEFAULT}></Radio></div>
+        <div className={styles.radioButton}><AccentRadio  color='primary' checked={activeType===cons.notifs.DEFAULT}/></div>
       </div>
       <div className={styles.option} onClick={() => setNotification(cons.notifs.ALL_MESSAGES)}>
         <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.ALL_MESSAGES?<NotificationsActiveIcon sx={{color:'var(--accent)'}} />:<NotificationsActiveOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
         <div className={styles.label}>All messages</div></div>
-        <div><Radio checked={activeType===cons.notifs.ALL_MESSAGES}></Radio></div>
+        <div className={styles.radioButton}><AccentRadio  checked={activeType===cons.notifs.ALL_MESSAGES}/></div>
       </div>
       <div className={styles.option} onClick={() => setNotification(cons.notifs.MENTIONS_AND_KEYWORDS)}>
         <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.MENTIONS_AND_KEYWORDS?<NotificationImportantIcon sx={{color:'var(--accent)'}} />:<NotificationImportantOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
         <div className={styles.label}>Mentions &amp; Keywords</div></div>
-        <div><Radio checked={activeType===cons.notifs.MENTIONS_AND_KEYWORDS}></Radio></div>
+        <div className={styles.radioButton}><AccentRadio  checked={activeType===cons.notifs.MENTIONS_AND_KEYWORDS}/></div>
       </div>
       <div className={styles.option} onClick={() => setNotification(cons.notifs.MUTE)}>
         <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.MUTE?<NotificationsOffIcon sx={{color:'var(--accent)'}} />:<NotificationsOffOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
         <div className={styles.label}>Mute</div></div>
-        <div><Radio checked={activeType===cons.notifs.MUTE}></Radio></div>
+        <div className={styles.radioButton}><AccentRadio  checked={activeType===cons.notifs.MUTE}/></div>
       </div>
       </RadioGroup>
       {/* {
