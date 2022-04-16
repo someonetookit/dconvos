@@ -7,9 +7,25 @@ import initMatrix from '../../../client/initMatrix';
 import Text from '../../atoms/text/Text';
 import RadioButton from '../../atoms/button/RadioButton';
 import { MenuItem } from '../../atoms/context-menu/ContextMenu';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
+// import Radio from '@mui/material/Radio';
+// import RadioGroup from '@mui/material/RadioGroup';
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import { withStyles } from '@material-ui/core/styles';
+const AccentRadio = withStyles({
+  root: {
+    color: 'var(--accent)',
+    '&$checked': {
+      color: 'var(--accent)',
+    },
+  },
+  checked: {},
+})((props) => <Radio color="primary" {...props} />);
+
 import styles from './RoomHistoryVisibility.module.css'
+
+
 const visibility = {
   WORLD_READABLE: 'world_readable',
   SHARED: 'shared',
@@ -79,25 +95,25 @@ function RoomHistoryVisibility({ roomId }) {
       <div className={styles.option} >
         <div className={styles.iconAndLabel}>
         <div className={styles.label}>World readable (anyone can read)</div></div>
-        <div><Radio checked={activeType===items[0].type}></Radio></div>
+        <div><AccentRadio checked={activeType===items[0].type}/></div>
       </div></button>
       <button onClick={() => setVisibility(items[1])} disabled={(!canChange)}>
       <div className={styles.option} >
         <div className={styles.iconAndLabel}>
         <div className={styles.label}>Member shared (since the point in time of selecting this option)</div></div>
-        <div><Radio checked={activeType===items[1].type}></Radio></div>
+        <div><AccentRadio checked={activeType===items[1].type}/></div>
       </div></button>
       <button onClick={() => setVisibility(items[2])} disabled={(!canChange)}>
       <div className={styles.option} >
         <div className={styles.iconAndLabel}>
         <div className={styles.label}>Member joined (since they joined)</div></div>
-        <div><Radio checked={activeType===items[2].type}></Radio></div>
+        <div><AccentRadio checked={activeType===items[2].type}/></div>
       </div></button>
       <button onClick={() => setVisibility(items[3])} disabled={(!canChange)}>
       <div className={styles.option} >
         <div className={styles.iconAndLabel}>
         <div className={styles.label}>Member joined (since they joined)</div></div>
-        <div><Radio checked={activeType===items[3].type}></Radio></div>
+        <div><AccentRadio checked={activeType===items[3].type}/></div>
       </div></button>
 
       </RadioGroup>

@@ -158,7 +158,17 @@ function ProfileAvatarMenu() {
   };
 
   return (<>
-    <SidebarAvatar
+  <Tooltip title='Logout' placement='right'>
+        <IconButton size='large' onClick={handleClickOpen}>
+        <Avatar
+          text={profile.displayName}
+          bgColor={"var(--accent)"}
+          size="normal"
+          imageSrc={profile.avatarUrl !== null ? mx.mxcUrlToHttp(profile.avatarUrl, 42, 42, 'crop') : null}
+        />
+        </IconButton>
+      </Tooltip>
+    {/* <SidebarAvatar
       onClick={handleClickOpen}
       tooltip="Settings"
       avatar={(
@@ -169,7 +179,7 @@ function ProfileAvatarMenu() {
           imageSrc={profile.avatarUrl !== null ? mx.mxcUrlToHttp(profile.avatarUrl, 42, 42, 'crop') : null}
         />
       )}
-    />
+    /> */}
     <Dialog
     fullScreen={fullScreen}
     open={open}

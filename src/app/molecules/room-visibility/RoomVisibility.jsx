@@ -20,10 +20,25 @@ import TagIcon from '@mui/icons-material/Tag';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import PublicIcon from '@mui/icons-material/Public';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
+// import Radio from '@mui/material/Radio';
+// import RadioGroup from '@mui/material/RadioGroup';
 
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import { withStyles } from '@material-ui/core/styles';
 import styles from './RoomVisibility.module.css'
+const AccentRadio = withStyles({
+  root: {
+    color: 'var(--accent)',
+    '&$checked': {
+      color: 'var(--accent)',
+    },
+  },
+  checked: {},
+})((props) => <Radio color="primary" {...props} />);
+
+
+
 
 const visibility = {
   INVITE: 'invite',
@@ -113,19 +128,19 @@ function RoomVisibility({ roomId }) {
       <div className={styles.option} >
         <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType==='invite'?<LockIcon sx={{color:'var(--accent)'}} />:<LockOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
         <div className={styles.label}>Private (invite only)</div></div>
-        <div><Radio checked={activeType==='invite'}></Radio></div>
+        <div><AccentRadio checked={activeType==='invite'}/></div>
       </div></button>
       <button onClick={() => setVisibility(items[1])} disabled={(!canChange||items[1].unsupported)}>
       <div className={styles.option} >
         <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType==='restricted'?<TagIcon sx={{color:'var(--accent)'}} />:<TagIcon sx={{color:'var(--text-primary)'}}/>}</div>
         <div className={styles.label}>{`Restricted (unsupported: required room upgrade) : Restricted (space member can join)`}</div></div>
-        <div><Radio checked={activeType==='restricted'}></Radio></div>
+        <div><AccentRadio checked={activeType==='restricted'}/></div>
       </div></button>
       <button onClick={() => setVisibility(items[2])} disabled={(!canChange||items[2].unsupported)}>
       <div className={styles.option} >
         <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType==='public'?<PublicIcon sx={{color:'var(--accent)'}} />:<PublicIcon sx={{color:'var(--text-primary)'}}/>}</div>
         <div className={styles.label}>Public (anyone can join)</div></div>
-        <div><Radio checked={activeType==='public'}></Radio></div>
+        <div><AccentRadio checked={activeType==='public'}/></div>
       </div></button>
       </RadioGroup>
 
