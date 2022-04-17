@@ -97,7 +97,8 @@ function Client() {
         </Text>
 
         <div className={styles.version}>
-          <p>dConvos 0.1.0 (alpha) <span className={styles.logout} onClick={logout}>logout</span></p>
+          {/* import version from github once repo goes public */}
+          <p>dConvos 0.2.0 <span className={styles.logout} onClick={logout}>logout</span></p>
         </div>
       </div>
     );
