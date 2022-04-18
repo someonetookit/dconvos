@@ -351,15 +351,15 @@ function Login({ loginFlow, baseUrl }) {
         </Formik>
       )}
       {ssoProviders && isPassword && (
-        <p className={styles.ssoDivider}>or login/register with</p>
+        <p className={styles.ssoDivider}>we are currently invite only. public release is expected to be on last week of April 2022</p>
       )}
-      {ssoProviders && (
+      {/* {ssoProviders && (
         <SSOButtons
           type="sso"
           identityProviders={ssoProviders.identity_providers}
           baseUrl={baseUrl}
         />
-      )}
+      )} */}
     </>
   );
 }
@@ -720,8 +720,8 @@ function AuthCard() {
         ))}
       {hsConfig !== null && (
         <p className={styles.switchAuth}>
-          {`${type === "login" ? "Don't have" : "Already have"} an account?`}
-          <button
+          {/* {`${type === "login" ? "Don't have" : "Already have"} an account?`} */}
+          {/* <button
             type="button"
             style={{
               color: "var(--tc-link)",
@@ -731,7 +731,7 @@ function AuthCard() {
             onClick={() => setType(type === "login" ? "register" : "login")}
           >
             {type === "login" ? " Register" : " Login"}
-          </button>
+          </button> */}
         </p>
       )}
     </>

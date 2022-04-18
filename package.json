@@ -1,6 +1,6 @@
 {
   "name": "dconvos",
-  "version": "0.0.2",
+  "version": "0.2.0",
   "description": "Secure and decentralized messaging with voice and video calls, beautiful user experience and highly customizable ui.",
   "main": "index.js",
   "engines": {
