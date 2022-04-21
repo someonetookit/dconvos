@@ -17,7 +17,7 @@ function Room() {
     roomTimeline: null,
     eventId: null,
   });
-  const [isDrawer, setIsDrawer] = useState(settings.isPeopleDrawer);
+  const [isDrawer, setIsDrawer] = useState(false);
 
   const mx = initMatrix.matrixClient;
 
