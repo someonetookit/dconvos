@@ -351,15 +351,15 @@ function Login({ loginFlow, baseUrl }) {
         </Formik>
       )}
       {ssoProviders && isPassword && (
-        <p className={styles.ssoDivider}>we are currently invite only. public release is expected to be on last week of April 2022</p>
+        <p className={styles.ssoDivider}>or login/register with</p>
       )}
-      {/* {ssoProviders && (
+      {ssoProviders && (
         <SSOButtons
           type="sso"
           identityProviders={ssoProviders.identity_providers}
           baseUrl={baseUrl}
         />
-      )} */}
+      )}
     </>
   );
 }
@@ -720,8 +720,8 @@ function AuthCard() {
         ))}
       {hsConfig !== null && (
         <p className={styles.switchAuth}>
-          {/* {`${type === "login" ? "Don't have" : "Already have"} an account?`} */}
-          {/* <button
+          {`${type === "login" ? "Don't have" : "Already have"} an account?`}
+          <button
             type="button"
             style={{
               color: "var(--tc-link)",
@@ -731,7 +731,7 @@ function AuthCard() {
             onClick={() => setType(type === "login" ? "register" : "login")}
           >
             {type === "login" ? " Register" : " Login"}
-          </button> */}
+          </button>
         </p>
       )}
     </>
@@ -782,35 +782,6 @@ function Auth() {
             </div>
           )}
         </div>
-
-        {/* <div className="auth-footer">
-          <Text variant="b2">
-            <a href="https://cinny.in" target="_blank" rel="noreferrer">
-              About
-            </a>
-          </Text>
-          <Text variant="b2">
-            <a
-              href="https://github.com/ajbura/cinny/releases"
-              target="_blank"
-              rel="noreferrer"
-            >{`v${cons.version}`}</a>
-          </Text>
-          <Text variant="b2">
-            <a
-              href="https://twitter.com/cinnyapp"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Twitter
-            </a>
-          </Text>
-          <Text variant="b2">
-            <a href="https://matrix.org" target="_blank" rel="noreferrer">
-              Powered by Matrix
-            </a>
-          </Text>
-        </div> */}
       </div>
     </ScrollView>
   );
