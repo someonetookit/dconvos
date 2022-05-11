@@ -111,7 +111,7 @@ function DrawerBreadcrumb({ spaceId }) {
                     className={index === spacePath.length - 1 ? 'drawer-breadcrumb__btn--selected' : ''}
                     onClick={() => selectSpace(id)}
                   >
-                    <Text variant="b2">{id === cons.tabs.HOME ? 'Home' : twemojify(mx.getRoom(id).name)}</Text>
+                    <p style={{fontSize:".8em",opacity:".6"}}>{id === cons.tabs.HOME ? 'Home' : twemojify(mx.getRoom(id).name)}</p>
                     { noti !== null && (
                       <NotificationBadge
                         alert={noti.highlight !== 0}
