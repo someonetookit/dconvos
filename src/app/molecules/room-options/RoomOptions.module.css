@@ -1,0 +1,22 @@
+.menuHeader{
+    height: 12px;
+	padding: 24px 16px 24px 16px;
+	margin-bottom: 4px;
+	/* display: flex;
+	align-items: center; */
+    font-size: 12px;
+	border-bottom: 1px solid var(--bg-surface-border); 
+    color: var(--text-dim);
+}
+.addOptions{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    padding: 8px 16px 8px 16px ;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+.optionTexts{
+    font-size: var(--font-size);
+    padding-left: 5px;
+}

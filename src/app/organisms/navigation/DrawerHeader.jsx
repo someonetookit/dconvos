@@ -37,7 +37,7 @@ import PublicIcon from '@mui/icons-material/Public';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { Toolbar } from '@mui/material';
+
 export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
   const mx = initMatrix.matrixClient;
   const room = mx.getRoom(spaceId);
@@ -47,7 +47,7 @@ export function HomeSpaceOptions({ spaceId, afterOptionSelect }) {
 
   return (
     <>
-      {/* <MenuHeader>Add rooms or spaces</MenuHeader> */}
+      <MenuHeader>Add rooms or spaces</MenuHeader>
       <div className={styles.addOptions} onClick={()=> {afterOptionSelect();openInviteUser();}} disabled={!canManage}>
         <div className={styles.optionIcons}><PersonAddAlt1OutlinedIcon sx={{color:'var(--accent)',fontSize:18}}/></div><span className={styles.optionTexts}>New Chat</span>
       </div>

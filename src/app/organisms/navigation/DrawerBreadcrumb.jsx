@@ -17,7 +17,8 @@ import ScrollView from '../../atoms/scroll/ScrollView';
 import NotificationBadge from '../../atoms/badge/NotificationBadge';
 
 import ChevronRightIC from '../../../../public/res/ic/outlined/chevron-right.svg';
-
+//------------------changes-----------------------
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 function DrawerBreadcrumb({ spaceId }) {
   const [, forceUpdate] = useState({});
   const scrollRef = useRef(null);
@@ -105,6 +106,7 @@ function DrawerBreadcrumb({ spaceId }) {
                   key={id}
                 >
                   { index !== 0 && <RawIcon size="extra-small" src={ChevronRightIC} />}
+                  {/* { index !== 0 && <ChevronRightIcon  sx={{fontSize:10,color:'var(--accent)'}}/>} */}
                   <Button
                     className={index === spacePath.length - 1 ? 'drawer-breadcrumb__btn--selected' : ''}
                     onClick={() => selectSpace(id)}
