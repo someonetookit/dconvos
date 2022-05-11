@@ -150,7 +150,7 @@ function RoomNotification({ roomId }) {
     <div className="room-notification">
       <RadioGroup>
       <div className={styles.option} onClick={() => setNotification(cons.notifs.DEFAULT)}>
-        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.DEFAULT?<NotificationsOffIcon sx={{color:'var(--accent)'}} />:<NotificationsOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <div className={styles.iconAndLabel}><div className={styles.icons}>{activeType===cons.notifs.DEFAULT?<NotificationsIcon sx={{color:'var(--accent)'}} />:<NotificationsOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
         <div className={styles.label}>Global</div></div>
         <div className={styles.radioButton}><AccentRadio  color='primary' checked={activeType===cons.notifs.DEFAULT}/></div>
       </div>

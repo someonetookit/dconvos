@@ -5,7 +5,7 @@
    padding: 0px 16px 0px 16px;
 }
 .option:hover{
-    background-color: aqua;
+    background-color: rgba(43, 55, 55, 0.266);
 }
 .iconAndLabel{
     width: auto;
@@ -17,4 +17,5 @@
 .label{
     padding-top: 2px;
     padding-left: 10px;
+    color: var(--text-primary);
 }

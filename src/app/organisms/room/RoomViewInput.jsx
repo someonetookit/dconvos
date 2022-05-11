@@ -16,7 +16,7 @@ import colorMXID from '../../../util/colorMXID';
 
 import Text from '../../atoms/text/Text';
 import RawIcon from '../../atoms/system-icons/RawIcon';
-import IconButton from '../../atoms/button/IconButton';
+// import IconButton from '../../atoms/button/IconButton';
 import ScrollView from '../../atoms/scroll/ScrollView';
 import { MessageReply } from '../../molecules/message/Message';
 
@@ -29,6 +29,21 @@ import VolumeFullIC from '../../../../public/res/ic/outlined/volume-full.svg';
 import MarkdownIC from '../../../../public/res/ic/outlined/markdown.svg';
 import FileIC from '../../../../public/res/ic/outlined/file.svg';
 import CrossIC from '../../../../public/res/ic/outlined/cross.svg';
+
+//----------changes--------------------//
+import styles from './RoomViewInput.module.css';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
+import InsertEmoticonOutlinedIcon from '@mui/icons-material/InsertEmoticonOutlined';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
+import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined';
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
+import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
+import VideoFileOutlinedIcon from '@mui/icons-material/VideoFileOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+
 
 const CMD_REGEX = /(^\/|:|@)(\S*)$/;
 let isTyping = false;
@@ -321,10 +336,12 @@ function RoomViewInput({
       <>
         <div className={`room-input__option-container${attachment === null ? '' : ' room-attachment__option'}`}>
           <input onChange={uploadFileChange} style={{ display: 'none' }} ref={uploadInputRef} type="file" />
-          <IconButton onClick={handleUploadClick} tooltip={attachment === null ? 'Upload' : 'Cancel'} src={CirclePlusIC} />
+          <Tooltip placement='top' title={attachment === null ? 'Upload' : 'Cancel'}><IconButton onClick={handleUploadClick}><AttachFileOutlinedIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>
+          {/* <IconButton onClick={handleUploadClick} tooltip={attachment === null ? 'Upload' : 'Cancel'} src={CirclePlusIC} /> */}
         </div>
         <div ref={inputBaseRef} className="room-input__input-container">
-          {roomTimeline.isEncrypted() && <RawIcon size="extra-small" src={ShieldIC} />}
+        {roomTimeline.isEncrypted() && <div className={styles.shield}><ShieldOutlinedIcon sx={{color:'var(--text-dim)',fontSize:15}}/></div>}
+          {/* {roomTimeline.isEncrypted() && <RawIcon size="extra-small" src={ShieldIC} />} */}
           <ScrollView autoHide>
             <Text className="room-input__textarea-wrapper">
               <TextareaAutosize
@@ -337,10 +354,20 @@ function RoomViewInput({
               />
             </Text>
           </ScrollView>
-          {isMarkdown && <RawIcon size="extra-small" src={MarkdownIC} />}
+          {isMarkdown && <div className={styles.markdown}><CheckCircleOutlinedIcon sx={{color:'var(--text-dim)',fontSize:15}}/></div>}
+          {/* {isMarkdown && <RawIcon size="extra-small" src={MarkdownIC} />} */}
         </div>
         <div ref={rightOptionsRef} className="room-input__option-container">
-          <IconButton
+          <Tooltip title="Emoji" placement='top'>
+            <IconButton onClick={(e) => {
+              const cords = getEventCords(e);
+              cords.x += (document.dir === 'rtl' ? -80 : 80);
+              cords.y -= 250;
+              openEmojiBoard(cords, addEmoji);
+            }}><InsertEmoticonOutlinedIcon sx={{color:'var(--text-primary)'}}/></IconButton>
+          </Tooltip>
+          <Tooltip title="Send"><IconButton onClick={sendMessage}><SendRoundedIcon sx={{color:'var(--accent)'}} /></IconButton></Tooltip>
+          {/* <IconButton
             onClick={(e) => {
               const cords = getEventCords(e);
               cords.x += (document.dir === 'rtl' ? -80 : 80);
@@ -350,7 +377,7 @@ function RoomViewInput({
             tooltip="Emoji"
             src={EmojiIC}
           />
-          <IconButton onClick={sendMessage} tooltip="Send" src={SendIC} />
+          <IconButton onClick={sendMessage} tooltip="Send" src={SendIC} /> */}
         </div>
       </>
     );
@@ -362,9 +389,12 @@ function RoomViewInput({
       <div className="room-attachment">
         <div className={`room-attachment__preview${fileType !== 'image' ? ' room-attachment__icon' : ''}`}>
           {fileType === 'image' && <img alt={attachment.name} src={URL.createObjectURL(attachment)} />}
-          {fileType === 'video' && <RawIcon src={VLCIC} />}
-          {fileType === 'audio' && <RawIcon src={VolumeFullIC} />}
-          {fileType !== 'image' && fileType !== 'video' && fileType !== 'audio' && <RawIcon src={FileIC} />}
+          {fileType === 'video' && <VideoFileOutlinedIcon sx={{color:'var(--text-primary)'}}/>}
+          {fileType === 'audio' && <VolumeUpOutlinedIcon sx={{color:'var(--text-primary)'}}/>} 
+          {fileType !== 'image' && fileType !== 'video' && fileType !== 'audio' && <InsertDriveFileOutlinedIcon sx={{color:'var(--text-primary)'}}/>}
+          {/* {fileType === 'video' && <RawIcon src={VLCIC} />} */}
+          {/* {fileType === 'audio' && <RawIcon src={VolumeFullIC} />} */}
+          {/* {fileType !== 'image' && fileType !== 'video' && fileType !== 'audio' && <RawIcon src={FileIC} />} */}
         </div>
         <div className="room-attachment__info">
           <Text variant="b1">{attachment.name}</Text>
@@ -377,7 +407,16 @@ function RoomViewInput({
   function attachReply() {
     return (
       <div className="room-reply">
-        <IconButton
+        <Tooltip title="Cancel reply">
+          <IconButton onClick={() => {
+            roomsInput.cancelReplyTo(roomId);
+            setReplyTo(null);
+          }} >
+            <CloseOutlinedIcon sx={{color:'var(--text-primary)'}}/>
+          </IconButton>
+
+        </Tooltip>
+        {/* <IconButton
           onClick={() => {
             roomsInput.cancelReplyTo(roomId);
             setReplyTo(null);
@@ -385,7 +424,7 @@ function RoomViewInput({
           src={CrossIC}
           tooltip="Cancel reply"
           size="extra-small"
-        />
+        /> */}
         <MessageReply
           userId={replyTo.userId}
           name={getUsername(replyTo.userId)}

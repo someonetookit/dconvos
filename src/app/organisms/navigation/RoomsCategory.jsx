@@ -8,7 +8,7 @@ import { getEventCords } from '../../../util/common';
 
 import Text from '../../atoms/text/Text';
 import RawIcon from '../../atoms/system-icons/RawIcon';
-import IconButton from '../../atoms/button/IconButton';
+//import IconButton from '../../atoms/button/IconButton';
 import Selector from './Selector';
 import SpaceOptions from '../../molecules/space-options/SpaceOptions';
 import { HomeSpaceOptions } from './DrawerHeader';
@@ -18,6 +18,13 @@ import HorizontalMenuIC from '../../../../public/res/ic/outlined/horizontal-menu
 import ChevronBottomIC from '../../../../public/res/ic/outlined/chevron-bottom.svg';
 import ChevronRightIC from '../../../../public/res/ic/outlined/chevron-right.svg';
 
+//------------changes---------------------//
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import AddIcon from '@mui/icons-material/Add';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 function RoomsCategory({
   spaceId, name, hideHeader, roomIds, drawerPostie,
 }) {
@@ -61,12 +68,18 @@ function RoomsCategory({
     <div className="room-category">
       {!hideHeader && (
         <div className="room-category__header">
-          <button className="room-category__toggle" onClick={() => setIsOpen(!isOpen)} type="button">
-            <RawIcon src={isOpen ? ChevronBottomIC : ChevronRightIC} size="extra-small" />
+          <button className="room-category__toggle" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen?<ExpandMoreIcon sx={{color:'var(--text-primary)',fontSize:16}}/>:<ChevronRightIcon sx={{color:'var(--text-primary)',fontSize:16}}/>}
             <Text className="cat-header" variant="b3" weight="medium">{name}</Text>
           </button>
-          {spaceId && <IconButton onClick={openSpaceOptions} tooltip="Space options" src={HorizontalMenuIC} size="extra-small" />}
-          {spaceId && <IconButton onClick={openHomeSpaceOptions} tooltip="Add rooms/spaces" src={PlusIC} size="extra-small" />}
+          {/* <button className="room-category__toggle" onClick={() => setIsOpen(!isOpen)} type="button">
+            <RawIcon src={isOpen ? ChevronBottomIC : ChevronRightIC} size="extra-small" />
+            <Text className="cat-header" variant="b3" weight="medium">{name}</Text>
+          </button> */}
+          {spaceId &&<Tooltip title="Space options" placement='right'><IconButton onClick={openSpaceOptions}><MoreHorizIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>}
+          {spaceId && <Tooltip title="Add rooms/spaces"><IconButton onClick={openHomeSpaceOptions}><AddIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>}
+          {/* {spaceId && <IconButton onClick={openSpaceOptions} tooltip="Space options" src={HorizontalMenuIC} size="extra-small" />}
+          {spaceId && <IconButton onClick={openHomeSpaceOptions} tooltip="Add rooms/spaces" src={PlusIC} size="extra-small" />} */}
         </div>
       )}
       {(isOpen || hideHeader) && (

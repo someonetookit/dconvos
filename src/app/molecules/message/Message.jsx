@@ -21,10 +21,10 @@ import { sanitizeCustomHtml } from '../../../util/sanitize';
 import Text from '../../atoms/text/Text';
 import RawIcon from '../../atoms/system-icons/RawIcon';
 import Button from '../../atoms/button/Button';
-import Tooltip from '../../atoms/tooltip/Tooltip';
+// import Tooltip from '../../atoms/tooltip/Tooltip';
 import Input from '../../atoms/input/Input';
 import Avatar from '../../atoms/avatar/Avatar';
-import IconButton from '../../atoms/button/IconButton';
+// import IconButton from '../../atoms/button/IconButton';
 import ContextMenu, { MenuHeader, MenuItem, MenuBorder } from '../../atoms/context-menu/ContextMenu';
 import * as Media from '../media/Media';
 
@@ -35,6 +35,19 @@ import PencilIC from '../../../../public/res/ic/outlined/pencil.svg';
 import TickMarkIC from '../../../../public/res/ic/outlined/tick-mark.svg';
 import CmdIC from '../../../../public/res/ic/outlined/cmd.svg';
 import BinIC from '../../../../public/res/ic/outlined/bin.svg';
+
+//------------changes----------------------//
+import TerminalIcon from '@mui/icons-material/Terminal';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
+import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import styles from './Message.module.css';
+
 
 function PlaceholderMessage() {
   return (
@@ -283,9 +296,12 @@ function MessageEdit({ body, onSave, onCancel }) {
         resizable
         autoFocus
       />
-      <div className="message__edit-btns">
-        <Button type="submit" variant="primary">Save</Button>
-        <Button onClick={onCancel}>Cancel</Button>
+      <div className={styles.buttonConatiner}>
+        <button type='submit' className={styles.saveButton}>Save</button>
+        <button onClick={onCancel} className={styles.cancelButton}>Cancel</button>
+
+        {/* <Button type="submit" variant="primary">Save</Button>
+        <Button onClick={onCancel}>Cancel</Button> */}
       </div>
     </form>
   );
@@ -503,6 +519,65 @@ const MessageOptions = React.memo(({
   return (
     <div className="message__options">
       {canSendReaction && (
+        <Tooltip title="Add reaction" placement='top'>
+            <IconButton size='small' onClick={(e) => pickEmoji(e, roomId, mEvent.getId(), roomTimeline)}>
+              <AddReactionOutlinedIcon sx={{color:'var(--text-primary)',fontSize:20}} />
+            </IconButton>
+        </Tooltip>
+      )}
+      <Tooltip title="Reply" placement='top'>
+            <IconButton size='small' onClick={() => reply()}>
+              <ReplyOutlinedIcon sx={{color:'var(--text-primary)',fontSize:20}} />
+            </IconButton>
+      </Tooltip>
+      {(senderId === mx.getUserId() && !isMedia(mEvent)) && (
+        <Tooltip title="Edit" placement='top'>
+          <IconButton size='small' onClick={() => edit(true)}>
+            <ModeEditOutlineOutlinedIcon sx={{color:'var(--text-primary)',fontSize:20}} />
+          </IconButton>
+        </Tooltip>
+      )}
+      <ContextMenu
+        content={() => (
+          <>
+          <div className={styles.container}>
+          {<span className={styles.menuHeader}>Options</span>}
+
+          <div className={styles.addOptions} onClick={() => openReadReceipts(roomId, roomTimeline.getEventReaders(mEvent))}>
+              <div className={styles.optionIcons}><DoneAllIcon sx={{color:'var(--text-primary)',fontSize:20}}/></div>
+              <span className={styles.optionTexts}>Read receipts</span>
+          </div>          
+          <div className={styles.addOptions} onClick={() => handleOpenViewSource(mEvent, roomTimeline)}>
+              <div className={styles.optionIcons}><TerminalIcon sx={{color:'var(--text-primary)',fontSize:20}}/></div>
+              <span className={styles.optionTexts}>View source</span>
+          </div> 
+        
+            {(canIRedact || senderId === mx.getUserId()) && (
+              <>
+                <div style={{ borderBottom: '1px solid var(--bg-surface-border)' }}> </div>
+                <div className={styles.addOptions} onClick={() => {
+                    if (window.confirm('Are you sure you want to delete this event')) {
+                      redactEvent(roomId, mEvent.getId());
+                    }
+                  }}>
+                  <div className={styles.optionIcons}><DeleteOutlinedIcon sx={{color:'red',fontSize:20}}/></div>
+                  <span className={styles.optionTexts}>Delete</span>
+                </div>
+              </>
+            )}
+            </div>
+          </>
+        )}
+        render={(toggleMenu) => (
+
+          <Tooltip title="Options" placement='top'>
+            <IconButton onClick={toggleMenu}>
+              <MoreVertIcon sx={{color:'var(--text-primary)',fontSize:20}}/>
+            </IconButton>
+          </Tooltip>
+        )}
+      />
+      {/* {canSendReaction && (
         <IconButton
           onClick={(e) => pickEmoji(e, roomId, mEvent.getId(), roomTimeline)}
           src={EmojiAddIC}
@@ -523,8 +598,8 @@ const MessageOptions = React.memo(({
           size="extra-small"
           tooltip="Edit"
         />
-      )}
-      <ContextMenu
+      )} */}
+      {/* <ContextMenu
         content={() => (
           <>
             <MenuHeader>Options</MenuHeader>
@@ -566,7 +641,7 @@ const MessageOptions = React.memo(({
             tooltip="Options"
           />
         )}
-      />
+      /> */}
     </div>
   );
 });

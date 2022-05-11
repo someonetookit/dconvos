@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './RoomSettings.scss';
 import styles from './RoomSettings.module.css'
-import { blurOnBubbling } from '../../atoms/button/script';
+// import { blurOnBubbling } from '../../atoms/button/script';
 
 import initMatrix from '../../../client/initMatrix';
 import cons from '../../../client/state/cons';
@@ -11,10 +11,10 @@ import { openInviteUser, toggleRoomSettings } from '../../../client/action/navig
 import * as roomActions from '../../../client/action/room';
 
 import Text from '../../atoms/text/Text';
-import RawIcon from '../../atoms/system-icons/RawIcon';
-import Header, { TitleWrapper } from '../../atoms/header/Header';
+// import RawIcon from '../../atoms/system-icons/RawIcon';
+// import Header, { TitleWrapper } from '../../atoms/header/Header';
 import ScrollView from '../../atoms/scroll/ScrollView';
-import Tabs from '../../atoms/tabs/Tabs';
+// import Tabs from '../../atoms/tabs/Tabs';
 import { MenuHeader, MenuItem } from '../../atoms/context-menu/ContextMenu';
 import RoomProfile from '../../molecules/room-profile/RoomProfile';
 import RoomSearch from '../../molecules/room-search/RoomSearch';
@@ -26,14 +26,14 @@ import RoomEncryption from '../../molecules/room-encryption/RoomEncryption';
 import RoomPermissions from '../../molecules/room-permissions/RoomPermissions';
 import RoomMembers from '../../molecules/room-members/RoomMembers';
 
-import UserIC from '../../../../public/res/ic/outlined/user.svg';
-import SettingsIC from '../../../../public/res/ic/outlined/settings.svg';
-import SearchIC from '../../../../public/res/ic/outlined/search.svg';
-import ShieldUserIC from '../../../../public/res/ic/outlined/shield-user.svg';
-import LockIC from '../../../../public/res/ic/outlined/lock.svg';
-import AddUserIC from '../../../../public/res/ic/outlined/add-user.svg';
-import LeaveArrowIC from '../../../../public/res/ic/outlined/leave-arrow.svg';
-import ChevronTopIC from '../../../../public/res/ic/outlined/chevron-top.svg';
+// import UserIC from '../../../../public/res/ic/outlined/user.svg';
+// import SettingsIC from '../../../../public/res/ic/outlined/settings.svg';
+// import SearchIC from '../../../../public/res/ic/outlined/search.svg';
+// import ShieldUserIC from '../../../../public/res/ic/outlined/shield-user.svg';
+// import LockIC from '../../../../public/res/ic/outlined/lock.svg';
+// import AddUserIC from '../../../../public/res/ic/outlined/add-user.svg';
+// import LeaveArrowIC from '../../../../public/res/ic/outlined/leave-arrow.svg';
+// import ChevronTopIC from '../../../../public/res/ic/outlined/chevron-top.svg';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import LogoutIcon from '@mui/icons-material/Logout';
 

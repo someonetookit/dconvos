@@ -1,0 +1,59 @@
+.menuHeader{
+    height: 12px;
+	padding: 24px 16px 24px 16px;
+	margin-bottom: 4px;
+	/* display: flex;
+	align-items: center; */
+    font-size: 12px;
+	border-bottom: 1px solid var(--bg-surface-border); 
+    color: var(--text-dim);
+}
+.addOptions{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    padding: 8px 16px 8px 16px ;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+.optionTexts{
+    font-size: var(--font-size);
+    padding-left: 5px;
+}
+.container{
+    width: 200px;
+}
+.buttonConatiner{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    justify-content: space-between;
+    margin: var(--sp-tight) 0 0 0;
+    padding: var(--sp-extra-tight) 0;
+
+}
+.saveButton{
+    text-align: center;
+    background-color: var(--accent);
+    color: var(--text-primary);
+    border:  1px solid #000 ;
+    border-radius: 5px;
+    width: 80px;
+    padding: 8px 0px 8px 0px;
+}
+.saveButton:hover{
+    background-color: var(--accent);
+    opacity: 0.6;
+}
+.cancelButton{
+    text-align: center;
+    color: var(--text-primary);
+    background-color: rgba(237, 12, 12, 0.747);
+    border:  1px solid #000;
+    border-radius: 5px;
+    width: 80px;
+    padding: 8px 0px 8px 0px;
+}
+.cancelButton:hover{
+    opacity: 0.6;
+}

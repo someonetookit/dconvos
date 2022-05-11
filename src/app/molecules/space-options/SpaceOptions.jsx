@@ -15,15 +15,26 @@ import {
 
 import { MenuHeader, MenuItem } from '../../atoms/context-menu/ContextMenu';
 
-import CategoryIC from '../../../../public/res/ic/outlined/category.svg';
-import CategoryFilledIC from '../../../../public/res/ic/filled/category.svg';
-import AddUserIC from '../../../../public/res/ic/outlined/add-user.svg';
-import SettingsIC from '../../../../public/res/ic/outlined/settings.svg';
-import HashSearchIC from '../../../../public/res/ic/outlined/hash-search.svg';
-import LeaveArrowIC from '../../../../public/res/ic/outlined/leave-arrow.svg';
-import PinIC from '../../../../public/res/ic/outlined/pin.svg';
-import PinFilledIC from '../../../../public/res/ic/filled/pin.svg';
+// import CategoryIC from '../../../../public/res/ic/outlined/category.svg';
+// import CategoryFilledIC from '../../../../public/res/ic/filled/category.svg';
+// import AddUserIC from '../../../../public/res/ic/outlined/add-user.svg';
+// import SettingsIC from '../../../../public/res/ic/outlined/settings.svg';
+// import HashSearchIC from '../../../../public/res/ic/outlined/hash-search.svg';
+// import LeaveArrowIC from '../../../../public/res/ic/outlined/leave-arrow.svg';
+// import PinIC from '../../../../public/res/ic/outlined/pin.svg';
+// import PinFilledIC from '../../../../public/res/ic/filled/pin.svg';
 
+//--------------changes---------------------------//
+import styles from './SpaceOptions.module.css';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
+import CategoryIcon from '@mui/icons-material/Category';
+import ManageSearchOutlinedIcon from '@mui/icons-material/ManageSearchOutlined';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import SearchIcon from '@mui/icons-material/Search';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
+import PushPinIcon from '@mui/icons-material/PushPin';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 function SpaceOptions({ roomId, afterOptionSelect }) {
   const mx = initMatrix.matrixClient;
   const room = mx.getRoom(roomId);
@@ -63,8 +74,33 @@ function SpaceOptions({ roomId, afterOptionSelect }) {
 
   return (
     <div style={{ maxWidth: 'calc(var(--navigation-drawer-width) - var(--sp-normal))' }}>
-      <MenuHeader>{twemojify(`Options for ${initMatrix.matrixClient.getRoom(roomId)?.name}`)}</MenuHeader>
-      <MenuItem
+      {<span className={styles.menuHeader}>Options for {initMatrix.matrixClient.getRoom(roomId)?.name}</span>}
+      <div className={styles.addOptions} onClick={handleCategorizeClick}>
+        <div className={styles.optionIcons}>{isCategorized ? <CategoryIcon sx={{color:'var(--text-primary)'}}/>:<CategoryOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <span className={styles.optionTexts}>{isCategorized ? 'Uncategorize subspaces' : 'Categorize subspaces'}</span>
+      </div>
+      <div className={styles.addOptions} onClick={handlePinClick}>
+        <div className={styles.optionIcons}>{isPinned ? <PushPinIcon sx={{color:'var(--text-primary)'}}/>:<PushPinOutlinedIcon sx={{color:'var(--text-primary)'}}/>}</div>
+        <span className={styles.optionTexts}>{isPinned ? 'Unpin from sidebar' : 'Pin to sidebar'}</span>
+      </div>
+      <div className={styles.addOptions} onClick={handleInviteClick} disabled={!canInvite}>
+        <div className={styles.optionIcons}><PersonAddAlt1Icon sx={{color:'var(--text-primary)'}}/></div>
+        <span className={styles.optionTexts}>Invite</span>
+      </div>
+      <div className={styles.addOptions} onClick={handleManageRoom}>
+        <div className={styles.optionIcons}><ManageSearchOutlinedIcon sx={{color:'var(--text-primary)'}}/></div>
+        <span className={styles.optionTexts}>Manage rooms</span>
+      </div>
+      <div className={styles.addOptions} onClick={handleSettingsClick}>
+        <div className={styles.optionIcons}><SettingsOutlinedIcon sx={{color:'var(--text-primary)'}}/></div>
+        <span className={styles.optionTexts}>Settings</span>
+      </div>
+      <div className={styles.addOptions}  onClick={handleLeaveClick}>
+        <div className={styles.optionIcons}><LogoutOutlinedIcon sx={{color:'red'}} /></div>
+        <span className={styles.optionTexts}>Leave</span>
+      </div>
+      {/* <MenuHeader>{twemojify(`Options for ${initMatrix.matrixClient.getRoom(roomId)?.name}`)}</MenuHeader> */}
+      {/* <MenuItem
         onClick={handleCategorizeClick}
         iconSrc={isCategorized ? CategoryFilledIC : CategoryIC}
       >
@@ -91,7 +127,7 @@ function SpaceOptions({ roomId, afterOptionSelect }) {
         iconSrc={LeaveArrowIC}
       >
         Leave
-      </MenuItem>
+      </MenuItem> */}
     </div>
   );
 }
