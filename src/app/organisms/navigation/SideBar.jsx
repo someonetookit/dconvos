@@ -185,20 +185,23 @@ function ProfileAvatarMenu() {
     open={open}
     onClose={handleClose}
     aria-labelledby="responsive-dialog-title"
+    sx={{
+      boxShadow: 3,
+    }}
   >
-    <DialogTitle  sx={{background:'var(--bg-sub)'}} color='var(--accent)' id="responsive-dialog-title">
+    <DialogTitle  sx={{background:'#1a1a1a'}} color='var(--accent)' id="responsive-dialog-title">
       {"Logout session !"}
     </DialogTitle>
-    <DialogContent  sx={{background:'var(--bg-sub)'}}>
-      <DialogContentText>
-        Make sure you save the session key before logout ,to avoid future data lose :)
+    <DialogContent  sx={{background:'#1a1a1a'}}>
+      <DialogContentText color='white'>
+        Make sure you save the session key before logout ,to avoid future data lose
       </DialogContentText>
     </DialogContent>
-    <DialogActions  sx={{background:'var(--bg-sub)'}}>
-      <Button sx={{color:'var(--accent)'}} autoFocus onClick={handleClose}>
+    <DialogActions  sx={{background:'#1a1a1a'}}>
+      <Button sx={{color:'var(--accent)',borderColor:'var(--accent)'}} variant="outlined" onClick={handleClose}>
         Cancel
       </Button>
-      <Button sx={{color:'red'}} onClick={handleLogout} autoFocus>
+      <Button sx={{color:'red',borderColor:'red'}} onClick={handleLogout} variant="outlined">
         Logout
       </Button>
     </DialogActions>
