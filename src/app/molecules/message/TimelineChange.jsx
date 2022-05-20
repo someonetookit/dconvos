@@ -48,7 +48,8 @@ function TimelineChange({
         </Text>
       </div>
       <div className="timeline-change__time">
-        <Text variant="b3">{time}</Text>
+      <div style={{color:'var(--accent)',fontSize:'0.85714rem'}}>{time}</div>
+        {/* <Text variant="b3">{time}</Text> */}
       </div>
     </button>
   );

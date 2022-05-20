@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import './SideBar.scss';
+// import './SideBar.scss';
 import styles from './Sidebar.module.css'
 
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
@@ -22,11 +22,11 @@ import ScrollView from '../../atoms/scroll/ScrollView';
 import SidebarAvatar from '../../molecules/sidebar-avatar/SidebarAvatar';
 import SpaceOptions from '../../molecules/space-options/SpaceOptions';
 import logout from "../../../client/action/logout";
-import HomeIC from '../../../../public/res/ic/outlined/home.svg';
-import UserIC from '../../../../public/res/ic/outlined/user.svg';
-import AddPinIC from '../../../../public/res/ic/outlined/add-pin.svg';
-import SearchIC from '../../../../public/res/ic/outlined/search.svg';
-import InviteIC from '../../../../public/res/ic/outlined/invite.svg';
+// import HomeIC from '../../../../public/res/ic/outlined/home.svg';
+// import UserIC from '../../../../public/res/ic/outlined/user.svg';
+// import AddPinIC from '../../../../public/res/ic/outlined/add-pin.svg';
+// import SearchIC from '../../../../public/res/ic/outlined/search.svg';
+// import InviteIC from '../../../../public/res/ic/outlined/invite.svg';
 
 import { useSelectedTab } from '../../hooks/useSelectedTab';
 
@@ -462,15 +462,15 @@ function SideBar() {
   const [selectedTab] = useSelectedTab();
 
   return (
-    <div className="sidebar">
-      <div className="sidebar__scrollable">
+    <div className={styles.sidebar}>
+      <div className={styles.sidebarScrollable}>
         <ScrollView invisible>
-          <div className="scrollable-content">
-            <div className="featured-container">
+          <div className={styles.scrollableContent}>
+            <div className={styles.featuredContainer}>
               <FeaturedTab />
             </div>
-            <div className="sidebar-divider" />
-            <div className="space-container">
+            <div className={styles.sidebarDivider} />
+            <div className={styles.spaceContainer}>
               <SpaceShortcut />
               <Tooltip title="Pin spaces" placement='right'>
                 <IconButton onClick={()=>openShortcutSpaces()}>
@@ -481,9 +481,9 @@ function SideBar() {
           </div>
         </ScrollView>
       </div>
-      <div className="sidebar__sticky">
-        <div className="sidebar-divider" />
-        <div className="sticky-container">
+      <div className={styles.sidebarSticky}>
+        <div className={styles.sidebarDivider} />
+        <div className={styles.stickyContainer}>
           <Tooltip title='Search' placement='right'>
             <IconButton onClick={()=>openSearch()}>
                 <SearchIcon sx={{color:'var(--text-primary)'}}/>
@@ -513,7 +513,8 @@ function SideBar() {
         </IconButton>
       </Tooltip>
     </div>
-          <ProfileAvatarMenu />
+    <div className={styles.sidebarAvatar}>
+          <ProfileAvatarMenu /></div>
         </div>
       </div>
     </div>
