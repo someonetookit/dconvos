@@ -5,7 +5,34 @@
   --text-primary : white;
 
   --bg-main : #121212;
-  --font-size : 14px;
+  /* --font-size : 14px; */
   --bg-sub : #C4C4C4;
   --text-dim :rgba(255, 255, 255, 0.611);
+  
+
+  /*--------------------  text ---------------*/
+  /* --fs-h1: 2.5714rem;
+  --ls-h1: -1.5px;
+  --lh-h1: 2.7143rem;
+
+  --fs-h2: 1.7143rem;
+  --ls-h2: -0.5px;
+  --lh-h2: 2.1429rem;
+
+  --fs-s1: 1.2857rem;
+  --ls-s1: -0.2px;
+  --lh-s1: 1.7143rem;
+
+  --fs-b1: 1.1429rem;
+  --ls-b1: 0.1px;
+  --lh-b1: 1.7143rem;
+
+  --fs-b2: 1rem;
+  --ls-b2: 0.2px;
+  --lh-b2: 1.4286rem;
+
+  --fs-b3: 0.85714rem;
+  --ls-b3: 0px;
+  --lh-b3: 1.1429rem; */
+
 }

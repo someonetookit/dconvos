@@ -213,7 +213,7 @@ function AppearanceSection() {
         <div className={styles.sliderMain}>
           <div className={styles.slider}>
             <Slider
-              defaultValue={13 || localStorage.getItem("fontSize")}
+              defaultValue={localStorage.getItem("fontSize")||13 }
               getAriaValueText={valuetext}
               valueLabelDisplay="auto"
               step={1}
@@ -543,7 +543,7 @@ function HelpSection() {
                 <HelpCenterIcon sx={{ fontSize: 18, color: "var(--accent)" }} />
               </div>
               <div className={styles.helpCenter}>
-                <Text>Help center</Text>
+                <Text variant="b2">Help center</Text>
               </div>
             </div>
             <div className={styles.helpOptions}>
@@ -551,7 +551,7 @@ function HelpSection() {
                 <PeopleIcon sx={{ fontSize: 18, color: "var(--accent)" }} />
               </div>
               <div className={styles.helpContact}>
-                <Text>Contact us</Text>
+                <Text variant="b2">Contact us</Text>
               </div>
             </div>
             <div className={styles.helpOptions}>
@@ -559,7 +559,7 @@ function HelpSection() {
                 <PrivacyTip sx={{ fontSize: 18, color: "var(--accent)" }} />
               </div>
               <div className={styles.HelpTerms}>
-                <Text>Terms and Privacy Policy</Text>
+                <Text variant="b2">Terms and Privacy Policy</Text>
               </div>
             </div>
           </div>
@@ -652,28 +652,28 @@ function Settings() {
               tabIndex="0"
               className={styles.settingsGeneralTab}
             >
-              <Text>General</Text>
+             <Text variant="b2"> General</Text>
             </div>
             <div
               onClick={() => changeTab("notification")}
               tabIndex="-1"
               className={styles.settingsNotificationTab}
             >
-              <Text>Notifications</Text>
+            <Text variant="b2">  Notifications</Text>
             </div>
             <div
               onClick={() => changeTab("security")}
               tabIndex="-1"
               className={styles.settingsSecurityTab}
             >
-              <Text>Security &amp; Privacy</Text>
+            <Text variant="b2">  Security &amp; Privacy</Text>
             </div>
             <div
               onClick={() => changeTab("help")}
               tabIndex="-1"
               className={styles.settingsHelpTab}
             >
-              <Text>Help</Text>
+            <Text variant="b2"> Help</Text>
             </div>
           </div>
           <div className={styles.tabContent}>{settingsTab}</div>

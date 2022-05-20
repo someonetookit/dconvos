@@ -93,7 +93,7 @@ const MessageHeader = React.memo(({
       <span>{twemojify(userId)}</span>
     </Text>
     <div className="message__time">
-      <Text variant="b3">{time}</Text>
+      <div style={{color:'var(--accent)',fontSize:'0.85714rem'}}>{time}</div>
     </div>
   </div>
 ));

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './Room.scss';
-
+// import './Room.scss';
+import styles from './Room.module.css'
 import initMatrix from '../../../client/initMatrix';
 import cons from '../../../client/state/cons';
 import navigation from '../../../client/state/navigation';
@@ -56,8 +56,15 @@ function Room() {
   if (roomTimeline === null) return <Welcome />;
 
   return (
-    <div className="room">
-      <div className="room__content">
+    // <div className="room">
+    //   <div className="room__content">
+    //     <RoomSettings roomId={roomTimeline.roomId} />
+    //     <RoomView roomTimeline={roomTimeline} eventId={eventId} />
+    //   </div>
+    //   { isDrawer && <PeopleDrawer roomId={roomTimeline.roomId} />}
+    // </div>
+    <div className={styles.room}>
+      <div className={styles.roomContent}>
         <RoomSettings roomId={roomTimeline.roomId} />
         <RoomView roomTimeline={roomTimeline} eventId={eventId} />
       </div>

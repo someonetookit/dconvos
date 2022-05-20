@@ -1,0 +1,68 @@
+.sidebar{
+    width: 65px;
+    height: 100%;
+    background-color: var(--bg-surface-extra-low);
+    border-right: 1px solid var(--bg-surface-border);
+    align-items: center;
+    display: flex;
+  flex-direction: column;
+}
+.sidebarScrollable{
+    display: flex;
+  flex-direction: column;
+    width: 100%;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+}
+.scrollableContent{
+    position: sticky;
+    bottom: -1px;
+    left: 0;
+    background: transparent;
+    background-image: linear-gradient(
+      to top,
+      var(--bg-surface-extra-low),
+      var(--bg-surface-extra-low-transparent));
+      display: block;
+      width: 100%;
+} 
+.sidebarDivider{
+    margin: auto;
+    width: 24px;
+    height: 1px;
+    background-color: var(--bg-surface-border);
+}
+.sidebarSticky{
+    display: flex;
+  flex-direction: column;
+    width: 100%;
+}
+.featuredContainer{
+    padding:6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.spaceContainer{
+    padding:6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.stickyContainer{
+    padding:6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sidebarAvatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: calc(var(--sp-tight) / 2) 0;
+}
