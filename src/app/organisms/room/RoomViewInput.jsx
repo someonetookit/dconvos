@@ -20,15 +20,15 @@ import RawIcon from '../../atoms/system-icons/RawIcon';
 import ScrollView from '../../atoms/scroll/ScrollView';
 import { MessageReply } from '../../molecules/message/Message';
 
-import CirclePlusIC from '../../../../public/res/ic/outlined/circle-plus.svg';
-import EmojiIC from '../../../../public/res/ic/outlined/emoji.svg';
-import SendIC from '../../../../public/res/ic/outlined/send.svg';
-import ShieldIC from '../../../../public/res/ic/outlined/shield.svg';
-import VLCIC from '../../../../public/res/ic/outlined/vlc.svg';
-import VolumeFullIC from '../../../../public/res/ic/outlined/volume-full.svg';
-import MarkdownIC from '../../../../public/res/ic/outlined/markdown.svg';
-import FileIC from '../../../../public/res/ic/outlined/file.svg';
-import CrossIC from '../../../../public/res/ic/outlined/cross.svg';
+// import CirclePlusIC from '../../../../public/res/ic/outlined/circle-plus.svg';
+// import EmojiIC from '../../../../public/res/ic/outlined/emoji.svg';
+// import SendIC from '../../../../public/res/ic/outlined/send.svg';
+// import ShieldIC from '../../../../public/res/ic/outlined/shield.svg';
+// import VLCIC from '../../../../public/res/ic/outlined/vlc.svg';
+// import VolumeFullIC from '../../../../public/res/ic/outlined/volume-full.svg';
+// import MarkdownIC from '../../../../public/res/ic/outlined/markdown.svg';
+// import FileIC from '../../../../public/res/ic/outlined/file.svg';
+// import CrossIC from '../../../../public/res/ic/outlined/cross.svg';
 
 //----------changes--------------------//
 import styles from './RoomViewInput.module.css';
@@ -43,6 +43,18 @@ import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import VideoFileOutlinedIcon from '@mui/icons-material/VideoFileOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import MicIcon from '@mui/icons-material/Mic';
+//-----------recording -------------------
+// import {Recorder} from 'react-voice-recorder';
+import DeleteIcon from '@mui/icons-material/Delete';
+import PauseIcon from '@mui/icons-material/Pause';
+import StopCircleIcon from '@mui/icons-material/StopCircle';
+import { formatMinutes, formatSeconds } from './voice-record/utils/format-time';
+import useRecorder from './voice-record/hooks/useRecorder';
+// import RecorderControls from './voice-record/recorder-controls/RecordControls'
+import useRecordingsList from "./voice-record/hooks/use-recordings-list";
+
+
 
 
 const CMD_REGEX = /(^\/|:|@)(\S*)$/;
@@ -53,12 +65,14 @@ function RoomViewInput({
   roomId, roomTimeline, viewEvent,
 }) {
   const [attachment, setAttachment] = useState(null);
+  const [audioAttachment,setAudioAttachment] = useState(null);
   const [isMarkdown, setIsMarkdown] = useState(settings.isMarkdown);
   const [replyTo, setReplyTo] = useState(null);
 
   const textAreaRef = useRef(null);
   const inputBaseRef = useRef(null);
   const uploadInputRef = useRef(null);
+  const recordedAudioRef = useRef(null);
   const uploadProgressRef = useRef(null);
   const rightOptionsRef = useRef(null);
 
@@ -105,6 +119,12 @@ function RoomViewInput({
     inputBaseRef.current.style.backgroundImage = 'unset';
     uploadInputRef.current.value = null;
   }
+  // function clearStoredAudio(myRoomId) {
+  //   if (roomId !== myRoomId) return;
+  //   setAudioAttachment(null);
+  //   inputBaseRef.current.style.backgroundImage = 'unset';
+  //   recordedAudioRef.current.value = null;
+  // }
 
   function rightOptionsA11Y(A11Y) {
     const rightOptions = rightOptionsRef.current.children;
@@ -164,18 +184,23 @@ function RoomViewInput({
     roomsInput.on(cons.events.roomsInput.UPLOAD_PROGRESS_CHANGES, uploadingProgress);
     roomsInput.on(cons.events.roomsInput.ATTACHMENT_CANCELED, clearAttachment);
     roomsInput.on(cons.events.roomsInput.FILE_UPLOADED, clearAttachment);
+    // roomsInput.on(cons.events.roomsInput.ATTACHMENT_CANCELED, clearStoredAudio);
+    // roomsInput.on(cons.events.roomsInput.FILE_UPLOADED, clearStoredAudio);
     viewEvent.on('cmd_fired', firedCmd);
     navigation.on(cons.events.navigation.REPLY_TO_CLICKED, setUpReply);
     if (textAreaRef?.current !== null) {
       isTyping = false;
       textAreaRef.current.value = roomsInput.getMessage(roomId);
       setAttachment(roomsInput.getAttachment(roomId));
+      // setAudioAttachment(roomsInput.getAttachment(roomId));
       setReplyTo(roomsInput.getReplyTo(roomId));
     }
     return () => {
       roomsInput.removeListener(cons.events.roomsInput.UPLOAD_PROGRESS_CHANGES, uploadingProgress);
       roomsInput.removeListener(cons.events.roomsInput.ATTACHMENT_CANCELED, clearAttachment);
       roomsInput.removeListener(cons.events.roomsInput.FILE_UPLOADED, clearAttachment);
+      // roomsInput.removeListener(cons.events.roomsInput.ATTACHMENT_CANCELED, clearStoredAudio);
+      // roomsInput.removeListener(cons.events.roomsInput.FILE_UPLOADED, clearStoredAudio);
       viewEvent.removeListener('cmd_fired', firedCmd);
       navigation.removeListener(cons.events.navigation.REPLY_TO_CLICKED, setUpReply);
       if (isCmdActivated) deactivateCmd();
@@ -192,17 +217,21 @@ function RoomViewInput({
     };
   }, [roomId]);
 
+
   const sendMessage = async () => {
     requestAnimationFrame(() => deactivateCmdAndEmit());
     const msgBody = textAreaRef.current.value;
     if (roomsInput.isSending(roomId)) return;
-    if (msgBody.trim() === '' && attachment === null) return;
+    if (msgBody.trim() === '' && attachment === null && audioAttachment==null) return;
     sendIsTyping(false);
 
     roomsInput.setMessage(roomId, msgBody);
     if (attachment !== null) {
       roomsInput.setAttachment(roomId, attachment);
     }
+    // if (audioAttachment !== null) {
+    //   roomsInput.setAudioAttachment(roomId, audioAttachment);
+    // }
     textAreaRef.current.disabled = true;
     textAreaRef.current.style.cursor = 'not-allowed';
     await roomsInput.sendInput(roomId);
@@ -312,10 +341,24 @@ function RoomViewInput({
       roomsInput.cancelAttachment(roomId);
     }
   };
+  const handleAudioUploadClick = () => {
+    if (audioAttachment === null) recordedAudioRef.current.click();
+    else {
+      roomsInput.cancelAttachment(roomId);
+    }
+  };
   function uploadFileChange(e) {
     const file = e.target.files.item(0);
+    console.log('file added');
+    console.log(file);
     setAttachment(file);
     if (file !== null) roomsInput.setAttachment(roomId, file);
+  }
+  function uploadAudioChange(data) {
+    // const file = recordedAudioRef.current.value;\
+    console.log("audio added");
+    console.log(data);
+    if (data !== null) roomsInput.setAttachment(roomId, data);
   }
 
   function renderInputs() {
@@ -332,6 +375,33 @@ function RoomViewInput({
         </Text>
       );
     }
+    const { recorderState, ...handlers } = useRecorder();
+    const { audio } = recorderState;
+    const { recordingMinutes, recordingSeconds, initRecording } = recorderState;
+    const { startRecording, saveRecording, cancelRecording } = handlers;
+    const { recordings, deleteAudio } = useRecordingsList(audio);
+
+    const [voiceInput,setVoiceInput] =useState(false);
+    const [recording,setRecording] =useState(true);
+    function recordMessage (){
+      startRecording();
+      setVoiceInput(true);
+    }
+    function deleteVoice(){
+      cancelRecording();
+      setVoiceInput(false)
+    }
+    function saveRecordedAudio(){
+      saveRecording();
+      setRecording(false);
+    }
+    function deleteRecordedAudio(audioData){
+      deleteAudio(audioData);
+      setVoiceInput(false);
+      setRecording(true);
+
+      
+    }
     return (
       <>
         <div className={`room-input__option-container${attachment === null ? '' : ' room-attachment__option'}`}>
@@ -339,7 +409,7 @@ function RoomViewInput({
           <Tooltip placement='top' title={attachment === null ? 'Upload' : 'Cancel'}><IconButton onClick={handleUploadClick}><AttachFileOutlinedIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>
           {/* <IconButton onClick={handleUploadClick} tooltip={attachment === null ? 'Upload' : 'Cancel'} src={CirclePlusIC} /> */}
         </div>
-        <div ref={inputBaseRef} className="room-input__input-container">
+        { !voiceInput && <div ref={inputBaseRef} className="room-input__input-container">
         {roomTimeline.isEncrypted() && <div className={styles.shield}><ShieldOutlinedIcon sx={{color:'var(--text-dim)',fontSize:15}}/></div>}
           {/* {roomTimeline.isEncrypted() && <RawIcon size="extra-small" src={ShieldIC} />} */}
           <ScrollView autoHide>
@@ -356,7 +426,45 @@ function RoomViewInput({
           </ScrollView>
           {isMarkdown && <div className={styles.markdown}><CheckCircleOutlinedIcon sx={{color:'var(--text-dim)',fontSize:15}}/></div>}
           {/* {isMarkdown && <RawIcon size="extra-small" src={MarkdownIC} />} */}
-        </div>
+        </div>}
+        {/* <div className="room-input__input-container" ></div> 
+        <div className="room-input__textarea-wrapper">
+        */}
+
+        
+
+        {voiceInput && recording  && <div className={styles.conatiner} >
+          <div className={styles.voiceOptions}>
+            <IconButton onClick={deleteVoice}><DeleteIcon sx={{color:'red'}}/></IconButton>
+            <div className={styles.progress}>
+            <div className={styles.recorderTime}>
+          {initRecording && <div className={styles.recorderIndicator}></div>}
+          <span>{formatMinutes(recordingMinutes)}</span>
+          <span>:</span>
+          <span>{formatSeconds(recordingSeconds)}</span>
+          </div>
+            </div>
+          <IconButton disabled={recordingSeconds === 0}onClick={saveRecordedAudio}>
+            <StopCircleIcon sx={{color:'var(--text-primary)'}}/>
+            </IconButton> 
+          </div> 
+          
+        </div>}
+        {voiceInput && !recording && <div className={styles.conatiner} >
+          <div className={styles.voiceOptions}>
+
+          {recordings.map((record) => (
+              <div className="record" key={record.key}>
+                <div><audio ref={uploadInputRef} controls src={record.audio} /></div>
+                <div className="delete-button-container">
+                  <IconButton onClick={()=>{deleteRecordedAudio(record.key)}}><DeleteIcon sx={{color:'red'}}/></IconButton>
+                </div>
+              </div>
+            ))}
+            
+          </div> 
+          
+        </div> }
         <div ref={rightOptionsRef} className="room-input__option-container">
           <Tooltip title="Emoji" placement='top'>
             <IconButton onClick={(e) => {
@@ -366,6 +474,7 @@ function RoomViewInput({
               openEmojiBoard(cords, addEmoji);
             }}><InsertEmoticonOutlinedIcon sx={{color:'var(--text-primary)'}}/></IconButton>
           </Tooltip>
+          {!voiceInput && <Tooltip title="voice Message" placement='top'><IconButton onClick={recordMessage}><MicIcon sx={{color:'var(--text-primary)'}}/></IconButton></Tooltip>}
           <Tooltip title="Send"><IconButton onClick={sendMessage}><SendRoundedIcon sx={{color:'var(--accent)'}} /></IconButton></Tooltip>
           {/* <IconButton
             onClick={(e) => {
@@ -384,7 +493,12 @@ function RoomViewInput({
   }
 
   function attachFile() {
-    const fileType = attachment.type.slice(0, attachment.type.indexOf('/'));
+    let  fileType;
+    if(audioAttachment===null){
+       fileType= attachment.type.slice(0, attachment.type.indexOf('/'));
+    }else{
+      fileType = 'audio';
+    }
     return (
       <div className="room-attachment">
         <div className={`room-attachment__preview${fileType !== 'image' ? ' room-attachment__icon' : ''}`}>
@@ -397,8 +511,12 @@ function RoomViewInput({
           {/* {fileType !== 'image' && fileType !== 'video' && fileType !== 'audio' && <RawIcon src={FileIC} />} */}
         </div>
         <div className="room-attachment__info">
-          <Text variant="b1">{attachment.name}</Text>
+        {(audioAttachment===null)?<div><Text variant="b1">{attachment.name}</Text>
+          <Text variant="b3"><span ref={uploadProgressRef}>{`size: ${bytesToSize(attachment.size)}`}</span></Text></div>:<div>
+          <Text variant="b1">audio</Text>
           <Text variant="b3"><span ref={uploadProgressRef}>{`size: ${bytesToSize(attachment.size)}`}</span></Text>
+            </div>}
+          
         </div>
       </div>
     );
