@@ -1,6 +1,6 @@
 {
   "name": "dconvos",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Secure and decentralized messaging with voice and video calls, beautiful user experience and highly customizable ui.",
   "main": "index.js",
   "engines": {
@@ -44,11 +44,11 @@
     "micromark-util-resolve-all": "^1.0.0",
     "micromark-util-symbol": "^1.0.1",
     "prop-types": "^15.8.1",
-    "react": "^18.0.0",
+    "react": "^17.0.2",
     "react-autosize-textarea": "^7.1.0",
-    "react-dnd": "^16.0.0",
-    "react-dnd-html5-backend": "^16.0.0",
-    "react-dom": "^18.0.0",
+    "react-dnd": "^15.1.2",
+    "react-dnd-html5-backend": "^15.1.3",
+    "react-dom": "^17.0.2",
     "react-google-recaptcha": "^2.1.0",
     "react-modal": "^3.14.4",
     "sanitize-html": "^2.7.0",
