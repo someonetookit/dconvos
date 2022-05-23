@@ -272,7 +272,7 @@ function FeaturedTab() {
         </IconButton>
       </Tooltip>
     </div>
-    <div className={styles.callButton}>
+    {/* <div className={styles.callButton}>
       <Tooltip title='Calls' placement='right'>
         <IconButton size='large' onClick={() => selectTab(cons.tabs.CALLS)}>
           {selectedTab===cons.tabs.CALLS ? (<LocalPhoneIcon sx={{color:'var(--accent)'}}/>):(<LocalPhoneOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
@@ -285,7 +285,7 @@ function FeaturedTab() {
           {selectedTab===cons.tabs.FAVORITES ? (<FavoriteIcon sx={{color:'var(--accent)'}}/>):(<FavoriteBorderOutlinedIcon sx={{color:"var(--text-primary)"}} />)}  
         </IconButton>
       </Tooltip>
-    </div>
+    </div> */}
 
     </>
   );

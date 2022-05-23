@@ -106,7 +106,7 @@ function RoomHistoryVisibility({ roomId }) {
       <button onClick={() => setVisibility(items[2])} disabled={(!canChange)}>
       <div className={styles.option} >
         <div className={styles.iconAndLabel}>
-        <div className={styles.label}>Member joined (since they joined)</div></div>
+        <div className={styles.label}>Member (messages after invite)</div></div>
         <div><AccentRadio checked={activeType===items[2].type}/></div>
       </div></button>
       <button onClick={() => setVisibility(items[3])} disabled={(!canChange)}>
