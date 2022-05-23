@@ -62,9 +62,9 @@ function genRoomIntro(mEvent, roomTimeline) {
       roomId={roomTimeline.roomId}
       avatarSrc={avatarSrc}
       name={roomTimeline.room.name}
-      heading={`Welcome to ${roomTimeline.room.name}`}
-      desc={`This is the beginning of ${roomTimeline.room.name} room.${typeof roomTopic !== 'undefined' ? (` Topic: ${roomTopic}`) : ''}`}
-      time={mEvent ? `Created at ${dateFormat(mEvent.getDate(), 'dd mmmm yyyy, hh:MM TT')}` : null}
+      heading={`room ${roomTimeline.room.name}`}
+      // desc={`This is the beginning of ${roomTimeline.room.name} room.${typeof roomTopic !== 'undefined' ? (` Topic: ${roomTopic}`) : ''}`}
+      time={mEvent ? `Formed on ${dateFormat(mEvent.getDate(), 'dd mmmm yyyy, hh:MM TT')}` : null}
     />
   );
 }
