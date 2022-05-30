@@ -24,6 +24,8 @@ function Client() {
   const [dragCounter, setDragCounter] = useState(0);
 
   useEffect(() => {
+
+    document.title = "dConvos";
     let counter = 0;
     const iId = setInterval(() => {
       const msgList = [
