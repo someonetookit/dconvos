@@ -61,43 +61,55 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 //import SettingsIcon from '@mui/icons-material/Settings';
 //import AttachEmailOutlinedIcon from '@mui/icons-material/AttachEmailOutlined';
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
-const StyledBadge = styled(BadgeUnstyled)`
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 12px;
-  list-style: none;
-  font-family: IBM Plex Sans, sans-serif;
-  position: relative;
-  display: inline-block;
-  line-height: 1;
+import Badge from '@mui/material/Badge';
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    color:'var(--accent)',
+    fontWeight:800 ,
+    backgroundColor:"#FFFFFF",
+    top: 13,
+    padding: '0 4px',
+  },
+}));
 
-  & .MuiBadge-badge {
-    z-index: auto;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 4px;
-    color: var(--accent);
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 20px;
-    white-space: nowrap;
-    text-align: center;
-    background: var(--text-primary);
-    border-radius: 9px;
-    box-shadow: 0 0 0 1px #fff;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-    transform-origin: 100% 0;
-  }
+// const StyledBadge = styled(BadgeUnstyled)`
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+//   color: rgba(0, 0, 0, 0.85);
+//   font-size: 12px;
+//   list-style: none;
+//   font-family: IBM Plex Sans, sans-serif;
+//   position: relative;
+//   display: inline-block;
+//   line-height: 1;
 
-  & .MuiBadge-invisible {
-    display: none;
-  }
-`;
+//   & .MuiBadge-badge {
+//     z-index: auto;
+//     min-width: 18px;
+//     height: 18px;
+//     padding: 0 4px;
+//     color: var(--accent);
+//     font-weight: 400;
+//     font-size: 12px;
+//     line-height: 20px;
+//     white-space: nowrap;
+//     text-align: center;
+//     background: var(--text-primary);
+//     border-radius: 9px;
+//     box-shadow: 0 0 0 1px #fff;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     transform: translate(50%, -50%);
+//     transform-origin: 100% 0;
+//   }
+
+//   & .MuiBadge-invisible {
+//     display: none;
+//   }
+// `;
 
 
 function useNotificationUpdate() {
@@ -261,12 +273,13 @@ function FeaturedTab() {
           </StyledBadge>
         </IconButton>
       </Tooltip>
-    </div> */}
+    </div> 
+    <StyledBadge badgeContent={dmNumber}>*/}
 
     <div className={styles.homeButton}>
       <Tooltip title='Room' placement='right'>
         <IconButton size='large' onClick={() => selectTab(cons.tabs.HOME)}>
-         <StyledBadge badgeContent={dmNumber}>
+         <StyledBadge color="primary" showZero={false} badgeContent={dmNumber} >
           {(selectedTab === cons.tabs.HOME) ? (<EmailIcon sx={{color:'var(--accent)'}}/>):(<EmailOutlinedIcon sx={{color:"var(--text-primary)"}}/>)}  
           </StyledBadge>
         </IconButton>
@@ -494,7 +507,7 @@ function SideBar() {
             <Tooltip title='Invites' placement='right'>
               <IconButton size='large' onClick={() => openInviteList()}>
                 <StyledBadge badgeContent={totalInvites}>
-                    <ConnectWithoutContactOutlinedIcon sx={{color:"var(--text-primary)"}}/>
+                    <ConnectWithoutContactOutlinedIcon sx={{color:"var(--accent)"}}/>
                 </StyledBadge>
               </IconButton>
             </Tooltip>
